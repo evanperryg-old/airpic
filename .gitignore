@@ -60,3 +60,4 @@ Makefile
 *.map
 *.elf
 *.properties
+nbproject/
