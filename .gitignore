@@ -61,3 +61,4 @@ Makefile
 *.elf
 html/
 .properties
+nbproject/
