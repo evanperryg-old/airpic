@@ -1,7 +1,7 @@
 # airpic
 C Libraries for PIC24
 
-### In-depth documentation will be made available in the Github Pages section. Coming soon.
+### [In-depth documentation will be made available in the Github Pages section.](https://evanperryg.github.io/airpic/html/index.html)
 
 ## Quick Info
 
