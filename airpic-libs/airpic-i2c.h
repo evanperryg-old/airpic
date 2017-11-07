@@ -32,7 +32,7 @@ extern "C" {
     void I2C2_reset(void);
     
     /**
-     * Wait for the MI2C2IF flag to be triggered, then reset it.
+     * Wait for the \c MI2C2IF flag to be triggered, then reset it.
      */
     void I2C2_waitFlag(void);
     
