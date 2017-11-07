@@ -2,7 +2,7 @@
  * @file airpic-i2c.h
  * @brief Airpic-i2c contains functions used to communicate with I2C devices 
  * using the PIC24 microcontroller.
- * The functions included here are mostly designed around master 
+ * The functions included here are designed around master 
  * communication in a single-master environment, as this is what is required 
  * for the project the Airpic libraries were originally written for. I may 
  * eventually add some functions relating to slave communication, in an effort 
@@ -15,7 +15,6 @@
 
 #include "xc.h"
 #include <p24Fxxxx.h>
-#include <i2c.h>
 
 #define AIRPIC_I2C_BAUDRATE_400K 0x0025
 #define AIRPIC_I2C_BAUDRATE_100K 0x009D
@@ -40,6 +39,9 @@ extern "C" {
         
     }
     
+    /**
+     * Send a "stop" sequence on the I2C2 bus.
+     */
     static inline void i2c_stop()
     {
         I2C2CONbits.PEN = 1;
@@ -84,6 +86,10 @@ extern "C" {
         
     }
     
+    /**
+     * Receive a a byte from an I2C device.
+     * @return the byte received from the I2C slave.
+     */
     static inline unsigned short i2c_receive(void)
     {
         I2C2CONbits.RCEN = 1;
