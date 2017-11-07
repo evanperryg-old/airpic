@@ -14,7 +14,6 @@
 
 #include "xc.h"
 #include <p24Fxxxx.h>
-#include <stdint.h>
 
 #define AIRPIC_TIMER_INTERRUPT_DISABLE  0b00000000  //0 (default)
 #define AIRPIC_TIMER_INTERRUPT_ENABLE 0b00000001    //1
@@ -50,7 +49,7 @@ extern "C" {
      * at the top of the header appended together by the | operator for ease of use.
      * @return void  
      */
-    void timer_config(uint8_t conf);
+    void timer_config(unsigned short conf);
     
     void sleep_msec(unsigned int delay);
 

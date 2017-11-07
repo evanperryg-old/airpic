@@ -1,9 +1,9 @@
-#include <p24FJ64GA002.h>
-#include <stdint.h>
+#include <p24Fxxxx.h>
+#include <xc.h>
 
 #include "airpic-timer.h"
 
-void timer_config(uint8_t conf)
+void timer_config(unsigned short conf)
 {
     T1CON = 0x00;
     T4CON = 0x00;
@@ -13,7 +13,7 @@ void timer_config(uint8_t conf)
     TMR5  = 0x00;
     TMR4  = 0x00;
     
-    PR1   = 250;
+    PR1   = 249;
     
     //Some possible values for timer period, assuming TCKPS = 01
     // 0000 9C40 -> trigger interrupt every 20ms (if this is used, use 16 bit timer instead)
@@ -28,35 +28,35 @@ void timer_config(uint8_t conf)
     {
         case AIRPIC_TIMER_PERIOD_20MS:
             PR5 = 0x0000;
-            PR4 = 0x9C40;
+            PR4 = 0x9C3F;
             break;
         case AIRPIC_TIMER_PERIOD_50MS:
             PR5 = 0x0001;
-            PR4 = 0x86A0;
+            PR4 = 0x869F;
             break;
         case AIRPIC_TIMER_PERIOD_200MS:
             PR5 = 0x0006;
-            PR4 = 0x1A80;
+            PR4 = 0x1A7F;
             break;
         case AIRPIC_TIMER_PERIOD_500MS:
             PR5 = 0x000F;
-            PR4 = 0x4240;
+            PR4 = 0x423F;
             break;
         case AIRPIC_TIMER_PERIOD_1000MS:
             PR5 = 0x001E;
-            PR4 = 0x8480;
+            PR4 = 0x847F;
             break;
         case AIRPIC_TIMER_PERIOD_2000MS:
             PR5 = 0x003D;
-            PR4 = 0x0900;
+            PR4 = 0x08FF;
             break;
         case AIRPIC_TIMER_PERIOD_5000MS:
             PR5 = 0x0098;
-            PR4 = 0x9680;
+            PR4 = 0x967F;
             break;
         default:                                        //default is AIRPIC_TIMER_PERIOD_100MS
             PR5   = 0x0003;                             //MSW Timer period
-            PR4   = 0x0D40;                             //lSW Timer period
+            PR4   = 0x0D3F;                             //lSW Timer period
             break;
     }
     

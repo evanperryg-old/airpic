@@ -15,6 +15,7 @@
 
 #include "xc.h"
 #include <p24Fxxxx.h>
+#include <i2c.h>
 
 #define AIRPIC_I2C_BAUDRATE_400K 0x0025
 #define AIRPIC_I2C_BAUDRATE_100K 0x009D
@@ -29,27 +30,82 @@ extern "C" {
 #endif
     
     /**
-     * 
-     * @param deviceId
-     * @param readNotWrite
-     * @param byte_1
-     * @param byte_2
+     * Send a "start" signal on the I2C2 bus.
      */
-    inline void i2c_trn_2(unsigned short deviceId, unsigned short readNotWrite, unsigned short byte_1, unsigned short byte_2);
+    static inline void i2c_start()
+    {
+        I2C2CONbits.SEN = 1;    
+        while(I2C2CONbits.SEN);
+        IFS3bits.MI2C2IF = 0;
+        
+    }
+    
+    static inline void i2c_stop()
+    {
+        I2C2CONbits.PEN = 1;
+        while(I2C2CONbits.PEN);
+        IFS3bits.MI2C2IF = 0;
+        
+    }
     
     /**
-     * 
+     * Transmit a 7-bit slave device address with a read bit.
+     * @param slaveAddr The 7-bit slave device address.
+     */
+    static inline void i2c_init_read(unsigned short slaveAddr)
+    {
+        I2C2TRN = (slaveAddr << 1) + 1;
+        while(!IFS3bits.MI2C2IF);
+        IFS3bits.MI2C2IF = 0;
+        
+    }
+    
+    /**
+     * Transmit a 7-bit slave device address with a write bit.
+     * @param slaveAddr The 7-bit slave device address.
+     */
+    static inline void i2c_init_write(unsigned short slaveAddr)
+    {
+        I2C2TRN = (slaveAddr << 1);
+        while(!IFS3bits.MI2C2IF);
+        IFS3bits.MI2C2IF = 0;
+        
+    }
+    
+    /**
+     * Transmit a byte on the I2C bus.
+     * @param byte  The byte to be sent.
+     */
+    static inline void i2c_transmit(unsigned short byte)
+    {
+        I2C2TRN = byte;
+        while(!IFS3bits.MI2C2IF);
+        IFS3bits.MI2C2IF = 0;
+        
+    }
+    
+    static inline unsigned short i2c_receive(void)
+    {
+        I2C2CONbits.RCEN = 1;
+        while(!IFS3bits.MI2C2IF);
+        IFS3bits.MI2C2IF = 0;
+        
+        unsigned short out = I2C2RCV;
+        // if we are doing some kind of check, do it here
+        
+        I2C2CONbits.ACKEN = 1;
+        while(!IFS3bits.MI2C2IF);
+        IFS3bits.MI2C2IF = 0;
+        
+        return out;
+    }
+    
+    /**
+     * Do the necessary configuration to set up the I2C2 peripheral and attached devices.
      * @param baudrate the 16-bit value to be written into I2C2BRG. The AIRPIC_I2C_BAUDRATE_xxxx
      * macros defined at the top of airpic-i2c.h make this a lot easier.
      */
     void i2c_config(unsigned int baudrate);
-    
-    /**
-     * 
-     * @param motorId
-     * @param value
-     */
-    void setMotor(unsigned short motorId, unsigned short value);
 
 #ifdef	__cplusplus
 }
