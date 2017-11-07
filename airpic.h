@@ -32,11 +32,18 @@
 #define	AIRPIC_H
 
 #include "airpic-libs/airpic-i2c.h"
+#include "airpic-libs/airpic-timer.h"
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
+    
+    /**
+     * ensure the device is configured to work with Airpic.
+     * @return void
+     */
+    void airpic_config(void);
+    
 
 
 

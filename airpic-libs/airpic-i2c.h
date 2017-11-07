@@ -16,53 +16,40 @@
 #include "xc.h"
 #include <p24Fxxxx.h>
 
+#define AIRPIC_I2C_BAUDRATE_400K 0x0025
+#define AIRPIC_I2C_BAUDRATE_100K 0x009D
+
+#define ADDR_GYRO_1
+#define ADDR_GYRO_2
+#define ADDR_ACCELEROMETER
+#define ADDR_MOTORDRIVER
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
     
-    /** 
-     * initialize the second I2C interface on the device.
-     * @return void
+    /**
+     * 
+     * @param deviceId
+     * @param readNotWrite
+     * @param byte_1
+     * @param byte_2
      */
-    void I2C2_init(void);
+    inline void i2c_trn_2(unsigned short deviceId, unsigned short readNotWrite, unsigned short byte_1, unsigned short byte_2);
     
     /**
-     * Reset important parameters in the I2C2 module to defaults.
+     * 
+     * @param baudrate the 16-bit value to be written into I2C2BRG. The AIRPIC_I2C_BAUDRATE_xxxx
+     * macros defined at the top of airpic-i2c.h make this a lot easier.
      */
-    void I2C2_reset(void);
+    void i2c_config(unsigned int baudrate);
     
     /**
-     * Wait for the MI2C2IF flag to be triggered, then reset it.
+     * 
+     * @param motorId
+     * @param value
      */
-    void I2C2_waitFlag(void);
-    
-    /**
-     * Wait for the acknowledgement signal from a device on the I2C2 bus.
-     */
-    void I2C2_waitForACK(void);
-    
-    /**
-     * As a master, transmit one byte of data to a specified I2C device.
-     * @param writeAddr the address of the I2C device you want to communicate with.
-     * @param toWrite the byte given to that device as an instruction, data to store, etc.
-     */
-    void I2C2_transmit2(unsigned char writeAddr, unsigned char toWrite);
-    
-    /** 
-     * As a master, transmit two bytes of data to a specified I2C device.
-     * @param writeAddr the address of the I2C device you want to communicate with.
-     * @param writeAddrReg the first byte of information sent to the device, usually an address to a particular register on that device.
-     * @param toWrite the second byte of information sent to the device, usually the value you want to store in a given register on that device.
-     */
-    void I2C2_transmit3(unsigned char writeAddr, unsigned char writeAddrReg, unsigned char toWrite);
-    
-    /** 
-     * As a master, receive data from the specified I2C device.
-     * @param readAddr the address of the I2C device you want to communicate with.
-     * @return an unsigned 16-bit value corresponding to the byte received from the I2C device.
-     */
-    unsigned char I2C2_receive(unsigned char readAddr);
-
+    void setMotor(unsigned short motorId, unsigned short value);
 
 #ifdef	__cplusplus
 }

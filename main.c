@@ -24,8 +24,24 @@
 #include <p24Fxxxx.h>
 
 #include "airpic.h"
-#include "airpic-libs/airpic-i2c.h"
 
-int main(void) {
+void airpic_timer_isr(void)
+{
+    
+    airpic_timer_isr_exit;          //THIS MUST BE AT THE END OF THE ISR!!!!
+}
+
+int main(void)
+{
+    airpic_config();
+    
+    timer_config(AIRPIC_TIMER_INTERRUPT_ENABLE | AIRPIC_TIMER_PERIOD_20MS);
+    
+    
+    while(1)
+    {
+        sleep_msec(100);
+    }
+    
     return 0;
 }
