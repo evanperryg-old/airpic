@@ -5,15 +5,16 @@
 
 void timer_config(unsigned short conf)
 {
-    T1CON = 0x00;
-    T4CON = 0x00;
-    T5CON = 0x00;
+    T1CON = 0x0000;
+    T4CON = 0x0000;
+    T5CON = 0x0000;
     
     TMR1  = 0x00;
     TMR5  = 0x00;
     TMR4  = 0x00;
     
     PR1   = 249;
+    PR2   = 0xffff;
     
     //Some possible values for timer period, assuming TCKPS = 01
     // 0000 9C40 -> trigger interrupt every 20ms (if this is used, use 16 bit timer instead)
@@ -61,13 +62,14 @@ void timer_config(unsigned short conf)
     }
     
     T1CONbits.TCKPS = 0b10;                     //Timer increments every 4us
+    //T2CONbits.TCKPS = 0b11;                     //Timer increments every 16us
     T4CONbits.TCKPS = 0b01;                     //Timer increments every 0.5us
     
     IFS0bits.T1IF = 0;                          //Clear interrupt flag, just in case
     IFS1bits.T5IF = 0;                          //Clear interrupt flag, just in case
     //IPC7bits.T5IP = 4;
     
-    if( (conf & 1) )
+    if( (conf & 0x0001) )
         IEC1bits.T5IE = 1;                      //Enable interrupt
     
     T4CONbits.T32   = 1;                        //Use T4 and T5 as a 32-bit timer

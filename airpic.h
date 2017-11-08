@@ -17,13 +17,15 @@
 
 /**
  * @file airpic.h
- * @brief This is the base library for Airpic.
+ * @brief Configure microcontroller to use Airpic.
  * Including this library in your source code will add all of the 
  * libraries in the airpic-libs directory. The tools found in the airpic-libs 
  * folder are mostly functions that simplify the usage of many of the 
  * peripherals included on the PIC24. These libraries are tested on a 
  * PIC24FJ64GA002 microcontroller. I cannot guarantee that the Airpic libraries 
  * will work on other PIC24 devices without some small modifications.
+ * <p>
+ * To enable the status LED, user code should include the following line of code:
  * @author Evan Perry Grove
  * @date 9/26/2017
  */
@@ -33,18 +35,16 @@
 
 #include "airpic-libs/airpic-i2c.h"
 #include "airpic-libs/airpic-timer.h"
+#include "airpic-libs/airpic-statusled.h"
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
     
     /**
-     * ensure the device is configured to work with Airpic.
-     * @return void
+     * Configure the microcontroller for the Airpic library.
      */
     void airpic_config(void);
-    
-
 
 
 #ifdef	__cplusplus

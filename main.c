@@ -25,6 +25,7 @@
 
 #include "airpic.h"
 
+int i = 0;
 void airpic_timer_isr(void)
 {
     
@@ -35,7 +36,11 @@ int main(void)
 {
     airpic_config();
     
-    timer_config(AIRPIC_TIMER_INTERRUPT_ENABLE | AIRPIC_TIMER_PERIOD_20MS);
+    timer_config(AIRPIC_TIMER_INTERRUPT_ENABLE | AIRPIC_TIMER_PERIOD_500MS);
+    
+    enable_statusLED();
+    
+    led_setStatus(STATUSLED_LONGBLINK | STATUSLED_RED);
     
     
     while(1)

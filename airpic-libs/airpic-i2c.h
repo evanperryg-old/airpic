@@ -1,7 +1,7 @@
 /**
  * @file airpic-i2c.h
- * @brief Airpic-i2c contains functions used to communicate with I2C devices 
- * using the PIC24 microcontroller.
+ * @brief Communicate with devices connected to I2C2.
+ * <p>
  * The functions included here are designed around master 
  * communication in a single-master environment, as this is what is required 
  * for the project the Airpic libraries were originally written for. I may 

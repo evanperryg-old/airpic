@@ -1,0 +1,74 @@
+#include "airpic-statusled.h"
+#include <p24FJ64GA002.h>
+
+ unsigned int statled_accumulator, statled_on, statled_pr_on, statled_pr_off, statled_clr;
+   
+void __attribute__((__interrupt__,no_auto_psv))_T2Interrupt(void)
+{
+    if(statled_on)
+    {
+        LATB = (LATB & 0x1fff) | (statled_clr);
+                
+        if(statled_accumulator < statled_pr_on) ++statled_accumulator;
+        else
+        {
+            statled_accumulator = 0;
+            statled_on = 0;
+        }
+    }
+    else
+    {
+        LATB = (LATB & 0x1fff);
+        
+        if(statled_accumulator < statled_pr_off) ++statled_accumulator;
+        else
+        {
+            statled_accumulator = 0;
+            statled_on = 1;
+        }
+    }
+    IFS0bits.T2IF = 0;
+}
+
+void enable_statusLED(void)
+{
+    statled_accumulator = 0;
+    statled_on = 1;
+    
+    T2CON   = 0x0000;
+    TMR2    = 0x0000;
+    PR2     = 0x0032;       //statled is updated every 800us
+    
+    IFS0bits.T2IF = 0;
+    IEC0bits.T2IE = 1;
+    
+    T2CON   = 0x8030;
+    led_setStatus(STATUSLED_BLUE | STATUSLED_SHORTBLINK);
+}
+
+void led_setStatus(unsigned int stat)
+{
+    statled_clr = ( stat & 0xf000 );
+    
+    switch( stat & (0x000f) )
+    {
+        case STATUSLED_OFF:
+            statled_pr_on  = 0;
+            statled_pr_off = 1;
+            statled_on = 0;
+            break;
+        case STATUSLED_SOLID:
+            statled_pr_on  = 1;
+            statled_pr_off = 0;
+            break;
+        case STATUSLED_SHORTBLINK:
+            statled_pr_on  = 40;       //32ms on
+            statled_pr_off = 1250;     //1000ms off
+            break;
+        case STATUSLED_LONGBLINK:
+            statled_pr_on  = 1250;     //800ms on
+            statled_pr_off = 375;      //300ms off
+            break;
+    }
+    
+}
