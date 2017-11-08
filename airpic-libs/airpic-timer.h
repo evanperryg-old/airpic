@@ -1,6 +1,6 @@
 /**
  * @file airpic-timer.h
- * @brief Configure and use timed sleep functions and Timer4/5 ISR
+ * @brief Configure and use timed sleep functions and Timer4/5 ISR.
  * Airpic's Timer library simplifies the usage of the PIC24 device's on-board 
  * timers by taking the user's parameters and handles the configuration of the 
  * timers accordingly.
