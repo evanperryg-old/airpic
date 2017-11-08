@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['airpic_2di2c_2eh',['airpic-i2c.h',['../airpic-i2c_8h.html',1,'']]],
-  ['airpic_2dstatusled_2eh',['airpic-statusled.h',['../airpic-statusled_8h.html',1,'']]],
-  ['airpic_2dtimer_2eh',['airpic-timer.h',['../airpic-timer_8h.html',1,'']]],
-  ['airpic_2eh',['airpic.h',['../airpic_8h.html',1,'']]],
-  ['airpic_5fconfig',['airpic_config',['../airpic_8h.html#a25669c5383dcce25adcfa863bb52db93',1,'airpic.c']]],
   ['airpic_5ftimer_5finterrupt_5fdisable',['AIRPIC_TIMER_INTERRUPT_DISABLE',['../airpic-timer_8h.html#ada4e02b7b564412da0dff9ee824dfbfd',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5finterrupt_5fenable',['AIRPIC_TIMER_INTERRUPT_ENABLE',['../airpic-timer_8h.html#a5824c15969811da229ee3d1743f28dff',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5fisr',['airpic_timer_isr',['../airpic-timer_8h.html#a368fc82638b7402f41fceca19a55bde4',1,'airpic-timer.h']]],
@@ -16,7 +11,5 @@ var searchData=
   ['airpic_5ftimer_5fperiod_5f20ms',['AIRPIC_TIMER_PERIOD_20MS',['../airpic-timer_8h.html#a4845eab42b5e2557494d0743f7b88fe5',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5fperiod_5f5000ms',['AIRPIC_TIMER_PERIOD_5000MS',['../airpic-timer_8h.html#aa999a3336f6abd7ad7257f6484f1faac',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5fperiod_5f500ms',['AIRPIC_TIMER_PERIOD_500MS',['../airpic-timer_8h.html#a7e8073a989af6cded5c480b7603001f8',1,'airpic-timer.h']]],
-  ['airpic_5ftimer_5fperiod_5f50ms',['AIRPIC_TIMER_PERIOD_50MS',['../airpic-timer_8h.html#a73f3f46868662f2b7dafb26400f38eee',1,'airpic-timer.h']]],
-  ['airpic_20library_20documentation',['Airpic Library Documentation',['../index.html',1,'']]],
-  ['airpic',['airpic',['../md__c_1__users_evan__m_p_l_a_b_x_projects_air_io_8_x__r_e_a_d_m_e.html',1,'']]]
+  ['airpic_5ftimer_5fperiod_5f50ms',['AIRPIC_TIMER_PERIOD_50MS',['../airpic-timer_8h.html#a73f3f46868662f2b7dafb26400f38eee',1,'airpic-timer.h']]]
 ];

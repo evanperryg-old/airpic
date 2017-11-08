@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Airpic: C:/Users/evan/MPLABXProjects/air_io.X Directory Reference</title>
+<title>Airpic: C:/Users/evan/MPLABXProjects/air_io.X/airpic-libs/airpic-i2c.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,26 +61,52 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_c5ef2495f58fe36fa89e142889d6b166.html">MPLABXProjects</a></li><li class="navelem"><a class="el" href="dir_040dbda016d81101abe79cc5cf77847e.html">air_io.X</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_c5ef2495f58fe36fa89e142889d6b166.html">MPLABXProjects</a></li><li class="navelem"><a class="el" href="dir_040dbda016d81101abe79cc5cf77847e.html">air_io.X</a></li><li class="navelem"><a class="el" href="dir_8648f0b56d70fa2b77195e85965f5ff3.html">airpic-libs</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">air_io.X Directory Reference</div>  </div>
+<div class="title">airpic-i2c.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
-Directories</h2></td></tr>
-<tr class="memitem:dir_17e3cd772bc0dc4456490e7a982645fd"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_17e3cd772bc0dc4456490e7a982645fd.html">build</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:airpic_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html">airpic.h</a> <a href="airpic_8h_source.html">[code]</a></td></tr>
-<tr class="memdesc:airpic_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure microcontroller to use Airpic. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<div class="textblock"><code>#include &lt;p24Fxxxx.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="airpic-i2c_8h_source.html">airpic-i2c.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a98fe20f74265502cbe3bae33ebb68a5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8c.html#a98fe20f74265502cbe3bae33ebb68a5a">i2c_config</a> (unsigned int baudrate)</td></tr>
+<tr class="memdesc:a98fe20f74265502cbe3bae33ebb68a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do the necessary configuration to set up the I2C2 peripheral and attached devices.  <a href="#a98fe20f74265502cbe3bae33ebb68a5a">More...</a><br /></td></tr>
+<tr class="separator:a98fe20f74265502cbe3bae33ebb68a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a98fe20f74265502cbe3bae33ebb68a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98fe20f74265502cbe3bae33ebb68a5a">&#9670;&nbsp;</a></span>i2c_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_config </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>baudrate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Do the necessary configuration to set up the I2C2 peripheral and attached devices. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baudrate</td><td>the 16-bit value to be written into I2C2BRG. The AIRPIC_I2C_BAUDRATE_xxxx macros defined at the top of <a class="el" href="airpic-i2c_8h.html" title="Airpic-i2c contains functions used to communicate with I2C devices using the PIC24 microcontroller...">airpic-i2c.h</a> make this a lot easier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
