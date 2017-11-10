@@ -67,10 +67,11 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>The Airpic Libraries include various tools to simplify and accelerate the development of C code for the PIC24 microcontroller.</p>
-<h2><a class="anchor" id="compatibility"></a>
-Compatibility</h2>
-<p>These libraries were written for the PIC24FJ64GA002 microcontroller, but they are theoretically compatible with any PIC24FJ device. It should be relatively easy to adapt these libraries for use on virtually any PIC24 microcontroller.</p>
+<p>The Airpic Libraries include various tools to simplify and accelerate the development of C code for the PIC24 microcontroller. Airpic was designed for use with Project IRIS, a project created by Innovative Engineers at the University of Minnesota Twin Cities.</p>
+<h2><a class="anchor" id="microcontroller"></a>
+Microcontroller</h2>
+<p>These libraries were written for the PIC24FJ64GA002 microcontroller, but they are theoretically compatible with any PIC24FJ device. It should be relatively easy to adapt these libraries for use on virtually any PIC24 microcontroller. </p>
+<p>Airpic uses a variety of peripherals on the PIC device. <a class="el" href="airpic-timer_8h.html" title="Configure and use timed sleep functions and Timer4/5 ISR. ">airpic-timer.h</a> uses Timer peripherals 1, 4, and 5. <a class="el" href="airpic-statusled_8h.html" title="Status LED manager. ">airpic-statusled.h</a> uses Timer peripheral 2. <a class="el" href="airpic-i2c_8h.html" title="Communicate with devices connected to I2C2. ">airpic-i2c.h</a> uses the I2C2 peripheral.</p>
 <h2><a class="anchor" id="techinfo"></a>
 Compiler/Technical Information</h2>
 <p>Airpic was compiled using the XC16 compiler, version 1.32B. The IDE used was MPLAB X, version 4.00. </p>
