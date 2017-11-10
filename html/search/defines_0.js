@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['addr_5fgyro_5f1',['ADDR_GYRO_1',['../airpic-gyro_8h.html#adea5b476c8cd8864b67283a677e31dc6',1,'airpic-gyro.h']]],
+  ['airpic_5fi2c_5fbaudrate_5f100k',['AIRPIC_I2C_BAUDRATE_100K',['../airpic-i2c_8h.html#ac0700c556a57eff7191ade0bf9d0cb13',1,'airpic-i2c.h']]],
+  ['airpic_5fi2c_5fbaudrate_5f400k',['AIRPIC_I2C_BAUDRATE_400K',['../airpic-i2c_8h.html#acd41283b85bfb2a2bf254aeb2e5a3096',1,'airpic-i2c.h']]],
+  ['airpic_5ftimer_5fdefault',['AIRPIC_TIMER_DEFAULT',['../airpic-timer_8h.html#a484565c005513f00a13456d20be978ed',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5finterrupt_5fdisable',['AIRPIC_TIMER_INTERRUPT_DISABLE',['../airpic-timer_8h.html#ada4e02b7b564412da0dff9ee824dfbfd',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5finterrupt_5fenable',['AIRPIC_TIMER_INTERRUPT_ENABLE',['../airpic-timer_8h.html#a5824c15969811da229ee3d1743f28dff',1,'airpic-timer.h']]],
   ['airpic_5ftimer_5fisr',['airpic_timer_isr',['../airpic-timer_8h.html#a368fc82638b7402f41fceca19a55bde4',1,'airpic-timer.h']]],

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="uofm-tiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Airpic
-   &#160;<span id="projectnumber">alpha 001</span>
+   &#160;<span id="projectnumber">alpha 002</span>
    </div>
    <div id="projectbrief">Libraries for PIC24/XC16</div>
   </td>
@@ -92,6 +92,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a38b1a9faafc276497ab805f7e34ffa83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#a38b1a9faafc276497ab805f7e34ffa83">STATUSLED_LONGBLINK</a>&#160;&#160;&#160;0x0003</td></tr>
 <tr class="memdesc:a38b1a9faafc276497ab805f7e34ffa83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status LED stays on for a second, then is off for a moment.  <a href="#a38b1a9faafc276497ab805f7e34ffa83">More...</a><br /></td></tr>
 <tr class="separator:a38b1a9faafc276497ab805f7e34ffa83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92e614dfa68220d8d4e57cca6808cdc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#a92e614dfa68220d8d4e57cca6808cdc5">STATUSLED_FASTBLINK</a>&#160;&#160;&#160;0x0004</td></tr>
+<tr class="memdesc:a92e614dfa68220d8d4e57cca6808cdc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status LED blinks very quickly.  <a href="#a92e614dfa68220d8d4e57cca6808cdc5">More...</a><br /></td></tr>
+<tr class="separator:a92e614dfa68220d8d4e57cca6808cdc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af43d5b6af16362a5a3ca9b28f1ddb4ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#af43d5b6af16362a5a3ca9b28f1ddb4ae">STATUSLED_RED</a>&#160;&#160;&#160;0x8000</td></tr>
 <tr class="memdesc:af43d5b6af16362a5a3ca9b28f1ddb4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status LED will be red.  <a href="#af43d5b6af16362a5a3ca9b28f1ddb4ae">More...</a><br /></td></tr>
 <tr class="separator:af43d5b6af16362a5a3ca9b28f1ddb4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,11 +116,11 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4e5b931965e4bbe39cb32c12597a9823"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#a4e5b931965e4bbe39cb32c12597a9823">enable_statusLED</a> (void)</td></tr>
-<tr class="memdesc:a4e5b931965e4bbe39cb32c12597a9823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Timer2 to be used for the status LED.  <a href="#a4e5b931965e4bbe39cb32c12597a9823">More...</a><br /></td></tr>
-<tr class="separator:a4e5b931965e4bbe39cb32c12597a9823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad53b830ffdef5a4250afd0421b5b16ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#ad53b830ffdef5a4250afd0421b5b16ce">led_setStatus</a> (unsigned int stat)</td></tr>
-<tr class="separator:ad53b830ffdef5a4250afd0421b5b16ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a599d97c364b22db8b8c759cb68de0d27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#a599d97c364b22db8b8c759cb68de0d27">statusLED_enable</a> (void)</td></tr>
+<tr class="memdesc:a599d97c364b22db8b8c759cb68de0d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Timer2 to be used for the status LED.  <a href="#a599d97c364b22db8b8c759cb68de0d27">More...</a><br /></td></tr>
+<tr class="separator:a599d97c364b22db8b8c759cb68de0d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97571abf2192e0c068730200802101f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-statusled_8h.html#a97571abf2192e0c068730200802101f9">statusLED_setStatus</a> (unsigned int stat)</td></tr>
+<tr class="separator:a97571abf2192e0c068730200802101f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Status LED manager. </p>
@@ -147,6 +150,22 @@ Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) </li>
 </div><div class="memdoc">
 
 <p>Status LED will be blue. </p>
+
+</div>
+</div>
+<a id="a92e614dfa68220d8d4e57cca6808cdc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92e614dfa68220d8d4e57cca6808cdc5">&#9670;&nbsp;</a></span>STATUSLED_FASTBLINK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STATUSLED_FASTBLINK&#160;&#160;&#160;0x0004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Status LED blinks very quickly. </p>
 
 </div>
 </div>
@@ -295,14 +314,14 @@ Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) </li>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a4e5b931965e4bbe39cb32c12597a9823"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e5b931965e4bbe39cb32c12597a9823">&#9670;&nbsp;</a></span>enable_statusLED()</h2>
+<a id="a599d97c364b22db8b8c759cb68de0d27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a599d97c364b22db8b8c759cb68de0d27">&#9670;&nbsp;</a></span>statusLED_enable()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void enable_statusLED </td>
+          <td class="memname">void statusLED_enable </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -312,18 +331,18 @@ Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) </li>
 </div><div class="memdoc">
 
 <p>Configure Timer2 to be used for the status LED. </p>
-<p>Immediately after /c <a class="el" href="airpic-statusled_8h.html#a4e5b931965e4bbe39cb32c12597a9823" title="Configure Timer2 to be used for the status LED. ">enable_statusLED()</a> is run, it will default to blue color and short blinking pattern. </p>
+<p>Immediately after /c enable_statusLED() is run, it will default to blue color and short blinking pattern. </p>
 
 </div>
 </div>
-<a id="ad53b830ffdef5a4250afd0421b5b16ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad53b830ffdef5a4250afd0421b5b16ce">&#9670;&nbsp;</a></span>led_setStatus()</h2>
+<a id="a97571abf2192e0c068730200802101f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97571abf2192e0c068730200802101f9">&#9670;&nbsp;</a></span>statusLED_setStatus()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void led_setStatus </td>
+          <td class="memname">void statusLED_setStatus </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>stat</em></td><td>)</td>

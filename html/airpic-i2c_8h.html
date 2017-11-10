@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="uofm-tiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Airpic
-   &#160;<span id="projectnumber">alpha 001</span>
+   &#160;<span id="projectnumber">alpha 003</span>
    </div>
    <div id="projectbrief">Libraries for PIC24/XC16</div>
   </td>
@@ -66,223 +66,174 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">airpic-i2c.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Communicate with devices connected to I2C2.  
+<p>Airpic-i2c contains functions used to communicate with I2C devices using the PIC24 microcontroller.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;xc.h&quot;</code><br />
 <code>#include &lt;p24Fxxxx.h&gt;</code><br />
 </div>
 <p><a href="airpic-i2c_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:acd41283b85bfb2a2bf254aeb2e5a3096"><td class="memItemLeft" align="right" valign="top"><a id="acd41283b85bfb2a2bf254aeb2e5a3096"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AIRPIC_I2C_BAUDRATE_400K</b>&#160;&#160;&#160;0x0025</td></tr>
-<tr class="separator:acd41283b85bfb2a2bf254aeb2e5a3096"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0700c556a57eff7191ade0bf9d0cb13"><td class="memItemLeft" align="right" valign="top"><a id="ac0700c556a57eff7191ade0bf9d0cb13"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AIRPIC_I2C_BAUDRATE_100K</b>&#160;&#160;&#160;0x009D</td></tr>
-<tr class="separator:ac0700c556a57eff7191ade0bf9d0cb13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adea5b476c8cd8864b67283a677e31dc6"><td class="memItemLeft" align="right" valign="top"><a id="adea5b476c8cd8864b67283a677e31dc6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADDR_GYRO_1</b></td></tr>
-<tr class="separator:adea5b476c8cd8864b67283a677e31dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11ebdea67954df8bd42ff07509db83d1"><td class="memItemLeft" align="right" valign="top"><a id="a11ebdea67954df8bd42ff07509db83d1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADDR_GYRO_2</b></td></tr>
-<tr class="separator:a11ebdea67954df8bd42ff07509db83d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fcdfb1cd7f035c9bbe6051bcb4a8917"><td class="memItemLeft" align="right" valign="top"><a id="a5fcdfb1cd7f035c9bbe6051bcb4a8917"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADDR_ACCELEROMETER</b></td></tr>
-<tr class="separator:a5fcdfb1cd7f035c9bbe6051bcb4a8917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43fa06fc4c63100002c393978207e4fa"><td class="memItemLeft" align="right" valign="top"><a id="a43fa06fc4c63100002c393978207e4fa"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ADDR_MOTORDRIVER</b></td></tr>
-<tr class="separator:a43fa06fc4c63100002c393978207e4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2c3465a576a1fb54acceed8a3babd8bf"><td class="memItemLeft" align="right" valign="top"><a id="a2c3465a576a1fb54acceed8a3babd8bf"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a2c3465a576a1fb54acceed8a3babd8bf">i2c_start</a> ()</td></tr>
-<tr class="memdesc:a2c3465a576a1fb54acceed8a3babd8bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a "start" signal on the I2C2 bus. <br /></td></tr>
-<tr class="separator:a2c3465a576a1fb54acceed8a3babd8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8659eb3264be98df697aebeff90c720"><td class="memItemLeft" align="right" valign="top"><a id="aa8659eb3264be98df697aebeff90c720"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#aa8659eb3264be98df697aebeff90c720">i2c_stop</a> ()</td></tr>
-<tr class="memdesc:aa8659eb3264be98df697aebeff90c720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a "stop" sequence on the I2C2 bus. <br /></td></tr>
-<tr class="separator:aa8659eb3264be98df697aebeff90c720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36fffe3022a2f76f50bfa93ec0e82152"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a36fffe3022a2f76f50bfa93ec0e82152">i2c_init_read</a> (unsigned short slaveAddr)</td></tr>
-<tr class="memdesc:a36fffe3022a2f76f50bfa93ec0e82152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmit a 7-bit slave device address with a read bit.  <a href="#a36fffe3022a2f76f50bfa93ec0e82152">More...</a><br /></td></tr>
-<tr class="separator:a36fffe3022a2f76f50bfa93ec0e82152"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad05fba2b5fcaa689f5ef7c7d597f7c09"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#ad05fba2b5fcaa689f5ef7c7d597f7c09">i2c_init_write</a> (unsigned short slaveAddr)</td></tr>
-<tr class="memdesc:ad05fba2b5fcaa689f5ef7c7d597f7c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmit a 7-bit slave device address with a write bit.  <a href="#ad05fba2b5fcaa689f5ef7c7d597f7c09">More...</a><br /></td></tr>
-<tr class="separator:ad05fba2b5fcaa689f5ef7c7d597f7c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add209433d4191270c40694efccc43c90"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#add209433d4191270c40694efccc43c90">i2c_transmit</a> (unsigned short byte)</td></tr>
-<tr class="memdesc:add209433d4191270c40694efccc43c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmit a byte on the I2C bus.  <a href="#add209433d4191270c40694efccc43c90">More...</a><br /></td></tr>
-<tr class="separator:add209433d4191270c40694efccc43c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d64b1eb17ab15c53e22e5f5707ef13"><td class="memItemLeft" align="right" valign="top">static unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#ae9d64b1eb17ab15c53e22e5f5707ef13">i2c_receive</a> (void)</td></tr>
-<tr class="memdesc:ae9d64b1eb17ab15c53e22e5f5707ef13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a a byte from an I2C device.  <a href="#ae9d64b1eb17ab15c53e22e5f5707ef13">More...</a><br /></td></tr>
-<tr class="separator:ae9d64b1eb17ab15c53e22e5f5707ef13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98fe20f74265502cbe3bae33ebb68a5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a98fe20f74265502cbe3bae33ebb68a5a">i2c_config</a> (unsigned int baudrate)</td></tr>
-<tr class="memdesc:a98fe20f74265502cbe3bae33ebb68a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do the necessary configuration to set up the I2C2 peripheral and attached devices.  <a href="#a98fe20f74265502cbe3bae33ebb68a5a">More...</a><br /></td></tr>
-<tr class="separator:a98fe20f74265502cbe3bae33ebb68a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3392db08dfa8a6ce6deb485972a89812"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a3392db08dfa8a6ce6deb485972a89812">I2C2_init</a> (void)</td></tr>
+<tr class="memdesc:a3392db08dfa8a6ce6deb485972a89812"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize the second I2C interface on the device.  <a href="#a3392db08dfa8a6ce6deb485972a89812">More...</a><br /></td></tr>
+<tr class="separator:a3392db08dfa8a6ce6deb485972a89812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb49def13fd7da171cb644a5d21023d9"><td class="memItemLeft" align="right" valign="top"><a id="acb49def13fd7da171cb644a5d21023d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#acb49def13fd7da171cb644a5d21023d9">I2C2_reset</a> (void)</td></tr>
+<tr class="memdesc:acb49def13fd7da171cb644a5d21023d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset important parameters in the I2C2 module to defaults. <br /></td></tr>
+<tr class="separator:acb49def13fd7da171cb644a5d21023d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45a737f9de0d00d6b60e424b868c5b8"><td class="memItemLeft" align="right" valign="top"><a id="af45a737f9de0d00d6b60e424b868c5b8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#af45a737f9de0d00d6b60e424b868c5b8">I2C2_waitFlag</a> (void)</td></tr>
+<tr class="memdesc:af45a737f9de0d00d6b60e424b868c5b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the <code>MI2C2IF</code> flag to be triggered, then reset it. <br /></td></tr>
+<tr class="separator:af45a737f9de0d00d6b60e424b868c5b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38473ff8452942f12bb19ef7976dc55c"><td class="memItemLeft" align="right" valign="top"><a id="a38473ff8452942f12bb19ef7976dc55c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a38473ff8452942f12bb19ef7976dc55c">I2C2_waitForACK</a> (void)</td></tr>
+<tr class="memdesc:a38473ff8452942f12bb19ef7976dc55c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the acknowledgement signal from a device on the I2C2 bus. <br /></td></tr>
+<tr class="separator:a38473ff8452942f12bb19ef7976dc55c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd6541b5e7387d917250e596fa76728"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a8fd6541b5e7387d917250e596fa76728">I2C2_transmit2</a> (unsigned char writeAddr, unsigned char toWrite)</td></tr>
+<tr class="memdesc:a8fd6541b5e7387d917250e596fa76728"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a master, transmit one byte of data to a specified I2C device.  <a href="#a8fd6541b5e7387d917250e596fa76728">More...</a><br /></td></tr>
+<tr class="separator:a8fd6541b5e7387d917250e596fa76728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47f44eaf74959a71d9d6b661fd515f87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#a47f44eaf74959a71d9d6b661fd515f87">I2C2_transmit3</a> (unsigned char writeAddr, unsigned char writeAddrReg, unsigned char toWrite)</td></tr>
+<tr class="memdesc:a47f44eaf74959a71d9d6b661fd515f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a master, transmit two bytes of data to a specified I2C device.  <a href="#a47f44eaf74959a71d9d6b661fd515f87">More...</a><br /></td></tr>
+<tr class="separator:a47f44eaf74959a71d9d6b661fd515f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea349b39d498275aa7334da177df046d"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-i2c_8h.html#aea349b39d498275aa7334da177df046d">I2C2_receive</a> (unsigned char readAddr)</td></tr>
+<tr class="memdesc:aea349b39d498275aa7334da177df046d"><td class="mdescLeft">&#160;</td><td class="mdescRight">As a master, receive data from the specified I2C device.  <a href="#aea349b39d498275aa7334da177df046d">More...</a><br /></td></tr>
+<tr class="separator:aea349b39d498275aa7334da177df046d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Communicate with devices connected to I2C2. </p>
-<p>The functions included here are designed around master communication in a single-master environment, as this is what is required for the project the Airpic libraries were originally written for. I may eventually add some functions relating to slave communication, in an effort to increase the versatility of the library. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
+<div class="textblock"><p>Airpic-i2c contains functions used to communicate with I2C devices using the PIC24 microcontroller. </p>
+<p>The functions included here are mostly designed around master communication in a single-master environment, as this is what is required for the project the Airpic libraries were originally written for. I may eventually add some functions relating to slave communication, in an effort to increase the versatility of the library. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>9/26/2017 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a98fe20f74265502cbe3bae33ebb68a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98fe20f74265502cbe3bae33ebb68a5a">&#9670;&nbsp;</a></span>i2c_config()</h2>
+<a id="a3392db08dfa8a6ce6deb485972a89812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3392db08dfa8a6ce6deb485972a89812">&#9670;&nbsp;</a></span>I2C2_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void i2c_config </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>baudrate</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Do the necessary configuration to set up the I2C2 peripheral and attached devices. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">baudrate</td><td>the 16-bit value to be written into I2C2BRG. The AIRPIC_I2C_BAUDRATE_xxxx macros defined at the top of <a class="el" href="airpic-i2c_8h.html" title="Communicate with devices connected to I2C2. ">airpic-i2c.h</a> make this a lot easier. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a36fffe3022a2f76f50bfa93ec0e82152"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36fffe3022a2f76f50bfa93ec0e82152">&#9670;&nbsp;</a></span>i2c_init_read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void i2c_init_read </td>
-          <td>(</td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>slaveAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Transmit a 7-bit slave device address with a read bit. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">slaveAddr</td><td>The 7-bit slave device address. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ad05fba2b5fcaa689f5ef7c7d597f7c09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad05fba2b5fcaa689f5ef7c7d597f7c09">&#9670;&nbsp;</a></span>i2c_init_write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void i2c_init_write </td>
-          <td>(</td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>slaveAddr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Transmit a 7-bit slave device address with a write bit. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">slaveAddr</td><td>The 7-bit slave device address. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae9d64b1eb17ab15c53e22e5f5707ef13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9d64b1eb17ab15c53e22e5f5707ef13">&#9670;&nbsp;</a></span>i2c_receive()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static unsigned short i2c_receive </td>
+          <td class="memname">void I2C2_init </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Receive a a byte from an I2C device. </p>
-<dl class="section return"><dt>Returns</dt><dd>the byte received from the I2C slave. </dd></dl>
+<p>initialize the second I2C interface on the device. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
-<a id="add209433d4191270c40694efccc43c90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add209433d4191270c40694efccc43c90">&#9670;&nbsp;</a></span>i2c_transmit()</h2>
+<a id="aea349b39d498275aa7334da177df046d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea349b39d498275aa7334da177df046d">&#9670;&nbsp;</a></span>I2C2_receive()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void i2c_transmit </td>
+          <td class="memname">unsigned char I2C2_receive </td>
           <td>(</td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>byte</em></td><td>)</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>readAddr</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Transmit a byte on the I2C bus. </p>
+<p>As a master, receive data from the specified I2C device. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">byte</td><td>The byte to be sent. </td></tr>
+    <tr><td class="paramname">readAddr</td><td>the address of the I2C device you want to communicate with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an unsigned 16-bit value corresponding to the byte received from the I2C device. </dd></dl>
+
+</div>
+</div>
+<a id="a8fd6541b5e7387d917250e596fa76728"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fd6541b5e7387d917250e596fa76728">&#9670;&nbsp;</a></span>I2C2_transmit2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void I2C2_transmit2 </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>writeAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>toWrite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>As a master, transmit one byte of data to a specified I2C device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">writeAddr</td><td>the address of the I2C device you want to communicate with. </td></tr>
+    <tr><td class="paramname">toWrite</td><td>the byte given to that device as an instruction, data to store, etc. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a47f44eaf74959a71d9d6b661fd515f87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47f44eaf74959a71d9d6b661fd515f87">&#9670;&nbsp;</a></span>I2C2_transmit3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void I2C2_transmit3 </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>writeAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>writeAddrReg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>toWrite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>As a master, transmit two bytes of data to a specified I2C device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">writeAddr</td><td>the address of the I2C device you want to communicate with. </td></tr>
+    <tr><td class="paramname">writeAddrReg</td><td>the first byte of information sent to the device, usually an address to a particular register on that device. </td></tr>
+    <tr><td class="paramname">toWrite</td><td>the second byte of information sent to the device, usually the value you want to store in a given register on that device. </td></tr>
   </table>
   </dd>
 </dl>

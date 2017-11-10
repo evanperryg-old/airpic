@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sleep_5fmsec',['sleep_msec',['../airpic-timer_8h.html#a6f31d3f57244f7f4def1b4b9dd2ca601',1,'airpic-timer.c']]]
+  ['timer_5fconfig',['timer_config',['../airpic-timer_8h.html#a9bfc684edf053407876bf6df4a1f7aa2',1,'airpic-timer.c']]]
 ];
