@@ -31,6 +31,9 @@
 /** @brief Status LED stays on for a second, then is off for a moment. */
 #define STATUSLED_LONGBLINK     0x0003
 
+/** @brief Status LED blinks very quickly. */
+#define STATUSLED_FASTBLINK     0x0004
+
 /** @brief Status LED will be red. */
 #define STATUSLED_RED           0x8000
 
@@ -58,7 +61,7 @@ extern "C" {
      * /c enable_statusLED() is run, it will default to blue color and short
      * blinking pattern.
      */
-    void enable_statusLED(void);
+    void statusLED_enable(void);
     
     /**
      * 
@@ -66,7 +69,7 @@ extern "C" {
      * Use the /c STATUSLED_ macros included in /c airpic-status.h combined 
      * together with bitwise OR.
      */
-    void led_setStatus(unsigned int stat);
+    void statusLED_setStatus(unsigned int stat);
 
 #ifdef	__cplusplus
 }

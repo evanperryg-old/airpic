@@ -27,10 +27,11 @@ void __attribute__((__interrupt__,no_auto_psv))_T2Interrupt(void)
             statled_on = 1;
         }
     }
+    
     IFS0bits.T2IF = 0;
 }
 
-void enable_statusLED(void)
+void statusLED_enable(void)
 {
     statled_accumulator = 0;
     statled_on = 1;
@@ -43,10 +44,10 @@ void enable_statusLED(void)
     IEC0bits.T2IE = 1;
     
     T2CON   = 0x8030;
-    led_setStatus(STATUSLED_BLUE | STATUSLED_SHORTBLINK);
+    statusLED_setStatus(STATUSLED_BLUE | STATUSLED_SHORTBLINK);
 }
 
-void led_setStatus(unsigned int stat)
+void statusLED_setStatus(unsigned int stat)
 {
     statled_clr = ( stat & 0xf000 );
     
@@ -54,11 +55,11 @@ void led_setStatus(unsigned int stat)
     {
         case STATUSLED_OFF:
             statled_pr_on  = 0;
-            statled_pr_off = 1;
+            statled_pr_off = 0xffff;
             statled_on = 0;
             break;
         case STATUSLED_SOLID:
-            statled_pr_on  = 1;
+            statled_pr_on  = 0xffff;
             statled_pr_off = 0;
             break;
         case STATUSLED_SHORTBLINK:
@@ -68,6 +69,10 @@ void led_setStatus(unsigned int stat)
         case STATUSLED_LONGBLINK:
             statled_pr_on  = 1250;     //800ms on
             statled_pr_off = 375;      //300ms off
+            break;
+        case STATUSLED_FASTBLINK:
+            statled_pr_on  = 200;      //160ms on
+            statled_pr_off = 200;      //160ms off
             break;
     }
     

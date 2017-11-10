@@ -69,7 +69,7 @@ void timer_config(unsigned short conf)
     IFS1bits.T5IF = 0;                          //Clear interrupt flag, just in case
     //IPC7bits.T5IP = 4;
     
-    if( (conf & 0x0001) )
+    if( (conf & 0x0001) == 0 )
         IEC1bits.T5IE = 1;                      //Enable interrupt
     
     T4CONbits.T32   = 1;                        //Use T4 and T5 as a 32-bit timer

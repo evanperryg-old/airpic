@@ -14,11 +14,14 @@
 #include "xc.h"
 #include <p24Fxxxx.h>
 
-/** @brief Turn off the timed ISR. (default) */
-#define AIRPIC_TIMER_INTERRUPT_DISABLE  0b00000000  //0 (default)
+/** @brief Configure airpic-timer to the default settings (interrupt enabled with a 100ms period between interrupts) */
+#define AIRPIC_TIMER_DEFAULT    0b00000000
 
-/** @brief Turn on the timed ISR. */
-#define AIRPIC_TIMER_INTERRUPT_ENABLE 0b00000001    //1
+/** @brief Timed ISR is not enabled (default). */
+#define AIRPIC_TIMER_INTERRUPT_ENABLE  0b00000000  //0 (default)
+
+/** @brief Timed ISR is enabled. */
+#define AIRPIC_TIMER_INTERRUPT_DISABLE 0b00000001  //1
 
 /** @brief Period between timed ISR events is 20ms. */
 #define AIRPIC_TIMER_PERIOD_20MS   0b00000010       //2
@@ -26,7 +29,7 @@
 /** @brief Period between timed ISR events is 50ms. */
 #define AIRPIC_TIMER_PERIOD_50MS   0b00000100       //4
 
-/** @brief Period between timed ISR events is 100ms. */
+/** @brief Period between timed ISR events is 100ms (default). */
 #define AIRPIC_TIMER_PERIOD_100MS  0b00000000       //0 (default)
 
 /** @brief Period between timed ISR events is 200ms. */
@@ -71,7 +74,7 @@ extern "C" {
     
     /**
      * Do nothing for a specified number of milliseconds. If an ISR is triggered 
-     * while /c sleep_msec() is running, the interrupt will still run.
+     * while sleep_msec() is running, the interrupt will still run.
      * @param delay length of delay in milliseconds
      */
     void sleep_msec(unsigned int delay);

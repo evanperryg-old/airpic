@@ -7,8 +7,8 @@
  * for the project the Airpic libraries were originally written for. I may 
  * eventually add some functions relating to slave communication, in an effort 
  * to increase the versatility of the library.
- * @author Evan Perry Grove
- * @date 9/26/2017
+ * @author  Evan Perry Grove
+ * @date    September 26, 2017
  */
 #ifndef AIRPIC_I2C_H
 #define	AIRPIC_I2C_H
@@ -16,95 +16,56 @@
 #include "xc.h"
 #include <p24Fxxxx.h>
 
+/** @brief The value to be written into I2C2BRG for a 400kHz baudrate. */
 #define AIRPIC_I2C_BAUDRATE_400K 0x0025
+/** @brief The value to be written into I2C2BRG for a 100kHz baudrate. */
 #define AIRPIC_I2C_BAUDRATE_100K 0x009D
 
-#define ADDR_GYRO_1
-#define ADDR_GYRO_2
-#define ADDR_ACCELEROMETER
-#define ADDR_MOTORDRIVER
+/** @brief A macro for making the I2C2 bus collision status bit more readable. */
+#define i2c_error_buscollision (I2C2STATbits.BCL)
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
     
     /**
-     * Send a "start" signal on the I2C2 bus.
-     */
-    static inline void i2c_start()
-    {
-        I2C2CONbits.SEN = 1;    
-        while(I2C2CONbits.SEN);
-        IFS3bits.MI2C2IF = 0;
-        
-    }
-    
-    /**
      * Send a "stop" sequence on the I2C2 bus.
      */
-    static inline void i2c_stop()
-    {
-        I2C2CONbits.PEN = 1;
-        while(I2C2CONbits.PEN);
-        IFS3bits.MI2C2IF = 0;
-        
-    }
+    void i2c_stop();
     
     /**
-     * Transmit a 7-bit slave device address with a read bit.
+     * Transmit a 7-bit slave device address with a read bit. The binary value 
+     * sent by this function is equal to ((slaveAddr << 1) + 1). The function 
+     * will return once the transmission is finished.
      * @param slaveAddr The 7-bit slave device address.
      */
-    static inline void i2c_init_read(unsigned short slaveAddr)
-    {
-        I2C2TRN = (slaveAddr << 1) + 1;
-        while(!IFS3bits.MI2C2IF);
-        IFS3bits.MI2C2IF = 0;
-        
-    }
+    void i2c_start_read(unsigned short slaveAddr);
     
     /**
-     * Transmit a 7-bit slave device address with a write bit.
+     * Transmit a 7-bit slave device address with a write bit. The binary value 
+     * sent by this function is equal to ((slaveAddr << 1) + 0). The function 
+     * will return once the transmission is finished.
      * @param slaveAddr The 7-bit slave device address.
      */
-    static inline void i2c_init_write(unsigned short slaveAddr)
-    {
-        I2C2TRN = (slaveAddr << 1);
-        while(!IFS3bits.MI2C2IF);
-        IFS3bits.MI2C2IF = 0;
-        
-    }
+    void i2c_start_write(unsigned short slaveAddr);
     
     /**
      * Transmit a byte on the I2C bus.
      * @param byte  The byte to be sent.
      */
-    static inline void i2c_transmit(unsigned short byte)
-    {
-        I2C2TRN = byte;
-        while(!IFS3bits.MI2C2IF);
-        IFS3bits.MI2C2IF = 0;
-        
-    }
+    void i2c_transmit(unsigned short byte);
     
     /**
-     * Receive a a byte from an I2C device.
+     * Receive a byte from an I2C device.
      * @return the byte received from the I2C slave.
      */
-    static inline unsigned short i2c_receive(void)
-    {
-        I2C2CONbits.RCEN = 1;
-        while(!IFS3bits.MI2C2IF);
-        IFS3bits.MI2C2IF = 0;
-        
-        unsigned short out = I2C2RCV;
-        // if we are doing some kind of check, do it here
-        
-        I2C2CONbits.ACKEN = 1;
-        while(!IFS3bits.MI2C2IF);
-        IFS3bits.MI2C2IF = 0;
-        
-        return out;
-    }
+    unsigned short i2c_receive(void);
+    
+    /**
+     * Receive the last byte sent by an I2C slave.
+     * @return the byte received from the I2C slave.
+     */
+    unsigned short i2c_lastReceive(void);
     
     /**
      * Do the necessary configuration to set up the I2C2 peripheral and attached devices.
