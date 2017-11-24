@@ -8,10 +8,18 @@
  * <p>
  * The LED is attached as follows:
  * <p><ul>
- * <li> Red is attached to RB15 (pin 26 of the PIC24FJ64GA002)
- * <li> Blue is attached to RB14 (pin 25 of the PIC24FJ64GA002)
- * <li> Green is attached to RB13 (pin 24 of the PIC24FJ64GA002)
+ * <li> Red is attached to RB15 (pin 26 of the PIC24FJ64GA002) through 200 ohm resistor
+ * <li> Blue is attached to RB14 (pin 25 of the PIC24FJ64GA002) through 1000 ohm resistor
+ * <li> Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) through 100 ohm resistor
  * </ul><p>
+ * By default, after the status LED is initialized by running \c statusLED_enable(),
+ * the LED will show a long, blue blinking pattern.
+ * <p>
+ * Use of the status LED should be avoided in a final implementation. The primary 
+ * purpose of this library is to provide an easy tool to help in debugging by 
+ * allowing the user to more easily see what the microcontroller is up to. If the 
+ * status LED isn't being used for debugging or showing vital status updates, it 
+ * probably shouldn't be used, as it is a little clock cycle-hungry.
  * @author Evan Perry Grove
  * @date   November 7, 2017, 4:10 PM
  */

@@ -1,13 +1,87 @@
-#include <p24Fxxxx.h>
+#include <p24FJ64GA002.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "airpic-serialgps.h"
+
+char fullString[80];
+unsigned int strLen;
+
+char currentRead[80];
+unsigned int lineIndex;             // length of string = lineIndex + 1;
+unsigned int readyToFeed;
+unsigned int stringIsRelevant;
+unsigned int readOutCount;
+
+int fix, satellites, checksum, time_h, time_m;
+double latitude, longitude, hdop, altitude, geoid, time_s;
+char latDir, lonDir, altUnit, geoUnit;
 
 void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
 {
+    // URXDA is high if there is a byte available to read from the UART buffer
+    while(U1STAbits.URXDA)
+    {
+        currentRead[ lineIndex ] = U1RXREG;
+        
+        // once we get to index 5, poll the 6 characters we have and see if this is
+        // a line that we care about.
+        if(lineIndex == 5)
+        {
+            if( (currentRead[0] == '$') &&
+                (currentRead[1] == 'G') &&
+                (currentRead[2] == 'P') &&
+                (currentRead[3] == 'G') &&
+                (currentRead[4] == 'G') &&
+                (currentRead[5] == 'A')    )
+            {
+                stringIsRelevant = 1;
+                
+            }
+            
+        }
+        
+        // check to see if we've reached the end of this NMEA sequence.
+        if( currentRead[ lineIndex ] == 0xA )
+        {
+            // end of this NMEA string has been reached.
+            
+            // if this is a GPGGA string, then we marked it as relevant earlier.
+            if( stringIsRelevant )
+            {
+                // If the string was marked as one we want, then move it into
+                // the currentRead array and increment the readout counter.
+                // it's fine to not have the last character array in the string,
+                // because it's just the line feed.
+                unsigned int i;
+                for(i = 0; i < lineIndex; i++)
+                {
+                    fullString[i] = currentRead[i];
+                }
+                strLen = lineIndex;
+                ++readOutCount;
+                
+            }
+            
+            lineIndex = 0;
+            stringIsRelevant = 0;
+        }
+        else
+        {
+            //this string still has more to go
+            ++lineIndex;
+        }
+    }
     
-    IFS0bits.U1RXIF     = 0;    // configure and enable the UART1 Receive interrupt.
+    IFS0bits.U1RXIF     = 0;
 }
 
-void serial_config(void)
+void serialGPS_config(void)
 {
+    lineIndex = 0;
+    stringIsRelevant = 1;
+    readOutCount = 0;
+    
     U1MODE  = 0x0000;
     
     //U1MODE.BRGH = 0
@@ -19,12 +93,15 @@ void serial_config(void)
     //      - no parity bit
     //      - one stop bit
     //      - hardware handshake using CTS and RTS
+    // However, the connection of the GPS to the arduino's serial->USB converter 
+    // does not require connection of the CTS and RTS pins, so we will ignore them.
     
-    U1MODEbits.UEN      = 0b10; // 0b10 = 10 =  UxTX, UxRX, !UxCTS and !UxRTS pins are enabled and used
-                                // 0b01 =  UxTX, UxRX and UxRTS pins are enabled and used; UxCTS pin is controlled by port latches
+    U1MODEbits.UEN      = 0b10; // 0b10 = UxTX, UxRX, !UxCTS and !UxRTS pins are enabled and used
+                                // 0b00 = UxTX, UxRX are enabled and used
     
     U1MODEbits.PDSEL    = 0b00; // 0b00 = 8-bit data, no parity
     U1MODEbits.STSEL    = 0;    // 0    = 1 stop bit
+    U1MODEbits.RXINV    = 0;    // RX idle state is '1'
 
     U1STAbits.URXISEL   = 0b00; // 0b0x = interrupt triggers when a character is received
                                 // 0b10 =     "         "      "  receive buffer is 3/4ths full
@@ -35,4 +112,112 @@ void serial_config(void)
     IEC0bits.U1RXIE     = 1;
     
     U1MODEbits.UARTEN   = 1;    // enable the UART module
+    
+}
+
+unsigned int serial_strLen()
+{
+    return strLen;
+}
+
+void serialGPS_parse()
+{
+    char * pch;
+    
+    pch = strtok( fullString, ",");
+    short i = 0;
+    
+    while(pch != NULL)
+    {
+        // process the item in pchs
+        switch(i)
+        {
+            case 0:
+                // sequence identifier, in this case pch = "$GPGGA"
+            break;
+            case 1:
+            {
+                // utc time string is formatted as [h][h][m][m][s][s].[s][s][s]
+                char subbuff_timehr[3];
+                char subbuff_timemin[3];
+                char subbuff_timesec[ strlen(pch) - 3];
+                memcpy( subbuff_timehr,  &pch[0], 2 );
+                memcpy( subbuff_timemin, &pch[2], 2 );
+                memcpy( subbuff_timesec, &pch[4], strlen(pch) - 3);
+                subbuff_timehr[2]  = '\0';
+                subbuff_timemin[2] = '\0';
+                subbuff_timesec[ strlen(subbuff_timesec) - 1 ] = '\0';
+                
+                time_h  =   atoi( subbuff_timehr  );
+                time_m  =   atoi( subbuff_timemin );
+                time_s  =   atof( subbuff_timesec );
+                
+            }
+            break;
+            case 2:
+            {
+                // latitude from string is in [deg][deg][m][m].[m][m][m][m]
+                // convert to degrees
+                char subbuff_latdeg[3];
+                char subbuff_latmin[ strlen(pch)-1 ];
+                memcpy( subbuff_latdeg, &pch[0], 2 );
+                memcpy( subbuff_latmin, &pch[2], strlen(pch) - 2);
+                subbuff_latdeg[2] = '\0';
+                subbuff_latmin[ strlen(subbuff_latmin) - 1 ] = '\0';
+                
+                latitude     = ( atof( subbuff_latmin ) / 60.0 ) +
+                               ( atof( subbuff_latdeg ));
+                               
+            }
+            break;
+            case 3:
+                latDir       = pch[0];
+            break;
+            case 4:
+            {
+                // longitude from string is in [deg][deg][deg][m][m].[m][m][m][m]
+                // convert to degrees
+                char subbuff_londeg[4];
+                char subbuff_lonmin[ strlen(pch) - 1];
+                memcpy( subbuff_londeg, &pch[0], 3);
+                memcpy( subbuff_lonmin, &pch[3], strlen(pch) - 3);
+                subbuff_londeg[3] = '\0';
+                subbuff_lonmin[ strlen(subbuff_lonmin) - 1 ] = '\0';
+                
+                longitude    = ( atof( subbuff_lonmin ) / 60.0 ) +
+                               ( atof( subbuff_londeg ));
+            }
+            break;
+            case 5:
+                lonDir       = pch[0];
+            break;
+            case 6:
+                fix          = atoi(pch);
+            break;
+            case 7:
+                satellites   = atoi(pch);
+            break;
+            case 8:
+                hdop         = atof(pch);
+            break;
+            case 9:
+                altitude     = atof(pch);
+            break;
+            case 10:
+                altUnit      = pch[0];
+            break;
+            case 11:
+                geoid        = atof(pch);
+            break;
+            case 12:
+                geoUnit      = pch[0];
+            break;
+            
+        }
+        
+        // put the next comma-delimited item in pch and increment our indexer
+        pch = strtok (NULL, ",");
+        ++i;
+    }
+    
 }

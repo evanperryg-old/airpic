@@ -1,11 +1,11 @@
 #include <p24Fxxxx.h>
-#include "airpic-i2c.h"
+#include "./../airpic-i2c.h"
 
 #include "airpic-gyro.h"
 
-Gyroscope gyro_1;
-Gyroscope gyro_2;
-    
+struct Gyroscope gyro_1;
+struct Gyroscope gyro_2;
+
 void gyro1_init(void)
 {
     gyro_1.x     = 0;

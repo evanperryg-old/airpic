@@ -27,12 +27,22 @@
 #include "airpic-libs/airpic-timer.h"
 #include "airpic-libs/airpic-statusled.h"
 #include "airpic-libs/airpic-i2c.h"
-#include "airpic-libs/airpic-gyro.h"
+#include "airpic-libs/i2c-peripherals/airpic-gyro.h"
+#include "airpic-libs/airpic-serialgps.h"
 
 void airpic_timer_isr(void)
 {
     if(i2c_error_buscollision)
         statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_ORANGE);
+    
+    else if(serial_rcvbuffer_error_overflow)
+        statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_RED);
+    
+    else if(serial_receiver_active)
+        statusLED_setStatus(STATUSLED_SOLID | STATUSLED_MAGENTA);
+    
+    else
+        statusLED_setStatus(STATUSLED_LONGBLINK | STATUSLED_BLUE);
     
     airpic_timer_isr_exit;              //THIS MUST BE AT THE END OF THE ISR IN ORDER FOR IT TO WORK!
 }
@@ -57,19 +67,26 @@ int main(void)
     i2c_config(AIRPIC_I2C_BAUDRATE_400K);
     
     // Enable the status RGB LED feature. If the LED is connected properly, and 
-    // everything in code works as expected, the LED will show short, blue flashes
+    // everything in code works as expected, the LED will show long, blue flashes
     // with about a second between each blink.
     statusLED_enable();
     
     // Send out configuration messages to Gyro 1. Cannot be done before running i2c_config().
     // This should always be done in the initialization section of the code, to ensure
-    // the gyro will behave the way we want it to.
-    gyro1_init();
+    // the gyro will behave the way we want it to. If the gyro is not connected, trying to 
+    // initialize it may result in the microcontroller hanging in an infinite while() loop,
+    // so don't initialize Gyros that aren't actually rhere.
+    //gyro1_init();
     
     // Send out configuration messages to Gyro 2. Cannot be done before running i2c_config().
     // This should always be done in the initialization section of the code, to ensure
-    // the gyro will behave the way we want it to.
-    gyro2_init();
+    // the gyro will behave the way we want it to. If the gyro is not connected, trying to 
+    // initialize it may result in the microcontroller hanging in an infinite while() loop,
+    // so don't initialize Gyros that aren't actually rhere.
+    //gyro2_init();
+    
+    // Configure UART1 to receive TTL-formatted serial data from the GPS.
+    serialGPS_config();
     
     while(1)
     {

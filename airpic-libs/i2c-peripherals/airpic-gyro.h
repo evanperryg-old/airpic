@@ -36,14 +36,14 @@ extern "C" {
     /**
      * Used internally to organize variables.
      */
-    typedef struct {
+    struct Gyroscope{
         int x;
         int y;
         int z;
         int cal_x;
         int cal_y;
         int cal_z;
-    } Gyroscope;
+    };
     
     /**
      * Initialize L3GD20H gyro with I2C address \c 1101011.

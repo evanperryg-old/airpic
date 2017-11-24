@@ -44,7 +44,7 @@ void statusLED_enable(void)
     IEC0bits.T2IE = 1;
     
     T2CON   = 0x8030;
-    statusLED_setStatus(STATUSLED_BLUE | STATUSLED_SHORTBLINK);
+    statusLED_setStatus(STATUSLED_BLUE | STATUSLED_LONGBLINK);
 }
 
 void statusLED_setStatus(unsigned int stat)
