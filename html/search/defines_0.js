@@ -1,6 +1,7 @@
 var searchData=
 [
   ['addr_5fgyro_5f1',['ADDR_GYRO_1',['../airpic-gyro_8h.html#adea5b476c8cd8864b67283a677e31dc6',1,'airpic-gyro.h']]],
+  ['addr_5fmotorcontroller',['ADDR_MOTORCONTROLLER',['../airpic-motor_8h.html#a06644d2d2817fcd28b8b3a53f7435dd4',1,'airpic-motor.h']]],
   ['airpic_5fi2c_5fbaudrate_5f100k',['AIRPIC_I2C_BAUDRATE_100K',['../airpic-i2c_8h.html#ac0700c556a57eff7191ade0bf9d0cb13',1,'airpic-i2c.h']]],
   ['airpic_5fi2c_5fbaudrate_5f400k',['AIRPIC_I2C_BAUDRATE_400K',['../airpic-i2c_8h.html#acd41283b85bfb2a2bf254aeb2e5a3096',1,'airpic-i2c.h']]],
   ['airpic_5ftimer_5fdefault',['AIRPIC_TIMER_DEFAULT',['../airpic-timer_8h.html#a484565c005513f00a13456d20be978ed',1,'airpic-timer.h']]],

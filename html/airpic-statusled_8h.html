@@ -23,9 +23,9 @@
   <td id="projectlogo"><img alt="Logo" src="uofm-tiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Airpic
-   &#160;<span id="projectnumber">alpha 003</span>
+   &#160;<span id="projectnumber">beta 001</span>
    </div>
-   <div id="projectbrief">Libraries for PIC24/XC16</div>
+   <div id="projectbrief">Libraries for Small-Scale Automated Aviation Systems Using PIC24F Microcontrollers</div>
   </td>
  </tr>
  </tbody>
@@ -128,13 +128,14 @@ Functions</h2></td></tr>
 <p>The LED is attached as follows: </p>
 <ul>
 <li>
-Red is attached to RB15 (pin 26 of the PIC24FJ64GA002) </li>
+Red is attached to RB15 (pin 26 of the PIC24FJ64GA002) through 200 ohm resistor </li>
 <li>
-Blue is attached to RB14 (pin 25 of the PIC24FJ64GA002) </li>
+Blue is attached to RB14 (pin 25 of the PIC24FJ64GA002) through 1000 ohm resistor </li>
 <li>
-Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) </li>
+Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) through 100 ohm resistor </li>
 </ul>
-<dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
+<p>By default, after the status LED is initialized by running <code><a class="el" href="airpic-statusled_8h.html#a599d97c364b22db8b8c759cb68de0d27" title="Configure Timer2 to be used for the status LED. ">statusLED_enable()</a></code>, the LED will show a long, blue blinking pattern. </p>
+<p>Use of the status LED should be avoided in a final implementation. The primary purpose of this library is to provide an easy tool to help in debugging by allowing the user to more easily see what the microcontroller is up to. If the status LED isn't being used for debugging or showing vital status updates, it probably shouldn't be used, as it is a little clock cycle-hungry. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 7, 2017, 4:10 PM </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="abb384ed36d5355de17d3cdc206f65bc6"></a>

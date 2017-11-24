@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['serial_5frcvbuffer_5fdata_5favailable',['serial_rcvbuffer_data_available',['../airpic-serialgps_8h.html#a28c02f156c42dab2833d1ee8a1c34f9e',1,'airpic-serialgps.h']]],
+  ['serial_5frcvbuffer_5ferror_5foverflow',['serial_rcvbuffer_error_overflow',['../airpic-serialgps_8h.html#a3f987206fc08651c30a0bd65df9bc552',1,'airpic-serialgps.h']]],
+  ['serial_5freceiver_5factive',['serial_receiver_active',['../airpic-serialgps_8h.html#a53c7c22c9139dc8b056beec49683ac7b',1,'airpic-serialgps.h']]],
+  ['serial_5freceiver_5ferror_5fframing',['serial_receiver_error_framing',['../airpic-serialgps_8h.html#a58f61908a6434c2f5e43327d844a7a07',1,'airpic-serialgps.h']]],
   ['statusled_5fblue',['STATUSLED_BLUE',['../airpic-statusled_8h.html#abb384ed36d5355de17d3cdc206f65bc6',1,'airpic-statusled.h']]],
   ['statusled_5ffastblink',['STATUSLED_FASTBLINK',['../airpic-statusled_8h.html#a92e614dfa68220d8d4e57cca6808cdc5',1,'airpic-statusled.h']]],
   ['statusled_5fgreen',['STATUSLED_GREEN',['../airpic-statusled_8h.html#a0ba72adda8207b32a9898557350b8db7',1,'airpic-statusled.h']]],

@@ -1,8 +1,10 @@
 var searchData=
 [
   ['addr_5fgyro_5f1',['ADDR_GYRO_1',['../airpic-gyro_8h.html#adea5b476c8cd8864b67283a677e31dc6',1,'airpic-gyro.h']]],
+  ['addr_5fmotorcontroller',['ADDR_MOTORCONTROLLER',['../airpic-motor_8h.html#a06644d2d2817fcd28b8b3a53f7435dd4',1,'airpic-motor.h']]],
   ['airpic_2dgyro_2eh',['airpic-gyro.h',['../airpic-gyro_8h.html',1,'']]],
   ['airpic_2di2c_2eh',['airpic-i2c.h',['../airpic-i2c_8h.html',1,'']]],
+  ['airpic_2dmotor_2eh',['airpic-motor.h',['../airpic-motor_8h.html',1,'']]],
   ['airpic_2dserialgps_2eh',['airpic-serialgps.h',['../airpic-serialgps_8h.html',1,'']]],
   ['airpic_2dstatusled_2eh',['airpic-statusled.h',['../airpic-statusled_8h.html',1,'']]],
   ['airpic_2dtimer_2eh',['airpic-timer.h',['../airpic-timer_8h.html',1,'']]],
