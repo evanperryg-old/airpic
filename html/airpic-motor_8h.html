@@ -23,7 +23,6 @@
   <td id="projectlogo"><img alt="Logo" src="uofm-tiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Airpic
-   &#160;<span id="projectnumber">beta 001</span>
    </div>
    <div id="projectbrief">Libraries for Small-Scale Automated Aviation Systems Using PIC24F Microcontrollers</div>
   </td>
@@ -89,16 +88,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9d6581357b20f72be8aa26671ed5a1ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-motor_8h.html#a9d6581357b20f72be8aa26671ed5a1ea">motorController_init</a> (float pwmFrequency)</td></tr>
-<tr class="memdesc:a9d6581357b20f72be8aa26671ed5a1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the I2C PWM motor controller to use the specified frequency.  <a href="#a9d6581357b20f72be8aa26671ed5a1ea">More...</a><br /></td></tr>
+<tr class="memdesc:a9d6581357b20f72be8aa26671ed5a1ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the motor controller.  <a href="#a9d6581357b20f72be8aa26671ed5a1ea">More...</a><br /></td></tr>
 <tr class="separator:a9d6581357b20f72be8aa26671ed5a1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58f93bb930de7a3fa718db1c88550bf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-motor_8h.html#a58f93bb930de7a3fa718db1c88550bf8">motor_write</a> (unsigned int motor, unsigned int speed)</td></tr>
 <tr class="memdesc:a58f93bb930de7a3fa718db1c88550bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the motor to the specified PWM duty cycle.  <a href="#a58f93bb930de7a3fa718db1c88550bf8">More...</a><br /></td></tr>
 <tr class="separator:a58f93bb930de7a3fa718db1c88550bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace8a7702900ffe5130afb4fd8b14c380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-motor_8h.html#ace8a7702900ffe5130afb4fd8b14c380">motor_setPWM</a> (unsigned int motor, unsigned int delay, unsigned int duty)</td></tr>
-<tr class="memdesc:ace8a7702900ffe5130afb4fd8b14c380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PWM output for a motor to have the specified delay time (delay being the % of the cycle before the signal goes high) and the specified duty cycle (% of the cycle that the signal is high).  <a href="#ace8a7702900ffe5130afb4fd8b14c380">More...</a><br /></td></tr>
+<tr class="memdesc:ace8a7702900ffe5130afb4fd8b14c380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the specific PWM waveform to be delivered to the motor.  <a href="#ace8a7702900ffe5130afb4fd8b14c380">More...</a><br /></td></tr>
 <tr class="separator:ace8a7702900ffe5130afb4fd8b14c380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87e0e9cb133eef99bca37bb261d5b873"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-motor_8h.html#a87e0e9cb133eef99bca37bb261d5b873">motor_stop</a> (unsigned int motor)</td></tr>
-<tr class="memdesc:a87e0e9cb133eef99bca37bb261d5b873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force the specified motor to be fully off, by setting the LEDx_OFF_H[4] bit.  <a href="#a87e0e9cb133eef99bca37bb261d5b873">More...</a><br /></td></tr>
+<tr class="memdesc:a87e0e9cb133eef99bca37bb261d5b873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the specified motor.  <a href="#a87e0e9cb133eef99bca37bb261d5b873">More...</a><br /></td></tr>
 <tr class="separator:a87e0e9cb133eef99bca37bb261d5b873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -159,8 +158,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the PWM output for a motor to have the specified delay time (delay being the % of the cycle before the signal goes high) and the specified duty cycle (% of the cycle that the signal is high). </p>
-<p>Setting the duty variable to 4096 is effectively the same as the <a class="el" href="airpic-motor_8h.html#a87e0e9cb133eef99bca37bb261d5b873" title="Force the specified motor to be fully off, by setting the LEDx_OFF_H[4] bit. ">motor_stop()</a> function. </p>
+<p>Set the specific PWM waveform to be delivered to the motor. </p>
+<p>Set the PWM output for a motor to have the specified delay time (delay being the % of the cycle before the signal goes high) and the specified duty cycle (% of the cycle that the signal is high). Setting the duty variable to 4096 is effectively the same as the <a class="el" href="airpic-motor_8h.html#a87e0e9cb133eef99bca37bb261d5b873" title="Stop the specified motor. ">motor_stop()</a> function. </p>
 <p>Be careful! Unpredictable behavior can occur if (delay + duty) &gt; 4096. Any problems like this can be prevented by simply keeping delay at zero, or another very low number. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">The</td><td>motor to be written to. Acceptable range: 0-15. </td></tr>
@@ -188,8 +187,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Force the specified motor to be fully off, by setting the LEDx_OFF_H[4] bit. </p>
-<p>More about how this works can be read on page 23-24 of the PCA9685 datasheet. Writing a duty cycle to the motor <a class="el" href="airpic-motor_8h.html#a58f93bb930de7a3fa718db1c88550bf8" title="Set the motor to the specified PWM duty cycle. ">motor_write()</a> or <a class="el" href="airpic-motor_8h.html#ace8a7702900ffe5130afb4fd8b14c380" title="Set the PWM output for a motor to have the specified delay time (delay being the % of the cycle befor...">motor_setPWM()</a> will start the motor again. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Stop the specified motor. </p>
+<p>Force the specified motor to be fully off by setting the LEDx_OFF_H[4] bit. More about how this works can be read on page 23-24 of the PCA9685 datasheet. Writing a duty cycle to the motor <a class="el" href="airpic-motor_8h.html#a58f93bb930de7a3fa718db1c88550bf8" title="Set the motor to the specified PWM duty cycle. ">motor_write()</a> or <a class="el" href="airpic-motor_8h.html#ace8a7702900ffe5130afb4fd8b14c380" title="Set the specific PWM waveform to be delivered to the motor. ">motor_setPWM()</a> will start the motor again. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">motor</td><td></td></tr>
   </table>
@@ -225,7 +224,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the motor to the specified PWM duty cycle. </p>
-<p>This is an easier-to-use version of <a class="el" href="airpic-motor_8h.html#ace8a7702900ffe5130afb4fd8b14c380" title="Set the PWM output for a motor to have the specified delay time (delay being the % of the cycle befor...">motor_setPWM()</a> that still meets the normal requirements for controlling a motor. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This is an easier-to-use version of <a class="el" href="airpic-motor_8h.html#ace8a7702900ffe5130afb4fd8b14c380" title="Set the specific PWM waveform to be delivered to the motor. ">motor_setPWM()</a> that still meets the normal requirements for controlling a motor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">motor</td><td>The motor to be written to. Acceptable range: 0-15. </td></tr>
     <tr><td class="paramname">speed</td><td>The duty cycle of the PWM output going to the motor. Acceptable range: 0-4095. </td></tr>
@@ -251,8 +250,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize the I2C PWM motor controller to use the specified frequency. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Initialize the motor controller. </p>
+<p>Initialize the I2C PWM motor controller to use the specified frequency </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pwmFrequency</td><td>The desired frequency of the PWM output, in Hz. </td></tr>
   </table>

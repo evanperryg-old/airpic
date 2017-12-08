@@ -23,7 +23,6 @@
   <td id="projectlogo"><img alt="Logo" src="uofm-tiny.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Airpic
-   &#160;<span id="projectnumber">beta 001</span>
    </div>
    <div id="projectbrief">Libraries for Small-Scale Automated Aviation Systems Using PIC24F Microcontrollers</div>
   </td>
@@ -74,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Configure and use UART1 for RS-232 communication.  
+<p>Configure and use UART1 for RS-232 communication with GPS.  
 <a href="#details">More...</a></p>
 
 <p><a href="airpic-serialgps_8h_source.html">Go to the source code of this file.</a></p>
@@ -102,16 +101,39 @@ Functions</h2></td></tr>
 <tr class="memitem:a848fb5f7112d817740e9cc4b7e1a2445"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a848fb5f7112d817740e9cc4b7e1a2445">serialGPS_strLen</a> ()</td></tr>
 <tr class="memdesc:a848fb5f7112d817740e9cc4b7e1a2445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the length of the NMEA string currently available to be read by the user code.  <a href="#a848fb5f7112d817740e9cc4b7e1a2445">More...</a><br /></td></tr>
 <tr class="separator:a848fb5f7112d817740e9cc4b7e1a2445"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae41fbb7fc9d1292efaece8ccdd52ee54"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#ae41fbb7fc9d1292efaece8ccdd52ee54">serialGPS_readoutCount</a> ()</td></tr>
-<tr class="memdesc:ae41fbb7fc9d1292efaece8ccdd52ee54"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times the desired NMEA string has been fully received.  <a href="#ae41fbb7fc9d1292efaece8ccdd52ee54">More...</a><br /></td></tr>
-<tr class="separator:ae41fbb7fc9d1292efaece8ccdd52ee54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a977996a592f85b2fd888556bb3a5411b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a977996a592f85b2fd888556bb3a5411b">serialGPS_parse</a> ()</td></tr>
 <tr class="memdesc:a977996a592f85b2fd888556bb3a5411b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the NMEA string currently stored in the fullString[] array.  <a href="#a977996a592f85b2fd888556bb3a5411b">More...</a><br /></td></tr>
 <tr class="separator:a977996a592f85b2fd888556bb3a5411b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a897adbf0b093fe694923409a932c2986"><td class="memItemLeft" align="right" valign="top"><a id="a897adbf0b093fe694923409a932c2986"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a897adbf0b093fe694923409a932c2986">serialGPS_lockBuffer</a> ()</td></tr>
-<tr class="memdesc:a897adbf0b093fe694923409a932c2986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevent the UART interrupt from overwriting the information stored in the fullString[] array. <br /></td></tr>
-<tr class="separator:a897adbf0b093fe694923409a932c2986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae41fbb7fc9d1292efaece8ccdd52ee54"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#ae41fbb7fc9d1292efaece8ccdd52ee54">serialGPS_readoutCount</a> ()</td></tr>
+<tr class="memdesc:ae41fbb7fc9d1292efaece8ccdd52ee54"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times the desired NMEA string has been fully received.  <a href="#ae41fbb7fc9d1292efaece8ccdd52ee54">More...</a><br /></td></tr>
+<tr class="separator:ae41fbb7fc9d1292efaece8ccdd52ee54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d5f5ce7cf88bd46df9e00e5e27414f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#aa5d5f5ce7cf88bd46df9e00e5e27414f">gpsFix</a> ()</td></tr>
+<tr class="memdesc:aa5d5f5ce7cf88bd46df9e00e5e27414f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The GPS Fix will always be one of three values, meaning the following:  <a href="#aa5d5f5ce7cf88bd46df9e00e5e27414f">More...</a><br /></td></tr>
+<tr class="separator:aa5d5f5ce7cf88bd46df9e00e5e27414f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af12084912860ca7bf97ecfb9aa108208"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#af12084912860ca7bf97ecfb9aa108208">gpsTime_hours</a> ()</td></tr>
+<tr class="memdesc:af12084912860ca7bf97ecfb9aa108208"><td class="mdescLeft">&#160;</td><td class="mdescRight">The hour component of the UTC time, in 24-hour format.  <a href="#af12084912860ca7bf97ecfb9aa108208">More...</a><br /></td></tr>
+<tr class="separator:af12084912860ca7bf97ecfb9aa108208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43515f53b70f65723cd5e89ef281cc8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#ab43515f53b70f65723cd5e89ef281cc8">gpsTime_min</a> ()</td></tr>
+<tr class="memdesc:ab43515f53b70f65723cd5e89ef281cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minutes component of the UTC time.  <a href="#ab43515f53b70f65723cd5e89ef281cc8">More...</a><br /></td></tr>
+<tr class="separator:ab43515f53b70f65723cd5e89ef281cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55d3c89a1908f0d52c1a7305d718f43e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a55d3c89a1908f0d52c1a7305d718f43e">gpsTime_seconds</a> ()</td></tr>
+<tr class="memdesc:a55d3c89a1908f0d52c1a7305d718f43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The seconds component of the UTC time, with precision to 3 decimal places.  <a href="#a55d3c89a1908f0d52c1a7305d718f43e">More...</a><br /></td></tr>
+<tr class="separator:a55d3c89a1908f0d52c1a7305d718f43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe79c6f340c6839965eed799a61c4a79"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#abe79c6f340c6839965eed799a61c4a79">gpsLatitude</a> ()</td></tr>
+<tr class="memdesc:abe79c6f340c6839965eed799a61c4a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GPS latitude, in degrees.  <a href="#abe79c6f340c6839965eed799a61c4a79">More...</a><br /></td></tr>
+<tr class="separator:abe79c6f340c6839965eed799a61c4a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f082f869c7d16d2f588d692752f67d7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a6f082f869c7d16d2f588d692752f67d7">gpsLongitude</a> ()</td></tr>
+<tr class="memdesc:a6f082f869c7d16d2f588d692752f67d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GPS longitude, in degrees.  <a href="#a6f082f869c7d16d2f588d692752f67d7">More...</a><br /></td></tr>
+<tr class="separator:a6f082f869c7d16d2f588d692752f67d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf25da4b3977117cba0866e94c3f456e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#aaf25da4b3977117cba0866e94c3f456e">gpsAltitude</a> ()</td></tr>
+<tr class="memdesc:aaf25da4b3977117cba0866e94c3f456e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current altitude of the GPS above/below sea level, measured in meters.  <a href="#aaf25da4b3977117cba0866e94c3f456e">More...</a><br /></td></tr>
+<tr class="separator:aaf25da4b3977117cba0866e94c3f456e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab7be77cc11055c0274e92e67578617"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a8ab7be77cc11055c0274e92e67578617">gpsLatitudeDirection</a> ()</td></tr>
+<tr class="memdesc:a8ab7be77cc11055c0274e92e67578617"><td class="mdescLeft">&#160;</td><td class="mdescRight">A character representing the hemisphere of the Latitude value.  <a href="#a8ab7be77cc11055c0274e92e67578617">More...</a><br /></td></tr>
+<tr class="separator:a8ab7be77cc11055c0274e92e67578617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f96096d7267a7bbb6ca74c2e64a1eb"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a87f96096d7267a7bbb6ca74c2e64a1eb">gpsLongitudeDirection</a> ()</td></tr>
+<tr class="memdesc:a87f96096d7267a7bbb6ca74c2e64a1eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A character representing the hemisphere of the Longitude value.  <a href="#a87f96096d7267a7bbb6ca74c2e64a1eb">More...</a><br /></td></tr>
+<tr class="separator:a87f96096d7267a7bbb6ca74c2e64a1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -121,8 +143,8 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 <tr class="separator:a4db9667bfe785be7230c886b88dc9501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Configure and use UART1 for RS-232 communication. </p>
-<p>This part is still extremely new. Not much to see here. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
+<div class="textblock"><p>Configure and use UART1 for RS-232 communication with GPS. </p>
+<p>Take care of basic communication with a MK3339-based GPS module. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 10, 2017 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a28c02f156c42dab2833d1ee8a1c34f9e"></a>
@@ -190,6 +212,194 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aaf25da4b3977117cba0866e94c3f456e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf25da4b3977117cba0866e94c3f456e">&#9670;&nbsp;</a></span>gpsAltitude()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gpsAltitude </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The current altitude of the GPS above/below sea level, measured in meters. </p>
+<dl class="section return"><dt>Returns</dt><dd>The MSL altitude of the GPS, in meters. </dd></dl>
+
+</div>
+</div>
+<a id="aa5d5f5ce7cf88bd46df9e00e5e27414f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5d5f5ce7cf88bd46df9e00e5e27414f">&#9670;&nbsp;</a></span>gpsFix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpsFix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The GPS Fix will always be one of three values, meaning the following: </p>
+<ul>
+<li>
+0: Fix not available (bad) </li>
+<li>
+1: GPS fix (good) </li>
+<li>
+2: Differential GPS fix (only happens if differential GPS is enabled) </li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>The last Fix value returned by the GPS. </dd></dl>
+
+</div>
+</div>
+<a id="abe79c6f340c6839965eed799a61c4a79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe79c6f340c6839965eed799a61c4a79">&#9670;&nbsp;</a></span>gpsLatitude()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gpsLatitude </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The current GPS latitude, in degrees. </p>
+<dl class="section return"><dt>Returns</dt><dd>The GPS latitude in degrees. </dd></dl>
+
+</div>
+</div>
+<a id="a8ab7be77cc11055c0274e92e67578617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ab7be77cc11055c0274e92e67578617">&#9670;&nbsp;</a></span>gpsLatitudeDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char gpsLatitudeDirection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A character representing the hemisphere of the Latitude value. </p>
+<p>Always will return either 'N' or 'S' </p><dl class="section return"><dt>Returns</dt><dd>Hemisphere of the latitude, either 'N' or 'S'. </dd></dl>
+
+</div>
+</div>
+<a id="a6f082f869c7d16d2f588d692752f67d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f082f869c7d16d2f588d692752f67d7">&#9670;&nbsp;</a></span>gpsLongitude()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gpsLongitude </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The current GPS longitude, in degrees. </p>
+<dl class="section return"><dt>Returns</dt><dd>The GPS longitude in degrees. </dd></dl>
+
+</div>
+</div>
+<a id="a87f96096d7267a7bbb6ca74c2e64a1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f96096d7267a7bbb6ca74c2e64a1eb">&#9670;&nbsp;</a></span>gpsLongitudeDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char gpsLongitudeDirection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A character representing the hemisphere of the Longitude value. </p>
+<p>Always will return either 'E' or 'W' </p><dl class="section return"><dt>Returns</dt><dd>Hemisphere of the longitude, either 'E' or 'W'. </dd></dl>
+
+</div>
+</div>
+<a id="af12084912860ca7bf97ecfb9aa108208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af12084912860ca7bf97ecfb9aa108208">&#9670;&nbsp;</a></span>gpsTime_hours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpsTime_hours </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The hour component of the UTC time, in 24-hour format. </p>
+<dl class="section return"><dt>Returns</dt><dd>Hour of the current UTC time, 0-23. </dd></dl>
+
+</div>
+</div>
+<a id="ab43515f53b70f65723cd5e89ef281cc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab43515f53b70f65723cd5e89ef281cc8">&#9670;&nbsp;</a></span>gpsTime_min()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gpsTime_min </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The minutes component of the UTC time. </p>
+<dl class="section return"><dt>Returns</dt><dd>Minutes of the current UTC time. </dd></dl>
+
+</div>
+</div>
+<a id="a55d3c89a1908f0d52c1a7305d718f43e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55d3c89a1908f0d52c1a7305d718f43e">&#9670;&nbsp;</a></span>gpsTime_seconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double gpsTime_seconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The seconds component of the UTC time, with precision to 3 decimal places. </p>
+<dl class="section return"><dt>Returns</dt><dd>Seconds component of the current UTC time, 5 significant figures. </dd></dl>
+
+</div>
+</div>
 <a id="aa01bab9ab59a1234fa0a9310b20cb54b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa01bab9ab59a1234fa0a9310b20cb54b">&#9670;&nbsp;</a></span>serialGPS_config()</h2>
 
@@ -227,7 +437,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 </div><div class="memdoc">
 
 <p>Parses the NMEA string currently stored in the fullString[] array. </p>
-<p>This is not done in the UART receive interrupt because it is pretty CPU- intensive. </p>
+<p>This is not done automatically in the UART receive interrupt because it is pretty CPU-intensive, and if every update is not used, it would be extremely inefficient to parse every string. </p>
 
 </div>
 </div>
@@ -247,7 +457,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 </div><div class="memdoc">
 
 <p>The number of times the desired NMEA string has been fully received. </p>
-<p>In application, this can be used to tell when the data has been updated. </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>This can be used to determine when the <a class="el" href="airpic-serialgps_8h.html#a977996a592f85b2fd888556bb3a5411b" title="Parses the NMEA string currently stored in the fullString[] array. ">serialGPS_parse()</a> function needs to be run. <em>(Hint: With the MK3339 GPS in default settings, this is approximately the number of seconds since the <a class="el" href="airpic-serialgps_8h.html#aa01bab9ab59a1234fa0a9310b20cb54b" title="Configure UART1 to receive data from the GPS. ">serialGPS_config()</a> function was run)</em> </p><dl class="section return"><dt>Returns</dt><dd>The number of times the GPS data has been updated. </dd></dl>
 
 </div>
 </div>
