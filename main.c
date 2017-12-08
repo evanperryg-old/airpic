@@ -1,8 +1,9 @@
-/*
- * File:   main.c
- * Author: evan
- *
- * Created on September 26, 2017, 2:34 PM
+/**
+ * @file    main.c
+ * @brief   Sample code
+ * The main.c included in this library shows examples of the usage of the Airpic 
+ * libraries. Heavily annotated to help walk the user through the libraries.
+ * @author  Evan Perry Grove
  */
 
 //CW1
@@ -28,6 +29,7 @@
 #include "airpic-libs/airpic-statusled.h"
 #include "airpic-libs/airpic-i2c.h"
 #include "airpic-libs/i2c-peripherals/airpic-gyro.h"
+#include "airpic-libs/i2c-peripherals/airpic-motor.h"
 #include "airpic-libs/airpic-serialgps.h"
 
 void airpic_timer_isr(void)
@@ -75,21 +77,38 @@ int main(void)
     // This should always be done in the initialization section of the code, to ensure
     // the gyro will behave the way we want it to. If the gyro is not connected, trying to 
     // initialize it may result in the microcontroller hanging in an infinite while() loop,
-    // so don't initialize Gyros that aren't actually rhere.
-    //gyro1_init();
+    // so don't initialize Gyros that aren't actually there.
+    gyro1_init();
     
     // Send out configuration messages to Gyro 2. Cannot be done before running i2c_config().
     // This should always be done in the initialization section of the code, to ensure
     // the gyro will behave the way we want it to. If the gyro is not connected, trying to 
     // initialize it may result in the microcontroller hanging in an infinite while() loop,
-    // so don't initialize Gyros that aren't actually rhere.
-    //gyro2_init();
+    // so don't initialize Gyros that aren't actually there.
+    gyro2_init();
     
-    // Configure UART1 to receive TTL-formatted serial data from the GPS.
+    // Send out configuration messages to the motor controller. To ensure that the PWM 
+    // frequency is passed as a floating-point value, make sure there's a decimal point
+    // in the number. Microcontrollers tend to be a little unforgiving with type discrepancies,
+    // so this is very important. Just like the gyros, if th motor controller is not actually
+    // attached to the I2C bus, trying to initialize it will make your program hang in an 
+    // infinite while() loop.)
+    motorController_init(50.0);
+    
+    // Configure UART1 to receive TTL-formatted serial data from the GPS. It is fine to 
+    // run this if the GPS isn't connected to the microcontroller.
     serialGPS_config();
+    
+    // we will compare lastCount to serialGPS_readoutCount() whenever we want to 
+    // decide whether we need to run serialGPS_parse().
+    unsigned int lastCount = serialGPS_readoutCount();
     
     while(1)
     {
+        if(lastCount != serialGPS_readoutCount())
+        {
+            
+        }
         
     }
     

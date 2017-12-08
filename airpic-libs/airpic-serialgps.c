@@ -78,9 +78,9 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
 
 void serialGPS_config(void)
 {
-    lineIndex = 0;
+    lineIndex        = 0;
     stringIsRelevant = 1;
-    readOutCount = 0;
+    readOutCount     = 0;
     
     U1MODE  = 0x0000;
     
@@ -220,4 +220,49 @@ void serialGPS_parse()
         ++i;
     }
     
+}
+
+unsigned int serialGPS_readoutCount()
+{
+    return readOutCount;
+}
+
+int gpsFix()
+{
+    return fix;
+}
+
+int gpsTime_hours()
+{
+    time_h;
+}
+
+int gpsTime_minutes()
+{
+    time_m;
+}
+
+double gpsTime_seconds()
+{
+    return time_s;
+}
+
+double gpsLatitude()
+{
+    return latitude;
+}
+
+double gpsLongitude()
+{
+    return longitude;
+}
+
+char gpsLatitudeDirection()
+{
+    return latDir;
+}
+
+char gpsLongitudeDirection()
+{
+    return lonDir;
 }

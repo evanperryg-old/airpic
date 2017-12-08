@@ -25,10 +25,9 @@
 /**
  * @file airpic.h
  * @brief Configure microcontroller to use Airpic.
- * Including this library in your source code will add all of the 
- * libraries in the airpic-libs directory. airpic.h consists of functions that 
- * are used to configure the PIC device to the specifications needed for the 
- * rest of the Airpic libraries to work.
+ * airpic.h consists of functions that are used to configure the PIC 
+ * microcontroller to the specifications needed for the rest of the Airpic 
+ * libraries to work.
  * @author Evan Perry Grove
  * @date September 26, 2017
  */
@@ -42,7 +41,19 @@ extern "C" {
 #endif
     
     /**
-     * Configure the microcontroller for the Airpic library.
+     * Configure the microcontroller for the Airpic library. 
+     * Running airpic_config will do the following:
+     * <p><ul>
+     * <li> Set the microcontroller RC clock divider to 1:1 (16MHz, assuming 
+     * a PIC24F device using the internal oscillator)
+     * <li> Set all pins to be digital, by disconnecting them from the Analog-to
+     * -Digital Converter.
+     * <li> Set all RAx pins to be digital outputs.
+     * <li> Set RB0, RB1, RB11, and RB12 to be digital inputs. All other RBx 
+     * pins are digital outputs.
+     * <li> Set the UART1 peripheral's TX pin to pin RP10
+     * <li> Set the UART1 peripheral's RX pin to pin RP11
+     * </ul><p>
      */
     void airpic_config(void);
 
