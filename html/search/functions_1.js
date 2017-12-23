@@ -7,7 +7,7 @@ var searchData=
   ['gpslongitude',['gpsLongitude',['../airpic-serialgps_8h.html#a6f082f869c7d16d2f588d692752f67d7',1,'airpic-serialgps.c']]],
   ['gpslongitudedirection',['gpsLongitudeDirection',['../airpic-serialgps_8h.html#a87f96096d7267a7bbb6ca74c2e64a1eb',1,'airpic-serialgps.c']]],
   ['gpstime_5fhours',['gpsTime_hours',['../airpic-serialgps_8h.html#af12084912860ca7bf97ecfb9aa108208',1,'airpic-serialgps.c']]],
-  ['gpstime_5fmin',['gpsTime_min',['../airpic-serialgps_8h.html#ab43515f53b70f65723cd5e89ef281cc8',1,'airpic-serialgps.h']]],
+  ['gpstime_5fminutes',['gpsTime_minutes',['../airpic-serialgps_8h.html#a069cb31e4bd11e559ea6f1fbd3da94e6',1,'airpic-serialgps.c']]],
   ['gpstime_5fseconds',['gpsTime_seconds',['../airpic-serialgps_8h.html#a55d3c89a1908f0d52c1a7305d718f43e',1,'airpic-serialgps.c']]],
   ['gyro1_5fcalibrate',['gyro1_calibrate',['../airpic-gyro_8h.html#a6f45019ccc00e663b465f5de6a5e8859',1,'airpic-gyro.c']]],
   ['gyro1_5fgetx',['gyro1_getX',['../airpic-gyro_8h.html#a2c0f19dfed24bfae70856036d17cdbc1',1,'airpic-gyro.c']]],
