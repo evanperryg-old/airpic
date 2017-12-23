@@ -89,8 +89,8 @@ int main(void)
     
     // Send out configuration messages to the motor controller. To ensure that the PWM 
     // frequency is passed as a floating-point value, make sure there's a decimal point
-    // in the number. Microcontrollers tend to be a little unforgiving with type discrepancies,
-    // so this is very important. Just like the gyros, if th motor controller is not actually
+    // in the number. XC16 tends to be a little unforgiving with type discrepancies,
+    // so this is very important. Just like the gyros, if the motor controller is not actually
     // attached to the I2C bus, trying to initialize it will make your program hang in an 
     // infinite while() loop.)
     motorController_init(50.0);
@@ -101,12 +101,27 @@ int main(void)
     
     // we will compare lastCount to serialGPS_readoutCount() whenever we want to 
     // decide whether we need to run serialGPS_parse().
-    unsigned int lastCount = serialGPS_readoutCount();
+    unsigned int lastCount = 0;
     
     while(1)
     {
+        
+        // check to see if the GPS has given us new data, and parse it if there 
+        // is a new update. Hypothetically, you could also have other conditions 
+        // to decide when to parse the updated data. You should only parse data
+        // once per update, although parsing the same data multiple times doesn't
+        // hurt anything.
         if(lastCount != serialGPS_readoutCount())
         {
+            // the GPS gave us new data! before we can use the new data, we have 
+            // to tell the MCU to parse the data. Running serialGPS_parse() will 
+            // update the values returned by these functions: gpsTime_seconds(),
+            // gpsTime_min(), gpsTime_hours(), gpsLatitude(), gpsLongitude(), 
+            // gpsAltitude(), gpsLatitudeDirection(), gpsLongitudeDirection()
+            serialGPS_parse();
+            
+            // set lastCount to be equal to the number of readouts.
+            lastCount = serialGPS_readoutCount();
             
         }
         

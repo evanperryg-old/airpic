@@ -102,7 +102,7 @@ extern "C" {
      * The minutes component of the UTC time.
      * @return Minutes of the current UTC time.
      */
-    int gpsTime_min();
+    int gpsTime_minutes();
     
     /**
      * The seconds component of the UTC time, with precision to 3 decimal places.

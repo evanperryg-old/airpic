@@ -234,12 +234,12 @@ int gpsFix()
 
 int gpsTime_hours()
 {
-    time_h;
+    return time_h;
 }
 
 int gpsTime_minutes()
 {
-    time_m;
+    return time_m;
 }
 
 double gpsTime_seconds()
