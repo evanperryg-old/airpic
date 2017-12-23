@@ -12,9 +12,16 @@
  * relatively easy to adapt these libraries for use on virtually any PIC24 
  * microcontroller.
  * <p>
- * Airpic uses a variety of peripherals on the PIC device. airpic-timer.h uses 
- * Timer peripherals 1, 4, and 5. airpic-statusled.h uses Timer peripheral 2. 
- * airpic-i2c.h uses the I2C2 peripheral.
+ * Airpic uses a variety of peripherals and pins on the PIC device. 
+ * <p><ul>
+ * <li> airpic-timer.h uses Timer peripherals 1, 4, and 5. 
+ * <li> airpic-statusled.h uses Timer peripheral 2, and pins RB15, RB14, and 
+ * RB13 (physical pins 26, 25, and 24, respectively).
+ * <li> airpic-i2c.h uses the I2C2 peripheral, and pins SDA2 and SCL2 (physical 
+ * pins 6 and 7, respectively)
+ * <li> airpic-serialgps.h uses the UART1 peripheral, and pins RP10 and RP11 
+ * (physical pins 21 and 22).
+ * <p></ul>
  * 
  * \subsection techinfo Compiler/Technical Information
  * Airpic was compiled using the XC16 compiler, version 1.32B. The IDE used was 
