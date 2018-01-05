@@ -162,9 +162,9 @@ Functions</h2></td></tr>
 <p>Set the PWM output for a motor to have the specified delay time (delay being the % of the cycle before the signal goes high) and the specified duty cycle (% of the cycle that the signal is high). Setting the duty variable to 4096 is effectively the same as the <a class="el" href="airpic-motor_8h.html#a87e0e9cb133eef99bca37bb261d5b873" title="Stop the specified motor. ">motor_stop()</a> function. </p>
 <p>Be careful! Unpredictable behavior can occur if (delay + duty) &gt; 4096. Any problems like this can be prevented by simply keeping delay at zero, or another very low number. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">The</td><td>motor to be written to. Acceptable range: 0-15. </td></tr>
-    <tr><td class="paramname">Delay</td><td>before the signal goes high. Acceptable range: 0-4095. </td></tr>
-    <tr><td class="paramname">Duty</td><td>cycle of the signal. Duty cycle will be equal to (duty / 4095). Acceptable range: 0-(4095 - delay). </td></tr>
+    <tr><td class="paramname">motor</td><td>The motor to be written to. Acceptable range: 0-15. </td></tr>
+    <tr><td class="paramname">delay</td><td>Delay before the signal goes high. Acceptable range: 0-4095. </td></tr>
+    <tr><td class="paramname">duty</td><td>Duty cycle of the signal. Duty cycle will be equal to (duty / 4095). Acceptable range: 0-(4095 - delay). </td></tr>
   </table>
   </dd>
 </dl>
@@ -190,7 +190,7 @@ Functions</h2></td></tr>
 <p>Stop the specified motor. </p>
 <p>Force the specified motor to be fully off by setting the LEDx_OFF_H[4] bit. More about how this works can be read on page 23-24 of the PCA9685 datasheet. Writing a duty cycle to the motor <a class="el" href="airpic-motor_8h.html#a58f93bb930de7a3fa718db1c88550bf8" title="Set the motor to the specified PWM duty cycle. ">motor_write()</a> or <a class="el" href="airpic-motor_8h.html#ace8a7702900ffe5130afb4fd8b14c380" title="Set the specific PWM waveform to be delivered to the motor. ">motor_setPWM()</a> will start the motor again. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td></td></tr>
+    <tr><td class="paramname">motor</td><td>The motor you wish to stop. </td></tr>
   </table>
   </dd>
 </dl>

@@ -331,7 +331,7 @@ Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) through 100 ohm resisto
 </div><div class="memdoc">
 
 <p>Configure Timer2 to be used for the status LED. </p>
-<p>Immediately after /c enable_statusLED() is run, it will default to blue color and short blinking pattern. </p>
+<p>Immediately after enable_statusLED() is run, it will default to blue color and short blinking pattern. </p>
 
 </div>
 </div>
@@ -352,7 +352,7 @@ Green is attached to RB13 (pin 24 of the PIC24FJ64GA002) through 100 ohm resisto
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stat</td><td>A value describing the color and blink pattern of the LED. Use the /c STATUSLED_ macros included in /c airpic-status.h combined together with bitwise OR. </td></tr>
+    <tr><td class="paramname">stat</td><td>A value describing the color and blink pattern of the LED. Use the STATUSLED_ macros included in airpic-status.h combined together with bitwise OR. </td></tr>
   </table>
   </dd>
 </dl>
