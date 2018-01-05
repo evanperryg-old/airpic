@@ -61,9 +61,9 @@ extern "C" {
      * Be careful! Unpredictable behavior can occur if (delay + duty) > 4096. 
      * Any problems like this can be prevented by simply keeping delay at zero, 
      * or another very low number.
-     * @param The motor to be written to. Acceptable range: 0-15.
-     * @param Delay before the signal goes high. Acceptable range: 0-4095.
-     * @param Duty cycle of the signal. Duty cycle will be equal to (duty / 4095). 
+     * @param motor The motor to be written to. Acceptable range: 0-15.
+     * @param delay Delay before the signal goes high. Acceptable range: 0-4095.
+     * @param duty Duty cycle of the signal. Duty cycle will be equal to (duty / 4095). 
      * Acceptable range: 0-(4095 - delay).
      */
     void motor_setPWM(unsigned int motor, unsigned int delay, unsigned int duty);
@@ -74,7 +74,7 @@ extern "C" {
      * bit. More about how this works can be read on page 23-24 of the PCA9685 
      * datasheet. Writing a duty cycle to the motor motor_write() or 
      * motor_setPWM() will start the motor again.
-     * @param motor
+     * @param motor The motor you wish to stop.
      */
     void motor_stop(unsigned int motor);
     

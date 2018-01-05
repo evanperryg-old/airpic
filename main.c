@@ -1,6 +1,6 @@
 /**
  * @file    main.c
- * @brief   Sample code
+ * @brief   Sample main
  * The main.c included in this library shows examples of the usage of the Airpic 
  * libraries. Heavily annotated to help walk the user through the libraries.
  * @author  Evan Perry Grove
@@ -24,14 +24,18 @@
 #include "xc.h"
 #include <p24Fxxxx.h>
 
+// including airpic.h will include all the other airpic libraries, as well.
+// not ideal if some libraries aren't being used, but it doesn't really matter
+// since all the libraries are going to be used at one point or another in the 
+// main part of the code.
 #include "airpic.h"
-#include "airpic-libs/airpic-timer.h"
-#include "airpic-libs/airpic-statusled.h"
-#include "airpic-libs/airpic-i2c.h"
-#include "airpic-libs/i2c-peripherals/airpic-gyro.h"
-#include "airpic-libs/i2c-peripherals/airpic-motor.h"
-#include "airpic-libs/airpic-serialgps.h"
 
+// This is an interrupt service routine, or ISR for short. This particular one 
+// is the Timer 5 ISR, meaning it triggers each time the fifth timer peripheral 
+// on the PIC microcontroller reaches its maximum value. You can enable/disable
+// this ISR, and set the time interval at which it triggers, using the 
+// timer_config() function. More detail on how to do this can be found further 
+// down in the code, and in the airpic-timer.h documentation.
 void airpic_timer_isr(void)
 {
     if(i2c_error_buscollision)
@@ -46,7 +50,10 @@ void airpic_timer_isr(void)
     else
         statusLED_setStatus(STATUSLED_LONGBLINK | STATUSLED_BLUE);
     
-    airpic_timer_isr_exit;              //THIS MUST BE AT THE END OF THE ISR IN ORDER FOR IT TO WORK!
+    
+    airpic_timer_isr_exit;              // THIS MUST BE SOMEWHERE IN THE ISR IN ORDER FOR IT TO WORK!
+                                        // its location in the ISR doesn't actually matter, but it's 
+                                        // generally considered good practice to have it at the end.
 }
 
 int main(void)
@@ -54,7 +61,16 @@ int main(void)
     // When using the airpic libraries, this should ALWAYS be the first thing you do.
     // It sets the clock cycle to 16MHz, disables the analog-to-digital converters
     // on the I/O pins, and makes sure pins are correctly configured as inputs/outputs.
-    airpic_config();                
+    // It also does some initial setup for the debugger serial port, but it does not
+    // enable the debugger serial port.
+    airpic_config();
+    
+    // enable the debugger serial port. 9600 baud is a safe default, as this is 
+    // the default baudrate for the Arduino, and numerous other devices that use 
+    // the TTL interface. Other common baudrates (which all have macros of the 
+    // format "DEBUGGER_BAUDRATE_xxx") are 4800, 14400, 19200, 28800, 38400, 
+    // and 115200.
+    airpic_debugger_enable(DEBUGGER_BAUDRATE_9600);
     
     // Set up the airpic-timer library's features. The macros used will enable the 
     // interrupt shown at the top of the code, and tell that interrupt to trigger every 
@@ -65,7 +81,8 @@ int main(void)
     
     // Set up the airpic-i2c library's features. You can select a 400kHz baudrate using 
     // the 'AIRPIC_I2C_BAUDRATE_100K' macro, or you can select a 100kHz baudrate using
-    // the 'AIRPIC_I2C_BAUDRATE_400K' macro.
+    // the 'AIRPIC_I2C_BAUDRATE_400K' macro. This MUST be done before any of the i2c
+    // peripherals are initialized.
     i2c_config(AIRPIC_I2C_BAUDRATE_400K);
     
     // Enable the status RGB LED feature. If the LED is connected properly, and 
@@ -92,11 +109,12 @@ int main(void)
     // in the number. XC16 tends to be a little unforgiving with type discrepancies,
     // so this is very important. Just like the gyros, if the motor controller is not actually
     // attached to the I2C bus, trying to initialize it will make your program hang in an 
-    // infinite while() loop.)
+    // infinite while() loop.
     motorController_init(50.0);
     
-    // Configure UART1 to receive TTL-formatted serial data from the GPS. It is fine to 
-    // run this if the GPS isn't connected to the microcontroller.
+    // Configure UART1 to receive TTL-formatted serial data from the GPS. 
+    // Unlike the initialization routines for the I2C devices, it is fine to 
+    // run this if the GPS isn't actually connected to the microcontroller.
     serialGPS_config();
     
     // we will compare lastCount to serialGPS_readoutCount() whenever we want to 
@@ -105,12 +123,19 @@ int main(void)
     
     while(1)
     {
+        // the value returned by serialGPS_readoutCount() increments by 1 each 
+        // time the GPS has sent us a new set of satellite data. By comparing
+        // the output of this function to its previous value (the previous value 
+        // being stored by our lastCount variable), we can determine when new
+        // data needs to be parsed.
         
         // check to see if the GPS has given us new data, and parse it if there 
         // is a new update. Hypothetically, you could also have other conditions 
-        // to decide when to parse the updated data. You should only parse data
-        // once per update, although parsing the same data multiple times doesn't
-        // hurt anything.
+        // to decide when to parse the updated data.
+        // You should parse data no more than once per update. This is 
+        // because the parsing process is very complicated, and takes up a lot 
+        // of instruction cycles. In essence, if you don't need the new data, 
+        // don't parse it.
         if(lastCount != serialGPS_readoutCount())
         {
             // the GPS gave us new data! before we can use the new data, we have 
@@ -119,6 +144,19 @@ int main(void)
             // gpsTime_min(), gpsTime_hours(), gpsLatitude(), gpsLongitude(), 
             // gpsAltitude(), gpsLatitudeDirection(), gpsLongitudeDirection()
             serialGPS_parse();
+            
+            // if the serial debugger port is enabled, print "parsed some data!"
+            // followed by a newline character. The '17' is the length of the 
+            // string you want to print.
+            // ANY TIME YOU USE A COMMAND THAT PRINTS TO THE DEBUGGER PORT, YOU
+            // SHOULD MAKE SURE THE DEBUGGER PORT IS ACTUALLY ENABLED FIRST!
+            // Q: "But Evan, why not just make those functions check if the port 
+            //     is enabled automatically?"
+            // A: "Because it takes about 5-15 instruction cycles to enter the 
+            //     function, realize it doesn't need to do anything, and return. 
+            //     however, by doing the check before entering the function, 
+            //     it will only take 2-3 instruction cycles."
+            if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
             
             // set lastCount to be equal to the number of readouts.
             lastCount = serialGPS_readoutCount();

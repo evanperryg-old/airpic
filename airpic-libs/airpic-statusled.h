@@ -66,7 +66,7 @@ extern "C" {
     
     /**
      * Configure Timer2 to be used for the status LED. Immediately after 
-     * /c enable_statusLED() is run, it will default to blue color and short
+     * enable_statusLED() is run, it will default to blue color and short
      * blinking pattern.
      */
     void statusLED_enable(void);
@@ -74,7 +74,7 @@ extern "C" {
     /**
      * 
      * @param stat A value describing the color and blink pattern of the LED. 
-     * Use the /c STATUSLED_ macros included in /c airpic-status.h combined 
+     * Use the STATUSLED_ macros included in airpic-status.h combined 
      * together with bitwise OR.
      */
     void statusLED_setStatus(unsigned int stat);

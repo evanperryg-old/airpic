@@ -22,8 +22,10 @@
 #ifndef AIRPIC_GYRO_H
 #define	AIRPIC_GYRO_H
 
-/** A macro containing the binary value of */
+/** @brief A macro containing the I2C address of gyro 1. */
 #define ADDR_GYRO_1 0b1101011
+
+/** @brief A macro containing the I2C address of gyro 2. */
 #define ADDR_GYRO_2 0b1101010
 
 #include "xc.h"
@@ -40,9 +42,6 @@ extern "C" {
         int x;
         int y;
         int z;
-        int cal_x;
-        int cal_y;
-        int cal_z;
     };
     
     /**
@@ -64,18 +63,6 @@ extern "C" {
      * Retrieve new X, Y, and Z values from Gyro 2.
      */
     void gyro2_refresh(void);
-    
-    /**
-     * Retrieve new X, Y, and Z values from Gyro 1. Set the retrieved values as 
-     * the new "zero" setpoint for Gyro 1.
-     */
-    void gyro1_calibrate(void);
-    
-    /**
-     * Retrieve new X, Y, and Z values from Gyro 2. Set the retrieved values as 
-     * the new "zero" setpoint for Gyro 2.
-     */
-    void gyro2_calibrate(void);
     
     /**
      * Get the last X value retrieved from Gyro 1.

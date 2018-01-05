@@ -62,12 +62,12 @@ extern "C" {
      * airpic-timer uses Timer4 and Timer5. The conf variable decides some of 
      * the properties of the airpic-timer library.
      * <p><ul>
-     * <li> AIRPIC_TIMER_INTERRUPT_ENABLE: enable the Timer5 interrupt (default).
+     * <li> AIRPIC_TIMER_INTERRUPT_ENABLE: enable the Timer5 interrupt.
      * <li> AIRPIC_TIMER_INTERRUPT_DISABLE: do not enable the Timer5 interrupt.
      * <li> AIRPIC_TIMER_PERIOD_xxxx: sets the period of the timer. Replace xxxx 
-     * with 20MS, 50MS, 100MS, 200MS, 500MS, 1000MS, 2000MS, or 5000MS. (default is 100MS)
+     * with 20MS, 50MS, 100MS, 200MS, 500MS, 1000MS, 2000MS, or 5000MS.
      * </ul><p>
-     * @param  conf Configuration value for airpic-timer. Use the #define macros 
+     * @param conf Configuration value for airpic-timer. Use the macros 
      * at the top of the header appended together by the | operator for ease of use. 
      */
     void timer_config(unsigned short conf);
