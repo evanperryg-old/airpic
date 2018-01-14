@@ -64,14 +64,27 @@ $(function() {
 <div class="title">airpic </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>C Libraries for PIC24</p>
-<h3><a href="https://evanperryg.github.io/airpic/html/index.html">In-depth documentation will be made available in the Github Pages section.</a></h3>
-<h2>Quick Info</h2>
+<div class="textblock"><p>Libraries for Small-Scale Automated Aviation Systems Using PIC24F Microcontrollers</p>
+<h3><a href="https://evanperryg.github.io/airpic/html/index.html">In-depth documentation is available in Github Pages.</a></h3>
+<h2>Introduction</h2>
+<p>The Airpic Libraries include various tools to simplify and accelerate the development of C code for the PIC24 microcontroller. Airpic was designed for use with Project IRIS, a project created by Innovative Engineers at the University of Minnesota Twin Cities.</p>
+<h2>Microcontroller</h2>
+<p>These libraries were written for the PIC24FJ64GA002 microcontroller, but they are theoretically compatible with any PIC24FJ device. It should be relatively easy to adapt these libraries for use on virtually any PIC24 microcontroller with sufficient program memory.</p>
+<p>Airpic uses a variety of peripherals and pins on the PIC device:</p>
 <ul>
-<li>This library was written specifically for deployment on the PIC24FJ64GA002. <b>I cannot guarantee that these libraries will work on all PIC24 devices without some modification.</b> If modifications are needed, they should be trivial.</li>
-<li>This library was compiled using Microchip's XC16 compiler.</li>
-<li>The IDE used for creating this library is Microchip's MPLAB-X v4.00 </li>
+<li>airpic-timer uses Timer peripherals 1, 4, and 5.</li>
+<li>airpic-statusled uses Timer peripheral 2, and pins RB15, RB14, and RB13 (physical pins 26, 25, and 24, respectively).</li>
+<li>airpic-i2c uses the I2C2 peripheral, and pins SDA2 and SCL2 (physical pins 6 and 7, respectively)</li>
+<li>airpic-serialgps uses the UART1 peripheral, and pins RP10 and RP11 (physical pins 21 and 22, respectively).</li>
+<li>If the serial debugger messages are enabled, they will use RP6 and RP7 (physical pins 15 and 16, respectively).</li>
 </ul>
+<p>More detailed information about pin connections are shown below:</p>
+<div class="image">
+<img src="http://i.imgur.com/utqZF0K.png" alt="Imgur utqZF0K"/>
+</div>
+<p>BE CAREFUL! The PIC microcontroller is a 3.3V device. If something (like an arduino's RX pin) tries to send data with a 5V logic level, there is a high chance you will damage the PIC! However, the PIC's outputs can be connected to inputs on a 5V device (for example, the debugging TX pin can be connected to the TX pin on an Arduino).</p>
+<h2>Compiler/Technical Information</h2>
+<p>Airpic was compiled using the XC16 compiler, version 1.32B. The IDE used was MPLAB X, version 4.00. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

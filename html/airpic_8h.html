@@ -64,21 +64,463 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">airpic.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the base library for Airpic.  
+<p>Configure microcontroller to use Airpic.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="airpic-i2c_8h_source.html">airpic-libs/airpic-i2c.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="airpic-serialgps_8h_source.html">airpic-libs/airpic-serialgps.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="airpic-statusled_8h_source.html">airpic-libs/airpic-statusled.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="airpic-timer_8h_source.html">airpic-libs/airpic-timer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="airpic-gyro_8h_source.html">airpic-libs/i2c-peripherals/airpic-gyro.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="airpic-motor_8h_source.html">airpic-libs/i2c-peripherals/airpic-motor.h</a>&quot;</code><br />
 </div>
 <p><a href="airpic_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a2c0ba09e2b113ca943385e076fcec787"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a2c0ba09e2b113ca943385e076fcec787">DEBUGGER_BAUDRATE_4800</a>&#160;&#160;&#160;(207)</td></tr>
+<tr class="memdesc:a2c0ba09e2b113ca943385e076fcec787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 4800 baudrate.  <a href="#a2c0ba09e2b113ca943385e076fcec787">More...</a><br /></td></tr>
+<tr class="separator:a2c0ba09e2b113ca943385e076fcec787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a510ef9857f39b49afb8cd8cfa859b8c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a510ef9857f39b49afb8cd8cfa859b8c5">DEBUGGER_BAUDRATE_9600</a>&#160;&#160;&#160;(103)</td></tr>
+<tr class="memdesc:a510ef9857f39b49afb8cd8cfa859b8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 9600 baudrate.  <a href="#a510ef9857f39b49afb8cd8cfa859b8c5">More...</a><br /></td></tr>
+<tr class="separator:a510ef9857f39b49afb8cd8cfa859b8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9185e9d3dc848301f1fdc81c06fd4343"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a9185e9d3dc848301f1fdc81c06fd4343">DEBUGGER_BAUDRATE_14400</a>&#160;&#160;&#160;(68)</td></tr>
+<tr class="memdesc:a9185e9d3dc848301f1fdc81c06fd4343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 14400 baudrate.  <a href="#a9185e9d3dc848301f1fdc81c06fd4343">More...</a><br /></td></tr>
+<tr class="separator:a9185e9d3dc848301f1fdc81c06fd4343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2af754c5b37715035ea3d5d91e9cf731"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a2af754c5b37715035ea3d5d91e9cf731">DEBUGGER_BAUDRATE_19200</a>&#160;&#160;&#160;(51)</td></tr>
+<tr class="memdesc:a2af754c5b37715035ea3d5d91e9cf731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 19200 baudrate.  <a href="#a2af754c5b37715035ea3d5d91e9cf731">More...</a><br /></td></tr>
+<tr class="separator:a2af754c5b37715035ea3d5d91e9cf731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1cdb45ffee9b14919757a5d912c9454"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#ad1cdb45ffee9b14919757a5d912c9454">DEBUGGER_BAUDRATE_28800</a>&#160;&#160;&#160;(34)</td></tr>
+<tr class="memdesc:ad1cdb45ffee9b14919757a5d912c9454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 28800 baudrate.  <a href="#ad1cdb45ffee9b14919757a5d912c9454">More...</a><br /></td></tr>
+<tr class="separator:ad1cdb45ffee9b14919757a5d912c9454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e858d8b85869475f07c13fda37a9d46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a4e858d8b85869475f07c13fda37a9d46">DEBUGGER_BAUDRATE_38400</a>&#160;&#160;&#160;(25)</td></tr>
+<tr class="memdesc:a4e858d8b85869475f07c13fda37a9d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 38400 baudrate.  <a href="#a4e858d8b85869475f07c13fda37a9d46">More...</a><br /></td></tr>
+<tr class="separator:a4e858d8b85869475f07c13fda37a9d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a079efbd5df5723d0380d5a878cc4f5ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a079efbd5df5723d0380d5a878cc4f5ef">DEBUGGER_BAUDRATE_115200</a>&#160;&#160;&#160;(8)</td></tr>
+<tr class="memdesc:a079efbd5df5723d0380d5a878cc4f5ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 115200 baudrate.  <a href="#a079efbd5df5723d0380d5a878cc4f5ef">More...</a><br /></td></tr>
+<tr class="separator:a079efbd5df5723d0380d5a878cc4f5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75267cdfa3fa9e52c7c1f1094f9387b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a75267cdfa3fa9e52c7c1f1094f9387b7">BIN</a>&#160;&#160;&#160;(1)</td></tr>
+<tr class="memdesc:a75267cdfa3fa9e52c7c1f1094f9387b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro as the second argument of <a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4" title="Print a single value (up to 16 bits in length) in the given format. ">airpic_debugger_printnum()</a> to print the first argument in binary form.  <a href="#a75267cdfa3fa9e52c7c1f1094f9387b7">More...</a><br /></td></tr>
+<tr class="separator:a75267cdfa3fa9e52c7c1f1094f9387b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe38ec6126e35e40049e27fdf4586ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#afe38ec6126e35e40049e27fdf4586ba5">DEC</a>&#160;&#160;&#160;(2)</td></tr>
+<tr class="memdesc:afe38ec6126e35e40049e27fdf4586ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro as the second argument of <a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4" title="Print a single value (up to 16 bits in length) in the given format. ">airpic_debugger_printnum()</a> to print the first argument in decimal form.  <a href="#afe38ec6126e35e40049e27fdf4586ba5">More...</a><br /></td></tr>
+<tr class="separator:afe38ec6126e35e40049e27fdf4586ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9075d93e0ab26ccd6e059fa06aa4e3de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a9075d93e0ab26ccd6e059fa06aa4e3de">HEX</a>&#160;&#160;&#160;(4)</td></tr>
+<tr class="memdesc:a9075d93e0ab26ccd6e059fa06aa4e3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass this macro as the second argument of <a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4" title="Print a single value (up to 16 bits in length) in the given format. ">airpic_debugger_printnum()</a> to print the first argument in hexadecimal form.  <a href="#a9075d93e0ab26ccd6e059fa06aa4e3de">More...</a><br /></td></tr>
+<tr class="separator:a9075d93e0ab26ccd6e059fa06aa4e3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afec62fc4f12fab4a00af672cbac862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a1afec62fc4f12fab4a00af672cbac862">airpic_debugger_isenabled</a>&#160;&#160;&#160;(U2MODEbits.UARTEN)</td></tr>
+<tr class="memdesc:a1afec62fc4f12fab4a00af672cbac862"><td class="mdescLeft">&#160;</td><td class="mdescRight">A human-friendly name for the bit that indicates whether the debugger port is enabled.  <a href="#a1afec62fc4f12fab4a00af672cbac862">More...</a><br /></td></tr>
+<tr class="separator:a1afec62fc4f12fab4a00af672cbac862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747f03782342b5d4442b680c11c42b26"><td class="memItemLeft" align="right" valign="top"><a id="a747f03782342b5d4442b680c11c42b26"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DPS_RANGE</b>&#160;&#160;&#160;245.0;</td></tr>
+<tr class="separator:a747f03782342b5d4442b680c11c42b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a25669c5383dcce25adcfa863bb52db93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a25669c5383dcce25adcfa863bb52db93">airpic_config</a> (void)</td></tr>
+<tr class="memdesc:a25669c5383dcce25adcfa863bb52db93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the microcontroller for the Airpic library.  <a href="#a25669c5383dcce25adcfa863bb52db93">More...</a><br /></td></tr>
+<tr class="separator:a25669c5383dcce25adcfa863bb52db93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a979d7fce1540594b947c1d69e50fefb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9">airpic_debugger_enable</a> (unsigned int baudSelect)</td></tr>
+<tr class="memdesc:a979d7fce1540594b947c1d69e50fefb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the debugger serial port.  <a href="#a979d7fce1540594b947c1d69e50fefb9">More...</a><br /></td></tr>
+<tr class="separator:a979d7fce1540594b947c1d69e50fefb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a602cdeea3d07d3ff6e6b25eeb03e09e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a602cdeea3d07d3ff6e6b25eeb03e09e3">airpic_debugger_disable</a> (void)</td></tr>
+<tr class="memdesc:a602cdeea3d07d3ff6e6b25eeb03e09e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the airpic debugger serial port.  <a href="#a602cdeea3d07d3ff6e6b25eeb03e09e3">More...</a><br /></td></tr>
+<tr class="separator:a602cdeea3d07d3ff6e6b25eeb03e09e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace9ba15a3748a5f80de626c6afe27cd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#ace9ba15a3748a5f80de626c6afe27cd8">airpic_debugger_print</a> (char *str, unsigned int len)</td></tr>
+<tr class="memdesc:ace9ba15a3748a5f80de626c6afe27cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print an ASCII-encoded string to the airpic debugger TX pin.  <a href="#ace9ba15a3748a5f80de626c6afe27cd8">More...</a><br /></td></tr>
+<tr class="separator:ace9ba15a3748a5f80de626c6afe27cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9b167a9488cb50f4791aaad356051ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#af9b167a9488cb50f4791aaad356051ec">airpic_debugger_println</a> (char *str, unsigned int len)</td></tr>
+<tr class="memdesc:af9b167a9488cb50f4791aaad356051ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print an ASCII-encoded string to the airpic debugger TX pin, adding a newline character at the end.  <a href="#af9b167a9488cb50f4791aaad356051ec">More...</a><br /></td></tr>
+<tr class="separator:af9b167a9488cb50f4791aaad356051ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5020793c45d5c12e2b46de6c142818e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4">airpic_debugger_printnum</a> (unsigned int val, unsigned short format)</td></tr>
+<tr class="memdesc:a5020793c45d5c12e2b46de6c142818e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a single value (up to 16 bits in length) in the given format.  <a href="#a5020793c45d5c12e2b46de6c142818e4">More...</a><br /></td></tr>
+<tr class="separator:a5020793c45d5c12e2b46de6c142818e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the base library for Airpic. </p>
-<p>Including this library in your source code will add all of the libraries in the airpic-libs directory. The tools found in the airpic-libs folder are mostly functions that simplify the usage of many of the peripherals included on the PIC24. These libraries are tested on a PIC24FJ64GA002 microcontroller. I cannot guarantee that the Airpic libraries will work on other PIC24 devices without some small modifications. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>9/26/2017 </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><p>Configure microcontroller to use Airpic. </p>
+<p><a class="el" href="airpic_8h.html" title="Configure microcontroller to use Airpic. ">airpic.h</a> consists of functions that are used to configure the PIC microcontroller to the specifications needed for the rest of the Airpic libraries to work. </p>
+<p>In addition, the functions used to enable and disable the serial debugging prompts are included here. The easiest way to see the debugger prompts is to attach an Arduino UNO's TX pin (digital pin 1) to the debugger TX pin. Yes, the TX pins go to each other. The Arduino UNO has its TX and RX pins labeled backwards relative to its USB port. Also: if you do it this way, do NOT connect the UNO's RX pin directly to the PIC! The Arduino uses 5V logic levels, which can damage the PIC microcontroller! </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>September 26, 2017 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1afec62fc4f12fab4a00af672cbac862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1afec62fc4f12fab4a00af672cbac862">&#9670;&nbsp;</a></span>airpic_debugger_isenabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define airpic_debugger_isenabled&#160;&#160;&#160;(U2MODEbits.UARTEN)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A human-friendly name for the bit that indicates whether the debugger port is enabled. </p>
+
+</div>
+</div>
+<a id="a75267cdfa3fa9e52c7c1f1094f9387b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75267cdfa3fa9e52c7c1f1094f9387b7">&#9670;&nbsp;</a></span>BIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BIN&#160;&#160;&#160;(1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro as the second argument of <a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4" title="Print a single value (up to 16 bits in length) in the given format. ">airpic_debugger_printnum()</a> to print the first argument in binary form. </p>
+
+</div>
+</div>
+<a id="a079efbd5df5723d0380d5a878cc4f5ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a079efbd5df5723d0380d5a878cc4f5ef">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_115200</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_115200&#160;&#160;&#160;(8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 115200 baudrate. </p>
+
+</div>
+</div>
+<a id="a9185e9d3dc848301f1fdc81c06fd4343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9185e9d3dc848301f1fdc81c06fd4343">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_14400</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_14400&#160;&#160;&#160;(68)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 14400 baudrate. </p>
+
+</div>
+</div>
+<a id="a2af754c5b37715035ea3d5d91e9cf731"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2af754c5b37715035ea3d5d91e9cf731">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_19200</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_19200&#160;&#160;&#160;(51)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 19200 baudrate. </p>
+
+</div>
+</div>
+<a id="ad1cdb45ffee9b14919757a5d912c9454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1cdb45ffee9b14919757a5d912c9454">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_28800</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_28800&#160;&#160;&#160;(34)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 28800 baudrate. </p>
+
+</div>
+</div>
+<a id="a4e858d8b85869475f07c13fda37a9d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e858d8b85869475f07c13fda37a9d46">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_38400</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_38400&#160;&#160;&#160;(25)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 38400 baudrate. </p>
+
+</div>
+</div>
+<a id="a2c0ba09e2b113ca943385e076fcec787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0ba09e2b113ca943385e076fcec787">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_4800</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_4800&#160;&#160;&#160;(207)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 4800 baudrate. </p>
+
+</div>
+</div>
+<a id="a510ef9857f39b49afb8cd8cfa859b8c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a510ef9857f39b49afb8cd8cfa859b8c5">&#9670;&nbsp;</a></span>DEBUGGER_BAUDRATE_9600</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUGGER_BAUDRATE_9600&#160;&#160;&#160;(103)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro into <a class="el" href="airpic_8h.html#a979d7fce1540594b947c1d69e50fefb9" title="Enable the debugger serial port. ">airpic_debugger_enable()</a> to start the serial port with a 9600 baudrate. </p>
+
+</div>
+</div>
+<a id="afe38ec6126e35e40049e27fdf4586ba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe38ec6126e35e40049e27fdf4586ba5">&#9670;&nbsp;</a></span>DEC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEC&#160;&#160;&#160;(2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro as the second argument of <a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4" title="Print a single value (up to 16 bits in length) in the given format. ">airpic_debugger_printnum()</a> to print the first argument in decimal form. </p>
+
+</div>
+</div>
+<a id="a9075d93e0ab26ccd6e059fa06aa4e3de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9075d93e0ab26ccd6e059fa06aa4e3de">&#9670;&nbsp;</a></span>HEX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HEX&#160;&#160;&#160;(4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pass this macro as the second argument of <a class="el" href="airpic_8h.html#a5020793c45d5c12e2b46de6c142818e4" title="Print a single value (up to 16 bits in length) in the given format. ">airpic_debugger_printnum()</a> to print the first argument in hexadecimal form. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a25669c5383dcce25adcfa863bb52db93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25669c5383dcce25adcfa863bb52db93">&#9670;&nbsp;</a></span>airpic_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void airpic_config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure the microcontroller for the Airpic library. </p>
+<p>Running airpic_config will do the following: </p>
+<ul>
+<li>
+Set the microcontroller RC clock divider to 1:1 (16MHz, assuming a PIC24F device using the internal oscillator) </li>
+<li>
+Set all pins to be digital, by disconnecting them from the Analog-to -Digital Converter. </li>
+<li>
+Set all RAx pins to be digital outputs. </li>
+<li>
+Set RB0, RB1, RB11, and RB12 to be digital inputs. All other RBx pins are digital outputs. </li>
+<li>
+Set the UART1 peripheral's TX pin to pin RP10 </li>
+<li>
+Set the UART1 peripheral's RX pin to pin RP11 </li>
+</ul>
+
+</div>
+</div>
+<a id="a602cdeea3d07d3ff6e6b25eeb03e09e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a602cdeea3d07d3ff6e6b25eeb03e09e3">&#9670;&nbsp;</a></span>airpic_debugger_disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void airpic_debugger_disable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disable the airpic debugger serial port. </p>
+<p>The pins will still be attached to the UART peripheral, but the peripheral is turned off. </p>
+
+</div>
+</div>
+<a id="a979d7fce1540594b947c1d69e50fefb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a979d7fce1540594b947c1d69e50fefb9">&#9670;&nbsp;</a></span>airpic_debugger_enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void airpic_debugger_enable </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>baudSelect</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable the debugger serial port. </p>
+<p>Messages are sent in the standard TTL format (RS-232, but with 0 and 3.3V logic levels). </p>
+<p>If the debugger port is already enabled, the baudrate will not be changed. The baudrate of the port can only be changed if it has been disabled. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baudSelect</td><td>The value written to U2BRG. The DEBUGGER_BAUDRATE_xxx macros are a convenient way of setting the UART to common baudrates. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ace9ba15a3748a5f80de626c6afe27cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace9ba15a3748a5f80de626c6afe27cd8">&#9670;&nbsp;</a></span>airpic_debugger_print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void airpic_debugger_print </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print an ASCII-encoded string to the airpic debugger TX pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The ASCII-encoded string to be sent. </td></tr>
+    <tr><td class="paramname">len</td><td>The length of the string given by str. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af9b167a9488cb50f4791aaad356051ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9b167a9488cb50f4791aaad356051ec">&#9670;&nbsp;</a></span>airpic_debugger_println()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void airpic_debugger_println </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print an ASCII-encoded string to the airpic debugger TX pin, adding a newline character at the end. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The ASCII-encoded string to be sent. </td></tr>
+    <tr><td class="paramname">len</td><td>The length of the string given by str. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5020793c45d5c12e2b46de6c142818e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5020793c45d5c12e2b46de6c142818e4">&#9670;&nbsp;</a></span>airpic_debugger_printnum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void airpic_debugger_printnum </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>format</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print a single value (up to 16 bits in length) in the given format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>The 16-bit value to be printed. </td></tr>
+    <tr><td class="paramname">format</td><td>Describes the way 'val' is printed. Use the macros BIN, DEC, or HEX to print the 'val' in binary, decimal, or hex respectively. If the value of 'format' is not one of the recognized values, 'val' will be printed as a single ASCII character. Binary and hex formats both will show leading zeroes; decimal format does not show leading zeroes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

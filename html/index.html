@@ -66,10 +66,32 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>The Airpic Libraries include various tools to simplify and accelerate the development of C code for the PIC24 microcontroller.</p>
-<h2><a class="anchor" id="compatibility"></a>
-Compatibility</h2>
+<p>The Airpic Libraries include various tools to simplify and accelerate the development of C code for the PIC24 microcontroller. Airpic was designed for use with Project IRIS, a project created by Innovative Engineers at the University of Minnesota Twin Cities.</p>
+<h2><a class="anchor" id="microcontroller"></a>
+Microcontroller</h2>
 <p>These libraries were written for the PIC24FJ64GA002 microcontroller, but they are theoretically compatible with any PIC24FJ device. It should be relatively easy to adapt these libraries for use on virtually any PIC24 microcontroller.</p>
+<h2><a class="anchor" id="connections"></a>
+Connections</h2>
+<p>Airpic uses a variety of peripherals and pins on the PIC device. </p>
+<ul>
+<li>
+<a class="el" href="airpic-timer_8h.html" title="Configure and use timed sleep functions and Timer4/5 ISR. ">airpic-timer.h</a> uses Timer peripherals 1, 4, and 5. </li>
+<li>
+<a class="el" href="airpic-statusled_8h.html" title="Status LED manager. ">airpic-statusled.h</a> uses Timer peripheral 2, and pins RB15, RB14, and RB13 (physical pins 26, 25, and 24, respectively). </li>
+<li>
+<a class="el" href="airpic-i2c_8h.html" title="Communicate with devices connected to I2C2. ">airpic-i2c.h</a> uses the I2C2 peripheral, and pins SDA2 and SCL2 (physical pins 6 and 7, respectively) </li>
+<li>
+<a class="el" href="airpic-serialgps_8h.html" title="Configure and use UART1 for RS-232 communication with GPS. ">airpic-serialgps.h</a> uses the UART1 peripheral, and pins RP10 and RP11 (physical pins 21 and 22, respectively). </li>
+<li>
+<p class="startli">if the serial debugger messages are enabled, they will use RP6 and RP7 (physical pins 15 and 16, respectively). </p>
+<p class="endli"></p>
+</li>
+</ul>
+<p>More detailed information about pin connections are shown below: </p>
+<p> 
+<img src="https://i.imgur.com/utqZF0K.png" alt="d001-connections diagram" width="800">
+ </p>
+<p>WARNING!!! The PIC microcontroller is a 3.3V device. If something (like an arduino's RX pin) tries to send data with a 5V logic level, there is a high chance you will damage the PIC! However, the PIC's outputs can be connected to inputs on a 5V device (for example, the debugging TX pin can be connected to the TX pin on an Arduino).</p>
 <h2><a class="anchor" id="techinfo"></a>
 Compiler/Technical Information</h2>
 <p>Airpic was compiled using the XC16 compiler, version 1.32B. The IDE used was MPLAB X, version 4.00. </p>

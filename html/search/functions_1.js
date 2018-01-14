@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['gpsaltitude',['gpsAltitude',['../airpic-serialgps_8h.html#aaf25da4b3977117cba0866e94c3f456e',1,'airpic-serialgps.h']]],
+  ['gpsfix',['gpsFix',['../airpic-serialgps_8h.html#aa5d5f5ce7cf88bd46df9e00e5e27414f',1,'airpic-serialgps.c']]],
+  ['gpslatitude',['gpsLatitude',['../airpic-serialgps_8h.html#abe79c6f340c6839965eed799a61c4a79',1,'airpic-serialgps.c']]],
+  ['gpslatitudedirection',['gpsLatitudeDirection',['../airpic-serialgps_8h.html#a8ab7be77cc11055c0274e92e67578617',1,'airpic-serialgps.c']]],
+  ['gpslongitude',['gpsLongitude',['../airpic-serialgps_8h.html#a6f082f869c7d16d2f588d692752f67d7',1,'airpic-serialgps.c']]],
+  ['gpslongitudedirection',['gpsLongitudeDirection',['../airpic-serialgps_8h.html#a87f96096d7267a7bbb6ca74c2e64a1eb',1,'airpic-serialgps.c']]],
+  ['gpstime_5fhours',['gpsTime_hours',['../airpic-serialgps_8h.html#af12084912860ca7bf97ecfb9aa108208',1,'airpic-serialgps.c']]],
+  ['gpstime_5fminutes',['gpsTime_minutes',['../airpic-serialgps_8h.html#a069cb31e4bd11e559ea6f1fbd3da94e6',1,'airpic-serialgps.c']]],
+  ['gpstime_5fseconds',['gpsTime_seconds',['../airpic-serialgps_8h.html#a55d3c89a1908f0d52c1a7305d718f43e',1,'airpic-serialgps.c']]],
+  ['gpstimestring',['gpsTimeString',['../airpic-serialgps_8h.html#aa776c436c3774db0f2080aef2fce2c87',1,'airpic-serialgps.c']]],
+  ['gyro1_5faccumulate',['gyro1_accumulate',['../airpic-gyro_8h.html#a178e92a619741c9b38dae794d29aea32',1,'airpic-gyro.c']]],
+  ['gyro1_5fgetx',['gyro1_getX',['../airpic-gyro_8h.html#a2c0f19dfed24bfae70856036d17cdbc1',1,'airpic-gyro.c']]],
+  ['gyro1_5fgety',['gyro1_getY',['../airpic-gyro_8h.html#a2653a7e90d0b9732960a0b975954cb8e',1,'airpic-gyro.c']]],
+  ['gyro1_5fgetz',['gyro1_getZ',['../airpic-gyro_8h.html#ad2380fde4d6b9e1307c07a186fe11c6b',1,'airpic-gyro.c']]],
+  ['gyro1_5finit',['gyro1_init',['../airpic-gyro_8h.html#a5165b7773f7794f6440368791f070acc',1,'airpic-gyro.c']]],
+  ['gyro1_5frefresh',['gyro1_refresh',['../airpic-gyro_8h.html#ae3ad4d855b9c297d78b585d8331ffca0',1,'airpic-gyro.c']]],
+  ['gyro2_5fgetx',['gyro2_getX',['../airpic-gyro_8h.html#ad0816b1a0b0d574afd3bf149c323b64d',1,'airpic-gyro.c']]],
+  ['gyro2_5fgety',['gyro2_getY',['../airpic-gyro_8h.html#a3b4d68ec9232b446186bb1cb71f30d56',1,'airpic-gyro.c']]],
+  ['gyro2_5fgetz',['gyro2_getZ',['../airpic-gyro_8h.html#a4820415a90336b12e622da607d5d87de',1,'airpic-gyro.c']]],
+  ['gyro2_5finit',['gyro2_init',['../airpic-gyro_8h.html#af5c870da4f197ab0c450d0d7ceb2a420',1,'airpic-gyro.c']]],
+  ['gyro2_5frefresh',['gyro2_refresh',['../airpic-gyro_8h.html#ab0a08eee5ed7b33967c651a83886c61b',1,'airpic-gyro.c']]]
+];
