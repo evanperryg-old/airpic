@@ -65,12 +65,10 @@ int main(void)
     // enable the debugger serial port.
     airpic_config();
     
-    // enable the debugger serial port. 9600 baud is a safe default, as this is 
-    // the default baudrate for the Arduino, and numerous other devices that use 
-    // the TTL interface. Other common baudrates (which all have macros of the 
-    // format "DEBUGGER_BAUDRATE_xxx") are 4800, 14400, 19200, 28800, 38400, 
-    // and 115200.
-    airpic_debugger_enable(DEBUGGER_BAUDRATE_9600);
+    // enable the debugger serial port. 38400 baud is a safe default Other common 
+    // baudrates (which all have macros of the format "DEBUGGER_BAUDRATE_xxx") 
+    // are 4800, 9600, 14400, 19200, 28800, and 115200.
+    airpic_debugger_enable(DEBUGGER_BAUDRATE_38400);
     
     // Set up the airpic-timer library's features. The macros used will enable the 
     // interrupt shown at the top of the code, and tell that interrupt to trigger every 
@@ -136,8 +134,11 @@ int main(void)
         // because the parsing process is very complicated, and takes up a lot 
         // of instruction cycles. In essence, if you don't need the new data, 
         // don't parse it.
-        if(lastCount != serialGPS_readoutCount())
+        if(lastCount < (serialGPS_readoutCount()))
         {
+            // set lastCount to be equal to the number of readouts.
+            lastCount = serialGPS_readoutCount();
+            
             // the GPS gave us new data! before we can use the new data, we have 
             // to tell the MCU to parse the data. Running serialGPS_parse() will 
             // update the values returned by these functions: gpsTime_seconds(),
@@ -158,8 +159,6 @@ int main(void)
             //     it will only take 2-3 instruction cycles."
             if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
             
-            // set lastCount to be equal to the number of readouts.
-            lastCount = serialGPS_readoutCount();
             
         }
         

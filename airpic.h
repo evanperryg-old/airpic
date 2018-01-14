@@ -73,19 +73,19 @@
 #include "airpic-libs/i2c-peripherals/airpic-motor.h"
 
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 4800 baudrate. */
-#define DEBUGGER_BAUDRATE_4800      (832)
+#define DEBUGGER_BAUDRATE_4800      (207)
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 9600 baudrate. */
-#define DEBUGGER_BAUDRATE_9600      (416)
+#define DEBUGGER_BAUDRATE_9600      (103)
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 14400 baudrate. */
-#define DEBUGGER_BAUDRATE_14400     (277)
+#define DEBUGGER_BAUDRATE_14400     (68)
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 19200 baudrate. */
-#define DEBUGGER_BAUDRATE_19200     (207)
+#define DEBUGGER_BAUDRATE_19200     (51)
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 28800 baudrate. */
-#define DEBUGGER_BAUDRATE_28800     (138)
+#define DEBUGGER_BAUDRATE_28800     (34)
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 38400 baudrate. */
-#define DEBUGGER_BAUDRATE_38400     (103)
+#define DEBUGGER_BAUDRATE_38400     (25)
 /** @brief Pass this macro into airpic_debugger_enable() to start the serial port with a 115200 baudrate. */
-#define DEBUGGER_BAUDRATE_115200    (34)
+#define DEBUGGER_BAUDRATE_115200    (8)
 
 /** @brief Pass this macro as the second argument of airpic_debugger_printnum() to print the first argument in binary form. */
 #define BIN                         (1)
