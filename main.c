@@ -33,8 +33,9 @@
 
 //Stuff I added ================================================================
 
-int currentColor;
+//int currentColor;
 int xValue;
+//int xPosition = 0;
 
 
 void airpic_timer_isr(void)
@@ -42,13 +43,13 @@ void airpic_timer_isr(void)
     if(i2c_error_buscollision)
     {
        statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_ORANGE);
-       currentColor = STATUSLED_ORANGE;
+       //currentColor = STATUSLED_ORANGE;
     }
     
     else if(serial_rcvbuffer_error_overflow)
     {
         statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_RED);
-        currentColor = STATUSLED_RED;
+        //currentColor = STATUSLED_RED;
     }
     
 //    else if(serial_receiver_active)
@@ -58,10 +59,12 @@ void airpic_timer_isr(void)
 //       currentColor = STATUSLED_MAGENTA;
 //    }
     
-    
+    xValue = xValue;
  //   else
  //       allGood = 1;
      //   statusLED_setStatus(STATUSLED_LONGBLINK | STATUSLED_BLUE);
+    
+    
     
    
  
@@ -126,17 +129,16 @@ int main(void)
         
         gyro1_refresh();
         xValue = gyro1_getX();
+       
         
         
-        if(xValue < 0)
+        if(xValue > 0)
         {
-            if(currentColor != STATUSLED_GREEN)
-                statusLED_setStatus(STATUSLED_SOLID | STATUSLED_GREEN);
+            statusLED_setStatus(STATUSLED_SOLID | STATUSLED_GREEN);
         }
         else
         {
-            if(currentColor != STATUSLED_TEAL)
-                statusLED_setStatus(STATUSLED_SOLID | STATUSLED_TEAL);
+            statusLED_setStatus(STATUSLED_SOLID | STATUSLED_RED);
         }
 
     }
