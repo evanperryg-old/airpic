@@ -1,8 +1,8 @@
 /**
  * @file    airpic-serialgps.h
- * @brief   Configure and use UART1 for RS-232 communication.
+ * @brief   Configure and use UART1 for RS-232 communication with GPS.
  * <p>
- * This part is still extremely new. Not much to see here.
+ * Take care of basic communication with a MK3339-based GPS module.
  * @author  Evan Perry Grove
  * @date    November 10, 2017
  */
@@ -50,25 +50,97 @@ extern "C" {
     unsigned int serialGPS_strLen();
     
     /**
-     * The number of times the desired NMEA string has been fully 
-     * received. In application, this can be used to tell when the data has been 
-     * updated.
-     * @return 
-     */
-    unsigned int serialGPS_readoutCount();
-    
-    /**
      * Parses the NMEA string currently stored in the fullString[] array. This 
-     * is not done in the UART receive interrupt because it is pretty CPU-
-     * intensive.
+     * is not done automatically in the UART receive interrupt because it is 
+     * pretty CPU-intensive, and if every update is not used, it would be 
+     * extremely inefficient to parse every string.
      */
     void serialGPS_parse();
     
     /**
-     * Prevent the UART interrupt from overwriting the information stored in the 
-     * fullString[] array.
+     * The number of times the desired NMEA string has been fully 
+     * received. This can be used to determine when the serialGPS_parse() 
+     * function needs to be run. <i>(Hint: With the MK3339 GPS in default 
+     * settings, this is approximately the number of seconds since the 
+     * serialGPS_config() function was run)</i>
+     * @return The number of times the GPS data has been updated.
      */
-    void serialGPS_lockBuffer();
+    unsigned int serialGPS_readoutCount();
+    
+//    /*
+//     * Prevent the UART interrupt from overwriting the current GPS data. 
+//     * This should be used if the parsing process takes too longer than the 
+//     * transmission period of the GPS. <i>(Hint: if you have to use the buffer 
+//     * locking feature, there's probably something wrong with your code, or your 
+//     * GPS is sending data way too quickly for all of the data to be useful)</i>
+//     */
+//    void serialGPS_lockBuffer();
+//    
+//    /*
+//     * After using serialGPS_lockBuffer(), this function will unlock the buffer.
+//     */
+//    void serialGPS_unlockBuffer();
+    
+    /**
+     * The GPS Fix will always be one of three values, meaning the following:
+     * <p><ul>
+     * <li> 0: Fix not available (bad)
+     * <li> 1: GPS fix (good)
+     * <li> 2: Differential GPS fix (only happens if differential GPS is enabled)
+     * </ul><p>
+     * @return The last Fix value returned by the GPS.
+     */
+    int gpsFix();
+    
+    /**
+     * The hour component of the UTC time, in 24-hour format.
+     * @return Hour of the current UTC time, 0-23.
+     */
+    int gpsTime_hours();
+    
+    /**
+     * The minutes component of the UTC time.
+     * @return Minutes of the current UTC time.
+     */
+    int gpsTime_minutes();
+    
+    /**
+     * The seconds component of the UTC time, with precision to 3 decimal places.
+     * @return Seconds component of the current UTC time, 5 significant figures.
+     */
+    double gpsTime_seconds();
+    
+    /**
+     * The current GPS latitude, in degrees.
+     * @return The GPS latitude in degrees.
+     */
+    double gpsLatitude();
+    
+    /**
+     * The current GPS longitude, in degrees.
+     * @return The GPS longitude in degrees.
+     */
+    double gpsLongitude();
+    
+    /**
+     * The current altitude of the GPS above/below sea level, measured in meters.
+     * @return The MSL altitude of the GPS, in meters.
+     */
+    double gpsAltitude();
+    
+    /**
+     * A character representing the hemisphere of the Latitude value. Always 
+     * will return either 'N' or 'S'
+     * @return Hemisphere of the latitude, either 'N' or 'S'.
+     */
+    char gpsLatitudeDirection();
+    
+    /**
+     * A character representing the hemisphere of the Longitude value. Always 
+     * will return either 'E' or 'W'
+     * @return Hemisphere of the longitude, either 'E' or 'W'.
+     */
+    char gpsLongitudeDirection();
     
 
 #ifdef	__cplusplus

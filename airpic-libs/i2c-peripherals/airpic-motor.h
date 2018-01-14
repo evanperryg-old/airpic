@@ -23,9 +23,8 @@
 /** @brief The 7-bit I2C address for the motor controller board.
  * The MSB is fixed, and the next 6 bits can be set in hardware. A5 on the board
  * is the second-most significant bit in the address, A0 is the least significant
- * bit in the address. */
-//                              AAAAAA
-//                              543210
+ * bit in the address. 
+ */
 #define ADDR_MOTORCONTROLLER 0b1000000
 
 #include "xc.h"
@@ -36,6 +35,7 @@ extern "C" {
 #endif
     
     /**
+     * @brief Initialize the motor controller.
      * Initialize the I2C PWM motor controller to use the specified frequency
      * @param pwmFrequency The desired frequency of the PWM output, in Hz.
      */
@@ -52,6 +52,7 @@ extern "C" {
     void motor_write(unsigned int motor, unsigned int speed);
     
     /**
+     * @brief Set the specific PWM waveform to be delivered to the motor.
      * Set the PWM output for a motor to have the specified delay time (delay 
      * being the % of the cycle before the signal goes high) and the specified 
      * duty cycle (% of the cycle that the signal is high). Setting the duty 
@@ -60,19 +61,20 @@ extern "C" {
      * Be careful! Unpredictable behavior can occur if (delay + duty) > 4096. 
      * Any problems like this can be prevented by simply keeping delay at zero, 
      * or another very low number.
-     * @param The motor to be written to. Acceptable range: 0-15.
-     * @param Delay before the signal goes high. Acceptable range: 0-4095.
-     * @param Duty cycle of the signal. Duty cycle will be equal to (duty / 4095). 
+     * @param motor The motor to be written to. Acceptable range: 0-15.
+     * @param delay Delay before the signal goes high. Acceptable range: 0-4095.
+     * @param duty Duty cycle of the signal. Duty cycle will be equal to (duty / 4095). 
      * Acceptable range: 0-(4095 - delay).
      */
     void motor_setPWM(unsigned int motor, unsigned int delay, unsigned int duty);
     
     /**
-     * Force the specified motor to be fully off, by setting the LEDx_OFF_H[4] 
+     * @brief Stop the specified motor.
+     * Force the specified motor to be fully off by setting the LEDx_OFF_H[4] 
      * bit. More about how this works can be read on page 23-24 of the PCA9685 
      * datasheet. Writing a duty cycle to the motor motor_write() or 
      * motor_setPWM() will start the motor again.
-     * @param motor
+     * @param motor The motor you wish to stop.
      */
     void motor_stop(unsigned int motor);
     

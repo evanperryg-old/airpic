@@ -1,11 +1,15 @@
 #include <p24Fxxxx.h>
 #include <math.h>
+#include "./../../airpic.h"
 #include "./../airpic-i2c.h"
 
 #include "airpic-motor.h"
 
 void motorController_init(float pwmFrequency)
 {
+    if( airpic_debugger_isenabled ) 
+        airpic_debugger_println("airpic-motor     : init", 23);
+    
     pwmFrequency *= 0.9;            // noted in Adafruit library as a bugfix related
                                     // to frequency overshoot
     float prescaleVal = 6103.51563; // most precise: 6103.515625 = (25,000,000 / 4096)
@@ -20,6 +24,9 @@ void motorController_init(float pwmFrequency)
     
     // grab the current value stored in the MODE1 register on the motor driver
     unsigned int oldMode;
+    
+    if( airpic_debugger_isenabled )
+        airpic_debugger_println("airpic-motor     : begin transmission to device", 47);
     
     i2c_start_write(ADDR_MOTORCONTROLLER);
     i2c_transmit(0x0);
@@ -60,6 +67,9 @@ void motorController_init(float pwmFrequency)
     i2c_start_write(ADDR_MOTORCONTROLLER);
     i2c_transmit(0x0);
     i2c_transmit( oldMode | 0xa1 );
+    
+    if( airpic_debugger_isenabled )
+        airpic_debugger_println("airpic-motor     : end of init", 30);
     
 }
 

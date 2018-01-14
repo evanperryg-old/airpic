@@ -1,6 +1,7 @@
-#include <p24FJ64GA002.h>
+#include <p24Fxxxx.h>
 #include <stdlib.h>
 #include <string.h>
+#include "./../airpic.h"
 
 #include "airpic-serialgps.h"
 
@@ -61,6 +62,14 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
                 strLen = lineIndex;
                 ++readOutCount;
                 
+                if( airpic_debugger_isenabled )
+                {
+                    airpic_debugger_print("airpic-serialgps : new GPS update (", 35);
+                    airpic_debugger_printnum( readOutCount, HEX);
+                    airpic_debugger_println(")",1);
+                    
+                }
+                
             }
             
             lineIndex = 0;
@@ -78,9 +87,9 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
 
 void serialGPS_config(void)
 {
-    lineIndex = 0;
+    lineIndex        = 0;
     stringIsRelevant = 1;
-    readOutCount = 0;
+    readOutCount     = 0;
     
     U1MODE  = 0x0000;
     
@@ -92,11 +101,8 @@ void serialGPS_config(void)
     //      - 8 data bits
     //      - no parity bit
     //      - one stop bit
-    //      - hardware handshake using CTS and RTS
-    // However, the connection of the GPS to the arduino's serial->USB converter 
-    // does not require connection of the CTS and RTS pins, so we will ignore them.
     
-    U1MODEbits.UEN      = 0b10; // 0b10 = UxTX, UxRX, !UxCTS and !UxRTS pins are enabled and used
+    U1MODEbits.UEN      = 0b00; // 0b10 = UxTX, UxRX, !UxCTS and !UxRTS pins are enabled and used
                                 // 0b00 = UxTX, UxRX are enabled and used
     
     U1MODEbits.PDSEL    = 0b00; // 0b00 = 8-bit data, no parity
@@ -122,6 +128,14 @@ unsigned int serial_strLen()
 
 void serialGPS_parse()
 {
+    if( airpic_debugger_isenabled )
+    {
+        airpic_debugger_print("airpic-serialgps : parsing of update (", 38);
+        airpic_debugger_printnum( readOutCount, HEX);
+        airpic_debugger_println(") begin", 7);
+
+    }
+    
     char * pch;
     
     pch = strtok( fullString, ",");
@@ -129,11 +143,13 @@ void serialGPS_parse()
     
     while(pch != NULL)
     {
-        // process the item in pchs
+        // process the item in pch
         switch(i)
         {
             case 0:
                 // sequence identifier, in this case pch = "$GPGGA"
+                // we already identified it as a GPGGA string during the
+                // UART1 RX interrupt, so we don't need to do anything here.
             break;
             case 1:
             {
@@ -220,4 +236,57 @@ void serialGPS_parse()
         ++i;
     }
     
+    if( airpic_debugger_isenabled )
+    {
+        airpic_debugger_print("airpic-serialgps : parsing of update (", 38);
+        airpic_debugger_printnum(readOutCount, HEX);
+        airpic_debugger_println(") finish", 8);
+
+    }
+    
+}
+
+unsigned int serialGPS_readoutCount()
+{
+    return readOutCount;
+}
+
+int gpsFix()
+{
+    return fix;
+}
+
+int gpsTime_hours()
+{
+    return time_h;
+}
+
+int gpsTime_minutes()
+{
+    return time_m;
+}
+
+double gpsTime_seconds()
+{
+    return time_s;
+}
+
+double gpsLatitude()
+{
+    return latitude;
+}
+
+double gpsLongitude()
+{
+    return longitude;
+}
+
+char gpsLatitudeDirection()
+{
+    return latDir;
+}
+
+char gpsLongitudeDirection()
+{
+    return lonDir;
 }
