@@ -11,18 +11,21 @@ unsigned int strLen;
 char currentRead[80];
 unsigned int lineIndex;             // length of string = lineIndex + 1;
 unsigned int readyToFeed;
-unsigned int stringIsRelevant;
+unsigned int stringIsRelevant = 0;
 unsigned int readOutCount;
 
 int fix, satellites, checksum, time_h, time_m;
 double latitude, longitude, hdop, altitude, geoid, time_s;
 char latDir, lonDir, altUnit, geoUnit;
 
+char timeStr[] = "  :  :  ";
+
 void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
 {
     // URXDA is high if there is a byte available to read from the UART buffer
     while(U1STAbits.URXDA)
     {
+        
         currentRead[ lineIndex ] = U1RXREG;
         
         // once we get to index 5, poll the 6 characters we have and see if this is
@@ -37,7 +40,6 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
                 (currentRead[5] == 'A')    )
             {
                 stringIsRelevant = 1;
-                
             }
             
         }
@@ -46,7 +48,6 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
         if( currentRead[ lineIndex ] == 0xA )
         {
             // end of this NMEA string has been reached.
-            
             // if this is a GPGGA string, then we marked it as relevant earlier.
             if( stringIsRelevant )
             {
@@ -60,20 +61,22 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
                     fullString[i] = currentRead[i];
                 }
                 strLen = lineIndex;
-                ++readOutCount;
                 
-                if( airpic_debugger_isenabled )
-                {
-                    airpic_debugger_print("airpic-serialgps : new GPS update (", 35);
-                    airpic_debugger_printnum( readOutCount, HEX);
-                    airpic_debugger_println(")",1);
-                    
-                }
+//                if( airpic_debugger_isenabled )
+//                {
+//                    airpic_debugger_print("airpic-serialgps : new GPS update (", 35);
+//                    airpic_debugger_printnum( readOutCount, HEX);
+//                    airpic_debugger_println(")",1);
+//                    
+//                }
+                
+                ++readOutCount;
+                stringIsRelevant = 0;
                 
             }
             
             lineIndex = 0;
-            stringIsRelevant = 0;
+            
         }
         else
         {
@@ -83,6 +86,7 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
     }
     
     IFS0bits.U1RXIF     = 0;
+    
 }
 
 void serialGPS_config(void)
@@ -128,14 +132,6 @@ unsigned int serial_strLen()
 
 void serialGPS_parse()
 {
-    if( airpic_debugger_isenabled )
-    {
-        airpic_debugger_print("airpic-serialgps : parsing of update (", 38);
-        airpic_debugger_printnum( readOutCount, HEX);
-        airpic_debugger_println(") begin", 7);
-
-    }
-    
     char * pch;
     
     pch = strtok( fullString, ",");
@@ -164,6 +160,13 @@ void serialGPS_parse()
                 subbuff_timemin[2] = '\0';
                 subbuff_timesec[ strlen(subbuff_timesec) - 1 ] = '\0';
                 
+                timeStr[0] = subbuff_timehr[0];
+                timeStr[1] = subbuff_timehr[1];
+                timeStr[3] = subbuff_timemin[0];
+                timeStr[4] = subbuff_timemin[1];
+                timeStr[6] = subbuff_timesec[0];
+                timeStr[7] = subbuff_timesec[1];
+                
                 time_h  =   atoi( subbuff_timehr  );
                 time_m  =   atoi( subbuff_timemin );
                 time_s  =   atof( subbuff_timesec );
@@ -181,8 +184,11 @@ void serialGPS_parse()
                 subbuff_latdeg[2] = '\0';
                 subbuff_latmin[ strlen(subbuff_latmin) - 1 ] = '\0';
                 
-                latitude     = ( atof( subbuff_latmin ) / 60.0 ) +
-                               ( atof( subbuff_latdeg ));
+                double latminval = atof( subbuff_latmin );
+                double latmaxval = atof( subbuff_latdeg );
+                
+                latitude     = ( latminval / 60.0 ) +
+                               ( latmaxval );
                                
             }
             break;
@@ -236,14 +242,6 @@ void serialGPS_parse()
         ++i;
     }
     
-    if( airpic_debugger_isenabled )
-    {
-        airpic_debugger_print("airpic-serialgps : parsing of update (", 38);
-        airpic_debugger_printnum(readOutCount, HEX);
-        airpic_debugger_println(") finish", 8);
-
-    }
-    
 }
 
 unsigned int serialGPS_readoutCount()
@@ -289,4 +287,9 @@ char gpsLatitudeDirection()
 char gpsLongitudeDirection()
 {
     return lonDir;
+}
+
+char* gpsTimeString()
+{
+    return timeStr;
 }

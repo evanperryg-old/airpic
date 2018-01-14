@@ -11,7 +11,7 @@ void gyro1_init(void)
 {
     if( airpic_debugger_isenabled )
         airpic_debugger_println("airpic-gyro1     : init", 23);
-    
+
     gyro_1.xVel     = 0;
     gyro_1.yVel     = 0;
     gyro_1.zVel     = 0;
@@ -20,6 +20,10 @@ void gyro1_init(void)
     gyro_1.y        = 0.0;
     gyro_1.z        = 0.0;
     
+    gyro_1.x     = 0;
+    gyro_1.y     = 0;
+    gyro_1.z     = 0;
+
     if( airpic_debugger_isenabled )
         airpic_debugger_println("airpic-gyro1     : begin transmission to device", 47);
     

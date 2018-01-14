@@ -38,13 +38,13 @@ void airpic_config(void)
     __builtin_write_OSCCONL(OSCCON | 0x40);
     
     
-    U2MODE              = 0x0008;       // U2BRGH = 1  (high speed on)
+    U2MODE              = 0x0000;       // U2BRGH = 0  (high speed off)
                                         // UEN    = 00 (RX and TX enabled, no CTS or RTS)
                                         // PDSEL  = 00 (8 bit data, no parity)
                                         // STSEL  = 0  (one stop bit)
                                         // RXINV  = 0  (RX idle state is '1')
     
-    U2BRG               = DEBUGGER_BAUDRATE_9600; // put a safe value in here
+    U2BRG               = 103;          // put a safe value in here
     
     IFS1bits.U2RXIF     = 0;            // make sure interrupt flags are clear
     IFS1bits.U2TXIF     = 0;
@@ -55,7 +55,6 @@ void airpic_config(void)
     U2STAbits.URXISEL   = 0b00;         // receive interrupt triggers when a
                                         // character is received
     
-    U2STAbits.UTXEN     = 1;            // enable the transmitter
         
 }
 
@@ -65,9 +64,12 @@ void airpic_debugger_enable(unsigned int baudSelect)
     
     IFS1bits.U2RXIF     = 0;
     IFS1bits.U2TXIF     = 0;
-    IEC1bits.U2RXIE     = 1;
+    //IEC1bits.U2RXIE     = 1;
     
     U2MODEbits.UARTEN   = 1;
+    U2STAbits.UTXEN     = 1;            // enable the transmitter
+    
+    asm volatile ("REPEAT, #1680"); Nop();
     
 }
 
@@ -83,7 +85,7 @@ void airpic_debugger_print(char* str, unsigned int len)
     unsigned int i;
     for(i = 0; i < len; i++)
     {
-        while(U2STAbits.UTXBF);
+        while(!U2STAbits.TRMT);
         U2TXREG = str[i];
         
     }
@@ -95,12 +97,12 @@ void airpic_debugger_println(char* str, unsigned int len)
     unsigned int i;
     for(i = 0; i < len; i++)
     {
-        while(U2STAbits.UTXBF);
+        while(!U2STAbits.TRMT);
         U2TXREG = str[i];
         
     }
     
-    while(U2STAbits.UTXBF);
+    while(!U2STAbits.TRMT);
     U2TXREG = '\n';
     
 }

@@ -67,20 +67,6 @@ extern "C" {
      */
     unsigned int serialGPS_readoutCount();
     
-//    /*
-//     * Prevent the UART interrupt from overwriting the current GPS data. 
-//     * This should be used if the parsing process takes too longer than the 
-//     * transmission period of the GPS. <i>(Hint: if you have to use the buffer 
-//     * locking feature, there's probably something wrong with your code, or your 
-//     * GPS is sending data way too quickly for all of the data to be useful)</i>
-//     */
-//    void serialGPS_lockBuffer();
-//    
-//    /*
-//     * After using serialGPS_lockBuffer(), this function will unlock the buffer.
-//     */
-//    void serialGPS_unlockBuffer();
-    
     /**
      * The GPS Fix will always be one of three values, meaning the following:
      * <p><ul>
@@ -141,6 +127,12 @@ extern "C" {
      * @return Hemisphere of the longitude, either 'E' or 'W'.
      */
     char gpsLongitudeDirection();
+    
+    /**
+     * Get the UTC time, formatted as an 8-character ASCII string.
+     * @return The UTC time, HH:MM:SS.
+     */
+    char* gpsTimeString();
     
 
 #ifdef	__cplusplus
