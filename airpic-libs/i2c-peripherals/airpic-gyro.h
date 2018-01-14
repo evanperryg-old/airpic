@@ -39,9 +39,13 @@ extern "C" {
      * Used internally to organize variables.
      */
     struct Gyroscope{
-        int x;
-        int y;
-        int z;
+        int xVel;
+        int yVel;
+        int zVel;
+        
+        double x;
+        double y;
+        double z;
     };
     
     /**
@@ -63,6 +67,11 @@ extern "C" {
      * Retrieve new X, Y, and Z values from Gyro 2.
      */
     void gyro2_refresh(void);
+    
+    /**
+     * Run the accumulation procedure for Gyro 1.
+     */
+    void gyro1_accumulate(void);
     
     /**
      * Get the last X value retrieved from Gyro 1.

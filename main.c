@@ -30,26 +30,30 @@
 // main part of the code.
 #include "airpic.h"
 
+int xValue;
+
 // This is an interrupt service routine, or ISR for short. This particular one 
 // is the Timer 5 ISR, meaning it triggers each time the fifth timer peripheral 
 // on the PIC microcontroller reaches its maximum value. You can enable/disable
 // this ISR, and set the time interval at which it triggers, using the 
 // timer_config() function. More detail on how to do this can be found further 
 // down in the code, and in the airpic-timer.h documentation.
+
 void airpic_timer_isr(void)
 {
     if(i2c_error_buscollision)
-        statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_ORANGE);
+    {
+       statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_ORANGE);
+       //currentColor = STATUSLED_ORANGE;
+    }
     
     else if(serial_rcvbuffer_error_overflow)
+    {
         statusLED_setStatus(STATUSLED_FASTBLINK | STATUSLED_RED);
+        //currentColor = STATUSLED_RED;
+    }
     
-    else if(serial_receiver_active)
-        statusLED_setStatus(STATUSLED_SOLID | STATUSLED_MAGENTA);
-    
-    else
-        statusLED_setStatus(STATUSLED_LONGBLINK | STATUSLED_BLUE);
-    
+    gyro1_accumulate();
     
     airpic_timer_isr_exit;              // THIS MUST BE SOMEWHERE IN THE ISR IN ORDER FOR IT TO WORK!
                                         // its location in the ISR doesn't actually matter, but it's 
@@ -75,7 +79,7 @@ int main(void)
     // 100 milliseconds. Using the 'AIRPIC_TIMER_DEFAULT' macro will do the exact same 
     // thing, but doing it this way shows how to use bitwise OR operators to append 
     // the macros together.
-    timer_config(AIRPIC_TIMER_INTERRUPT_ENABLE | AIRPIC_TIMER_PERIOD_100MS);
+    timer_config(AIRPIC_TIMER_INTERRUPT_ENABLE | AIRPIC_TIMER_PERIOD_20MS);
     
     // Set up the airpic-i2c library's features. You can select a 400kHz baudrate using 
     // the 'AIRPIC_I2C_BAUDRATE_100K' macro, or you can select a 100kHz baudrate using
@@ -92,7 +96,7 @@ int main(void)
     // This should always be done in the initialization section of the code, to ensure
     // the gyro will behave the way we want it to. If the gyro is not connected, trying to 
     // initialize it may result in the microcontroller hanging in an infinite while() loop,
-    // so don't initialize Gyros that aren't actually there.
+    // so don't initialize Gyros that aren't actually rhere.
     gyro1_init();
     
     // Send out configuration messages to Gyro 2. Cannot be done before running i2c_config().
@@ -109,18 +113,26 @@ int main(void)
     // attached to the I2C bus, trying to initialize it will make your program hang in an 
     // infinite while() loop.
     motorController_init(50.0);
-    
+
     // Configure UART1 to receive TTL-formatted serial data from the GPS. 
     // Unlike the initialization routines for the I2C devices, it is fine to 
     // run this if the GPS isn't actually connected to the microcontroller.
     serialGPS_config();
     
-    // we will compare lastCount to serialGPS_readoutCount() whenever we want to 
-    // decide whether we need to run serialGPS_parse().
-    unsigned int lastCount = 0;
-    
     while(1)
     {
+        motor_write(15, 300); //500 is max, 250 is min
+        
+        gyro1_refresh();
+        xValue = gyro1_getX();
+
+       
+
+        // we will compare lastCount to serialGPS_readoutCount() whenever we want to 
+        // decide whether we need to run serialGPS_parse().
+        unsigned int lastCount = 0;
+    
+    
         // the value returned by serialGPS_readoutCount() increments by 1 each 
         // time the GPS has sent us a new set of satellite data. By comparing
         // the output of this function to its previous value (the previous value 
@@ -158,11 +170,20 @@ int main(void)
             //     however, by doing the check before entering the function, 
             //     it will only take 2-3 instruction cycles."
             if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
-            
-            
+
         }
-        
+
+        if(xValue > 0)
+        {
+            statusLED_setStatus(STATUSLED_SOLID | STATUSLED_GREEN);
+        }
+        else
+        {
+            statusLED_setStatus(STATUSLED_SOLID | STATUSLED_RED);
+        }
+
     }
     
     return 0;
 }
+
