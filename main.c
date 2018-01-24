@@ -55,6 +55,11 @@ void airpic_timer_isr(void)
     
     gyro1_accumulate();
     
+    if( airpic_debugger_isenabled ) airpic_debugger_print("X position: ", 12);
+    if( airpic_debugger_isenabled ) airpic_debugger_printnum(gyro1_getX(), DEC);
+    if( airpic_debugger_isenabled ) airpic_debugger_println("-", 1);
+    
+    
     airpic_timer_isr_exit;              // THIS MUST BE SOMEWHERE IN THE ISR IN ORDER FOR IT TO WORK!
                                         // its location in the ISR doesn't actually matter, but it's 
                                         // generally considered good practice to have it at the end.
@@ -104,7 +109,7 @@ int main(void)
     // the gyro will behave the way we want it to. If the gyro is not connected, trying to 
     // initialize it may result in the microcontroller hanging in an infinite while() loop,
     // so don't initialize Gyros that aren't actually there.
-    gyro2_init();
+ //   gyro2_init();
     
     // Send out configuration messages to the motor controller. To ensure that the PWM 
     // frequency is passed as a floating-point value, make sure there's a decimal point
@@ -124,7 +129,6 @@ int main(void)
         motor_write(15, 300); //500 is max, 250 is min
         
         gyro1_refresh();
-        xValue = gyro1_getX();
 
        
 
@@ -169,11 +173,11 @@ int main(void)
             //     function, realize it doesn't need to do anything, and return. 
             //     however, by doing the check before entering the function, 
             //     it will only take 2-3 instruction cycles."
-            if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
+            //if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
 
         }
 
-        if(xValue > 0)
+        if(gyro1_getX() > 90)
         {
             statusLED_setStatus(STATUSLED_SOLID | STATUSLED_GREEN);
         }
