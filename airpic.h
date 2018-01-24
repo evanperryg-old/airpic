@@ -97,8 +97,6 @@
 /** @brief A human-friendly name for the bit that indicates whether the debugger port is enabled. */
 #define airpic_debugger_isenabled   (U2MODEbits.UARTEN)
 
-#define DPS_RANGE                   245.0; // can be 245, 500, or 2000
-
 
 #ifdef	__cplusplus
 extern "C" {

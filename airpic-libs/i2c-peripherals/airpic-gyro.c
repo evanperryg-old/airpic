@@ -122,9 +122,9 @@ void gyro2_refresh(void)
 void gyro1_accumulate(void)
 {
     // assume the period of the interrupt is 20MS
-    gyro_1.x = gyro_1.x + 0.02*DPS_RANGE*(gyro_1.xVel / 32767.0);
-    gyro_1.y = gyro_1.y + 0.02*DPS_RANGE*(gyro_1.yVel / 32767.0);
-    gyro_1.z = gyro_1.z + 0.02*DPS_RANGE*(gyro_1.zVel / 32767.0);
+    gyro_1.x = gyro_1.x + 0.02*(DPS_RANGE)*(gyro_1.xVel / 32767.0);
+    gyro_1.y = gyro_1.y + 0.02*(DPS_RANGE)*(gyro_1.yVel / 32767.0);
+    gyro_1.z = gyro_1.z + 0.02*(DPS_RANGE)*(gyro_1.zVel / 32767.0);
     
     if(gyro_1.x > 360.0)
         gyro_1.x = gyro_1.x - 360.0;

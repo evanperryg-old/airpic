@@ -28,6 +28,9 @@
 /** @brief A macro containing the I2C address of gyro 2. */
 #define ADDR_GYRO_2 0b1101010
 
+/** @brief represents the resolution of the gyro. Can be 245, 500, or 2000. */
+#define DPS_RANGE                   245.0
+
 #include "xc.h"
 #include <p24Fxxxx.h>
 
