@@ -22,6 +22,9 @@
 /** @brief A more user-readable version of the inverted UART1 "receiver idle" flag. */
 #define serial_receiver_active (!U1STAbits.RIDLE)
 
+/** @brief Contains the length of the fullString buffer, generally should not be changed by the user. */
+#define NMEASTR_BUFFLEN 100
+
 
 #ifdef	__cplusplus
 extern "C" {
@@ -30,7 +33,7 @@ extern "C" {
     /**
      * The string available to the user is stored here.
      */
-    extern char fullString[80];
+    extern char fullString[NMEASTR_BUFFLEN];
     
     /**
      * Configure UART1 to receive data from the GPS. The GPS used sends TTL serial 
@@ -94,25 +97,25 @@ extern "C" {
      * The seconds component of the UTC time, with precision to 3 decimal places.
      * @return Seconds component of the current UTC time, 5 significant figures.
      */
-    double gpsTime_seconds();
+    long double gpsTime_seconds();
     
     /**
      * The current GPS latitude, in degrees.
      * @return The GPS latitude in degrees.
      */
-    double gpsLatitude();
+    long double gpsLatitude();
     
     /**
      * The current GPS longitude, in degrees.
      * @return The GPS longitude in degrees.
      */
-    double gpsLongitude();
+    long double gpsLongitude();
     
     /**
      * The current altitude of the GPS above/below sea level, measured in meters.
      * @return The MSL altitude of the GPS, in meters.
      */
-    double gpsAltitude();
+    long double gpsAltitude();
     
     /**
      * A character representing the hemisphere of the Latitude value. Always 

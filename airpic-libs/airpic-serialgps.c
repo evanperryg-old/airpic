@@ -5,17 +5,19 @@
 
 #include "airpic-serialgps.h"
 
-char fullString[80];
+
+
+char fullString[NMEASTR_BUFFLEN];
 unsigned int strLen;
 
-char currentRead[80];
+char currentRead[NMEASTR_BUFFLEN];
 unsigned int lineIndex;             // length of string = lineIndex + 1;
 unsigned int readyToFeed;
 unsigned int stringIsRelevant = 0;
 unsigned int readOutCount;
 
 int fix, satellites, checksum, time_h, time_m;
-double latitude, longitude, hdop, altitude, geoid, time_s;
+long double latitude, longitude, hdop, altitude, geoid, time_s;  // IEEE 754 single-precision float
 char latDir, lonDir, altUnit, geoUnit;
 
 char timeStr[] = "  :  :  ";
@@ -32,8 +34,7 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
         // a line that we care about.
         if(lineIndex == 5)
         {
-            if( (currentRead[0] == '$') &&
-                (currentRead[1] == 'G') &&
+            if( (currentRead[1] == 'G') &&
                 (currentRead[2] == 'P') &&
                 (currentRead[3] == 'G') &&
                 (currentRead[4] == 'G') &&
@@ -60,15 +61,11 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
                 {
                     fullString[i] = currentRead[i];
                 }
+                for(i = lineIndex; i < NMEASTR_BUFFLEN; i++)
+                {
+                    currentRead[i] = ' ';
+                }
                 strLen = lineIndex;
-                
-//                if( airpic_debugger_isenabled )
-//                {
-//                    airpic_debugger_print("airpic-serialgps : new GPS update (", 35);
-//                    airpic_debugger_printnum( readOutCount, HEX);
-//                    airpic_debugger_println(")",1);
-//                    
-//                }
                 
                 ++readOutCount;
                 stringIsRelevant = 0;
@@ -177,18 +174,22 @@ void serialGPS_parse()
             {
                 // latitude from string is in [deg][deg][m][m].[m][m][m][m]
                 // convert to degrees
-                char subbuff_latdeg[3];
-                char subbuff_latmin[ strlen(pch)-1 ];
-                memcpy( subbuff_latdeg, &pch[0], 2 );
-                memcpy( subbuff_latmin, &pch[2], strlen(pch) - 2);
-                subbuff_latdeg[2] = '\0';
-                subbuff_latmin[ strlen(subbuff_latmin) - 1 ] = '\0';
+                if(strlen(pch) > 2)
+                {
+                    char subbuff_latdeg[3];
+                    char subbuff_latmin[ strlen(pch)-1 ];
+                    memcpy( subbuff_latdeg, &pch[0], 2 );
+                    memcpy( subbuff_latmin, &pch[2], strlen(pch) - 2);
+                    subbuff_latdeg[2] = '\0';
+                    subbuff_latmin[ strlen(subbuff_latmin) - 1 ] = '\0';
+
+                    double latminval = atof( subbuff_latmin );
+                    double latmaxval = atof( subbuff_latdeg );
+
+                    latitude     = ( latminval / 60.0 ) +
+                                   ( latmaxval );
                 
-                double latminval = atof( subbuff_latmin );
-                double latmaxval = atof( subbuff_latdeg );
-                
-                latitude     = ( latminval / 60.0 ) +
-                               ( latmaxval );
+                }
                                
             }
             break;
@@ -199,15 +200,20 @@ void serialGPS_parse()
             {
                 // longitude from string is in [deg][deg][deg][m][m].[m][m][m][m]
                 // convert to degrees
-                char subbuff_londeg[4];
-                char subbuff_lonmin[ strlen(pch) - 1];
-                memcpy( subbuff_londeg, &pch[0], 3);
-                memcpy( subbuff_lonmin, &pch[3], strlen(pch) - 3);
-                subbuff_londeg[3] = '\0';
-                subbuff_lonmin[ strlen(subbuff_lonmin) - 1 ] = '\0';
+                if(strlen(pch) > 3)
+                {
+                    char subbuff_londeg[4];
+                    char subbuff_lonmin[ strlen(pch) - 1];
+                    memcpy( subbuff_londeg, &pch[0], 3);
+                    memcpy( subbuff_lonmin, &pch[3], strlen(pch) - 3);
+                    subbuff_londeg[3] = '\0';
+                    subbuff_lonmin[ strlen(subbuff_lonmin) - 1 ] = '\0';
+
+                    longitude    = ( atof( subbuff_lonmin ) / 60.0 ) +
+                                   ( atof( subbuff_londeg ));
                 
-                longitude    = ( atof( subbuff_lonmin ) / 60.0 ) +
-                               ( atof( subbuff_londeg ));
+                }
+                
             }
             break;
             case 5:
@@ -264,17 +270,17 @@ int gpsTime_minutes()
     return time_m;
 }
 
-double gpsTime_seconds()
+long double gpsTime_seconds()
 {
     return time_s;
 }
 
-double gpsLatitude()
+long double gpsLatitude()
 {
     return latitude;
 }
 
-double gpsLongitude()
+long double gpsLongitude()
 {
     return longitude;
 }

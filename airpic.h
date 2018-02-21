@@ -163,6 +163,11 @@ extern "C" {
      * show leading zeroes; decimal format does not show leading zeroes.
      */
     void airpic_debugger_printnum(unsigned int val, unsigned short format);
+    
+    /**
+     * Print device status information.
+     */
+    void airpic_debugger_printStatus(void);
 
 
 #ifdef	__cplusplus

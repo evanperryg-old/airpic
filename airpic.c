@@ -184,3 +184,15 @@ void airpic_debugger_printnum(unsigned int val, unsigned short format)
     }
     
 }
+
+
+void airpic_debugger_printStatus(void)
+{
+    airpic_debugger_println("******AIRPIC-STATUS******", 25);
+    airpic_debugger_print("CORCON=0x", 9);
+    airpic_debugger_printnum(CORCON, HEX);
+    airpic_debugger_print("\nRCON=0x", 8);
+    airpic_debugger_printnum(RCON, HEX);
+    airpic_debugger_println("\n*************************", 26);
+    
+}

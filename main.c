@@ -118,6 +118,7 @@ int main(void)
     // Unlike the initialization routines for the I2C devices, it is fine to 
     // run this if the GPS isn't actually connected to the microcontroller.
     serialGPS_config();
+    airpic_debugger_println("**********************************************",46);
     
     while(1)
     {
