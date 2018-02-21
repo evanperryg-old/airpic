@@ -141,6 +141,29 @@ void gyro1_accumulate(void)
         gyro_1.z = gyro_1.z + 360.0;
 }
 
+void gyro2_accumulate(void)
+{
+    // assume the period of the interrupt is 20MS
+    gyro_2.x = gyro_2.x + 0.02*(DPS_RANGE)*(gyro_2.xVel / 32767.0);
+    gyro_2.y = gyro_2.y + 0.02*(DPS_RANGE)*(gyro_2.yVel / 32767.0);
+    gyro_2.z = gyro_2.z + 0.02*(DPS_RANGE)*(gyro_2.zVel / 32767.0);
+    
+    if(gyro_2.x > 360.0)
+        gyro_2.x = gyro_2.x - 360.0;
+    if(gyro_2.y > 360.0)
+        gyro_2.y = gyro_2.y - 360.0;
+    if(gyro_2.z > 360.0)
+        gyro_2.z = gyro_2.z - 360.0;
+    
+    if(gyro_2.x < 0.0)
+        gyro_2.x = gyro_2.x + 360.0;
+    if(gyro_2.y < 0.0)
+        gyro_2.y = gyro_2.y + 360.0;
+    if(gyro_2.z < 0.0)
+        gyro_2.z = gyro_2.z + 360.0;
+}
+
+
 int gyro1_getX(void)
 {
     return gyro_1.x;
