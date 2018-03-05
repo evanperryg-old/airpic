@@ -92,6 +92,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a53c7c22c9139dc8b056beec49683ac7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a53c7c22c9139dc8b056beec49683ac7b">serial_receiver_active</a>&#160;&#160;&#160;(!U1STAbits.RIDLE)</td></tr>
 <tr class="memdesc:a53c7c22c9139dc8b056beec49683ac7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A more user-readable version of the inverted UART1 "receiver idle" flag.  <a href="#a53c7c22c9139dc8b056beec49683ac7b">More...</a><br /></td></tr>
 <tr class="separator:a53c7c22c9139dc8b056beec49683ac7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff93e8553e680d006795e13bb1bdd3db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#aff93e8553e680d006795e13bb1bdd3db">NMEASTR_BUFFLEN</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memdesc:aff93e8553e680d006795e13bb1bdd3db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the length of the fullString buffer, generally should not be changed by the user.  <a href="#aff93e8553e680d006795e13bb1bdd3db">More...</a><br /></td></tr>
+<tr class="separator:aff93e8553e680d006795e13bb1bdd3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -116,18 +119,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a069cb31e4bd11e559ea6f1fbd3da94e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a069cb31e4bd11e559ea6f1fbd3da94e6">gpsTime_minutes</a> ()</td></tr>
 <tr class="memdesc:a069cb31e4bd11e559ea6f1fbd3da94e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minutes component of the UTC time.  <a href="#a069cb31e4bd11e559ea6f1fbd3da94e6">More...</a><br /></td></tr>
 <tr class="separator:a069cb31e4bd11e559ea6f1fbd3da94e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55d3c89a1908f0d52c1a7305d718f43e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a55d3c89a1908f0d52c1a7305d718f43e">gpsTime_seconds</a> ()</td></tr>
-<tr class="memdesc:a55d3c89a1908f0d52c1a7305d718f43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The seconds component of the UTC time, with precision to 3 decimal places.  <a href="#a55d3c89a1908f0d52c1a7305d718f43e">More...</a><br /></td></tr>
-<tr class="separator:a55d3c89a1908f0d52c1a7305d718f43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe79c6f340c6839965eed799a61c4a79"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#abe79c6f340c6839965eed799a61c4a79">gpsLatitude</a> ()</td></tr>
-<tr class="memdesc:abe79c6f340c6839965eed799a61c4a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GPS latitude, in degrees.  <a href="#abe79c6f340c6839965eed799a61c4a79">More...</a><br /></td></tr>
-<tr class="separator:abe79c6f340c6839965eed799a61c4a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f082f869c7d16d2f588d692752f67d7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a6f082f869c7d16d2f588d692752f67d7">gpsLongitude</a> ()</td></tr>
-<tr class="memdesc:a6f082f869c7d16d2f588d692752f67d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GPS longitude, in degrees.  <a href="#a6f082f869c7d16d2f588d692752f67d7">More...</a><br /></td></tr>
-<tr class="separator:a6f082f869c7d16d2f588d692752f67d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf25da4b3977117cba0866e94c3f456e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#aaf25da4b3977117cba0866e94c3f456e">gpsAltitude</a> ()</td></tr>
-<tr class="memdesc:aaf25da4b3977117cba0866e94c3f456e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current altitude of the GPS above/below sea level, measured in meters.  <a href="#aaf25da4b3977117cba0866e94c3f456e">More...</a><br /></td></tr>
-<tr class="separator:aaf25da4b3977117cba0866e94c3f456e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0be79f27f0c4b1c67665c87d544cda63"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a0be79f27f0c4b1c67665c87d544cda63">gpsTime_seconds</a> ()</td></tr>
+<tr class="memdesc:a0be79f27f0c4b1c67665c87d544cda63"><td class="mdescLeft">&#160;</td><td class="mdescRight">The seconds component of the UTC time, with precision to 3 decimal places.  <a href="#a0be79f27f0c4b1c67665c87d544cda63">More...</a><br /></td></tr>
+<tr class="separator:a0be79f27f0c4b1c67665c87d544cda63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa16c1198fcc80911c7fef45496cf6ffc"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#aa16c1198fcc80911c7fef45496cf6ffc">gpsLatitude</a> ()</td></tr>
+<tr class="memdesc:aa16c1198fcc80911c7fef45496cf6ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GPS latitude, in degrees.  <a href="#aa16c1198fcc80911c7fef45496cf6ffc">More...</a><br /></td></tr>
+<tr class="separator:aa16c1198fcc80911c7fef45496cf6ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1bb5642d8a3d18948d87f25030073a8"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#af1bb5642d8a3d18948d87f25030073a8">gpsLongitude</a> ()</td></tr>
+<tr class="memdesc:af1bb5642d8a3d18948d87f25030073a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current GPS longitude, in degrees.  <a href="#af1bb5642d8a3d18948d87f25030073a8">More...</a><br /></td></tr>
+<tr class="separator:af1bb5642d8a3d18948d87f25030073a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c2c89ff4ba2be9eeb73eb67067684e"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a82c2c89ff4ba2be9eeb73eb67067684e">gpsAltitude</a> ()</td></tr>
+<tr class="memdesc:a82c2c89ff4ba2be9eeb73eb67067684e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current altitude of the GPS above/below sea level, measured in meters.  <a href="#a82c2c89ff4ba2be9eeb73eb67067684e">More...</a><br /></td></tr>
+<tr class="separator:a82c2c89ff4ba2be9eeb73eb67067684e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ab7be77cc11055c0274e92e67578617"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a8ab7be77cc11055c0274e92e67578617">gpsLatitudeDirection</a> ()</td></tr>
 <tr class="memdesc:a8ab7be77cc11055c0274e92e67578617"><td class="mdescLeft">&#160;</td><td class="mdescRight">A character representing the hemisphere of the Latitude value.  <a href="#a8ab7be77cc11055c0274e92e67578617">More...</a><br /></td></tr>
 <tr class="separator:a8ab7be77cc11055c0274e92e67578617"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,16 +143,32 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a4db9667bfe785be7230c886b88dc9501"><td class="memItemLeft" align="right" valign="top"><a id="a4db9667bfe785be7230c886b88dc9501"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a4db9667bfe785be7230c886b88dc9501">fullString</a> [80]</td></tr>
-<tr class="memdesc:a4db9667bfe785be7230c886b88dc9501"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string available to the user is stored here. <br /></td></tr>
-<tr class="separator:a4db9667bfe785be7230c886b88dc9501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf33372e7b3210385b636bcbd197779"><td class="memItemLeft" align="right" valign="top"><a id="a6bf33372e7b3210385b636bcbd197779"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airpic-serialgps_8h.html#a6bf33372e7b3210385b636bcbd197779">fullString</a> [<a class="el" href="airpic-serialgps_8h.html#aff93e8553e680d006795e13bb1bdd3db">NMEASTR_BUFFLEN</a>]</td></tr>
+<tr class="memdesc:a6bf33372e7b3210385b636bcbd197779"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string available to the user is stored here. <br /></td></tr>
+<tr class="separator:a6bf33372e7b3210385b636bcbd197779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configure and use UART1 for RS-232 communication with GPS. </p>
 <p>Take care of basic communication with a MK3339-based GPS module. </p><dl class="section author"><dt>Author</dt><dd>Evan Perry Grove </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 10, 2017 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aff93e8553e680d006795e13bb1bdd3db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff93e8553e680d006795e13bb1bdd3db">&#9670;&nbsp;</a></span>NMEASTR_BUFFLEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NMEASTR_BUFFLEN&#160;&#160;&#160;100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contains the length of the fullString buffer, generally should not be changed by the user. </p>
+
+</div>
+</div>
 <a id="a28c02f156c42dab2833d1ee8a1c34f9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28c02f156c42dab2833d1ee8a1c34f9e">&#9670;&nbsp;</a></span>serial_rcvbuffer_data_available</h2>
 
@@ -215,14 +234,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aaf25da4b3977117cba0866e94c3f456e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf25da4b3977117cba0866e94c3f456e">&#9670;&nbsp;</a></span>gpsAltitude()</h2>
+<a id="a82c2c89ff4ba2be9eeb73eb67067684e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c2c89ff4ba2be9eeb73eb67067684e">&#9670;&nbsp;</a></span>gpsAltitude()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double gpsAltitude </td>
+          <td class="memname">long double gpsAltitude </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -263,14 +282,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 
 </div>
 </div>
-<a id="abe79c6f340c6839965eed799a61c4a79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe79c6f340c6839965eed799a61c4a79">&#9670;&nbsp;</a></span>gpsLatitude()</h2>
+<a id="aa16c1198fcc80911c7fef45496cf6ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa16c1198fcc80911c7fef45496cf6ffc">&#9670;&nbsp;</a></span>gpsLatitude()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double gpsLatitude </td>
+          <td class="memname">long double gpsLatitude </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -303,14 +322,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 
 </div>
 </div>
-<a id="a6f082f869c7d16d2f588d692752f67d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f082f869c7d16d2f588d692752f67d7">&#9670;&nbsp;</a></span>gpsLongitude()</h2>
+<a id="af1bb5642d8a3d18948d87f25030073a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1bb5642d8a3d18948d87f25030073a8">&#9670;&nbsp;</a></span>gpsLongitude()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double gpsLongitude </td>
+          <td class="memname">long double gpsLongitude </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -383,14 +402,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="airp
 
 </div>
 </div>
-<a id="a55d3c89a1908f0d52c1a7305d718f43e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55d3c89a1908f0d52c1a7305d718f43e">&#9670;&nbsp;</a></span>gpsTime_seconds()</h2>
+<a id="a0be79f27f0c4b1c67665c87d544cda63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0be79f27f0c4b1c67665c87d544cda63">&#9670;&nbsp;</a></span>gpsTime_seconds()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double gpsTime_seconds </td>
+          <td class="memname">long double gpsTime_seconds </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

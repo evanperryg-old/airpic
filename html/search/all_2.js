@@ -7,5 +7,6 @@ var searchData=
   ['debugger_5fbaudrate_5f38400',['DEBUGGER_BAUDRATE_38400',['../airpic_8h.html#a4e858d8b85869475f07c13fda37a9d46',1,'airpic.h']]],
   ['debugger_5fbaudrate_5f4800',['DEBUGGER_BAUDRATE_4800',['../airpic_8h.html#a2c0ba09e2b113ca943385e076fcec787',1,'airpic.h']]],
   ['debugger_5fbaudrate_5f9600',['DEBUGGER_BAUDRATE_9600',['../airpic_8h.html#a510ef9857f39b49afb8cd8cfa859b8c5',1,'airpic.h']]],
-  ['dec',['DEC',['../airpic_8h.html#afe38ec6126e35e40049e27fdf4586ba5',1,'airpic.h']]]
+  ['dec',['DEC',['../airpic_8h.html#afe38ec6126e35e40049e27fdf4586ba5',1,'airpic.h']]],
+  ['dps_5frange',['DPS_RANGE',['../airpic-gyro_8h.html#a747f03782342b5d4442b680c11c42b26',1,'airpic-gyro.h']]]
 ];

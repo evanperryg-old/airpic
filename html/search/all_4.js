@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['gpsaltitude',['gpsAltitude',['../airpic-serialgps_8h.html#aaf25da4b3977117cba0866e94c3f456e',1,'airpic-serialgps.h']]],
+  ['gpsaltitude',['gpsAltitude',['../airpic-serialgps_8h.html#a82c2c89ff4ba2be9eeb73eb67067684e',1,'airpic-serialgps.h']]],
   ['gpsfix',['gpsFix',['../airpic-serialgps_8h.html#aa5d5f5ce7cf88bd46df9e00e5e27414f',1,'airpic-serialgps.c']]],
-  ['gpslatitude',['gpsLatitude',['../airpic-serialgps_8h.html#abe79c6f340c6839965eed799a61c4a79',1,'airpic-serialgps.c']]],
+  ['gpslatitude',['gpsLatitude',['../airpic-serialgps_8h.html#aa16c1198fcc80911c7fef45496cf6ffc',1,'airpic-serialgps.c']]],
   ['gpslatitudedirection',['gpsLatitudeDirection',['../airpic-serialgps_8h.html#a8ab7be77cc11055c0274e92e67578617',1,'airpic-serialgps.c']]],
-  ['gpslongitude',['gpsLongitude',['../airpic-serialgps_8h.html#a6f082f869c7d16d2f588d692752f67d7',1,'airpic-serialgps.c']]],
+  ['gpslongitude',['gpsLongitude',['../airpic-serialgps_8h.html#af1bb5642d8a3d18948d87f25030073a8',1,'airpic-serialgps.c']]],
   ['gpslongitudedirection',['gpsLongitudeDirection',['../airpic-serialgps_8h.html#a87f96096d7267a7bbb6ca74c2e64a1eb',1,'airpic-serialgps.c']]],
   ['gpstime_5fhours',['gpsTime_hours',['../airpic-serialgps_8h.html#af12084912860ca7bf97ecfb9aa108208',1,'airpic-serialgps.c']]],
   ['gpstime_5fminutes',['gpsTime_minutes',['../airpic-serialgps_8h.html#a069cb31e4bd11e559ea6f1fbd3da94e6',1,'airpic-serialgps.c']]],
-  ['gpstime_5fseconds',['gpsTime_seconds',['../airpic-serialgps_8h.html#a55d3c89a1908f0d52c1a7305d718f43e',1,'airpic-serialgps.c']]],
+  ['gpstime_5fseconds',['gpsTime_seconds',['../airpic-serialgps_8h.html#a0be79f27f0c4b1c67665c87d544cda63',1,'airpic-serialgps.c']]],
   ['gpstimestring',['gpsTimeString',['../airpic-serialgps_8h.html#aa776c436c3774db0f2080aef2fce2c87',1,'airpic-serialgps.c']]],
   ['gyro1_5faccumulate',['gyro1_accumulate',['../airpic-gyro_8h.html#a178e92a619741c9b38dae794d29aea32',1,'airpic-gyro.c']]],
   ['gyro1_5fgetx',['gyro1_getX',['../airpic-gyro_8h.html#a2c0f19dfed24bfae70856036d17cdbc1',1,'airpic-gyro.c']]],
