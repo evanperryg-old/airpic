@@ -32,11 +32,43 @@
  * <img src="https://i.imgur.com/utqZF0K.png" alt="d001-connections diagram" width="800">
  * \endhtmlonly
  * <p>
- * WARNING!!! The PIC microcontroller is a 3.3V device. If something (like an
+ * WARNING! The PIC microcontroller is a 3.3V device. If something (like an
  * arduino's RX pin) tries to send data with a 5V logic level, there is a high 
  * chance you will damage the PIC! However, the PIC's outputs can be connected 
- * to inputs on a 5V device (for example, the debugging TX pin can be connected 
- * to the TX pin on an Arduino).
+ * to inputs on a 5V device.
+ * 
+ * \subsection arduino Using the Arduino Serial Monitor to Receive Data from Airpic Serial Port
+ * <p>
+ * Follow these instructions to view the output of Airpic's serial debug port 
+ * using the Arduino IDE's Serial Monitor tool. These instructions assume the 
+ * user has a cursory understanding of the Arduino IDE.
+ * <p>
+ * Step 1: Connect an Arduino UNO to a computer. Using the Arduino IDE, upload 
+ * a completely empty sketch to the Arduino. (this means that the void setup() 
+ * and void loop() are both empty)
+ * <p>
+ * Step 2: Connect any of the GND pins on the Arduino to any GND pin of the PIC 
+ * microcontroller.
+ * <p>
+ * Step 3: Attach pin 15 of the PIC microcontroller to the TX pin of an Arduino 
+ * UNO. (The 'TX' pin on the Arduino is attached to the RX pin of the Arduino's 
+ * on-board serial-to-USB converter)
+ * <p>
+ * Step 4: Open the Arduino IDE.
+ * <p>
+ * Step 5: In the main function currently running on the PIC microcontroller, 
+ * find the call to airpic_debugger_enable(unsigned int baudSelect). If the 
+ * given value of baudSelect is one of the predefined macros (ex: DEBUGGER_BAUDRATE_38400) 
+ * then the baudrate of the serial port is the number specified in the macro's 
+ * name (ex: for DEBUGGER_BAUDRATE_9600, the baudrate is 9600). If the specified 
+ * value for baudSelect is not specified using a macro, use this formula to 
+ * determine the baudrate: ((1,000,000) / (baudSelect + 1))
+ * <p>
+ * Step 6: In the Arduino IDE, go to Tools > Serial Monitor. Set the Serial 
+ * Monitor's baudrate to the value found in step 5.
+ * <p>
+ * Any information sent by the Airpic serial debugger port will now appear in
+ * the Arduino Serial Monitor.
  * 
  * \subsection techinfo Compiler/Technical Information
  * Airpic was compiled using the XC16 compiler, version 1.32B. The IDE used was 
