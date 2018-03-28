@@ -38,7 +38,7 @@ void statusLED_enable(void)
     
     T2CON   = 0x0000;
     TMR2    = 0x0000;
-    PR2     = 0x0032;       //statled is updated every 800us
+    PR2     = 0x0096;       //statled is updated every 2.4ms
     
     IFS0bits.T2IF = 0;
     IEC0bits.T2IE = 1;
@@ -63,16 +63,16 @@ void statusLED_setStatus(unsigned int stat)
             statled_pr_off = 0;
             break;
         case STATUSLED_SHORTBLINK:
-            statled_pr_on  = 40;       //32ms on
-            statled_pr_off = 1250;     //1000ms off
+            statled_pr_on  = 40;
+            statled_pr_off = 600;
             break;
         case STATUSLED_LONGBLINK:
-            statled_pr_on  = 1250;     //800ms on
-            statled_pr_off = 375;      //300ms off
+            statled_pr_on  = 600;
+            statled_pr_off = 100;
             break;
         case STATUSLED_FASTBLINK:
-            statled_pr_on  = 200;      //160ms on
-            statled_pr_off = 200;      //160ms off
+            statled_pr_on  = 60;
+            statled_pr_off = 60;
             break;
     }
     

@@ -5,8 +5,8 @@
 
 #include "airpic-serialgps.h"
 
-
-
+// the currentread buffer holds the NMEA line currently being received by the 
+// PIC. fullString holds the most recent fully completed GPGGA sequence.
 char fullString[NMEASTR_BUFFLEN];
 unsigned int strLen;
 

@@ -83,5 +83,4 @@ extern "C" {
 }
 #endif
 
-#endif	/* AIRPIC_STATUSLED_H */
-
+#endif /* AIRPIC_STATUSLED_H */

@@ -23,20 +23,15 @@ void airpic_config(void)
     // pins.
     __builtin_write_OSCCONL(OSCCON & 0xbf);
     RPOR5bits.RP10R      = 3;       // UART1's TX pin is on RP10 (physical pin 21)
-    __builtin_write_OSCCONL(OSCCON & 0x40);
-    
-    __builtin_write_OSCCONL(OSCCON & 0xbf);
     RPINR18bits.U1RXR    = 11;      // UART1's RX pin is on RP11 (physical pin 22)
-    __builtin_write_OSCCONL(OSCCON | 0x40);
     
-    __builtin_write_OSCCONL(OSCCON & 0xbf);
     RPOR3bits.RP6R       = 5;       // UART2's TX pin is on RP6 (physical pin 21)
-    __builtin_write_OSCCONL(OSCCON & 0x40);
-    
-    __builtin_write_OSCCONL(OSCCON & 0xbf);
     RPINR19bits.U2RXR    = 7;       // UART2's RX pin is on RP7 (physical pin 16)
-    __builtin_write_OSCCONL(OSCCON | 0x40);
     
+    RPOR7bits.RP15R      = 18;      // Red component of status LED attached to OC1
+    RPOR7bits.RP14R      = 19;      // Green component of status LED attached to OC2
+    RPOR6bits.RP13R      = 20;      // Blue component of status LED attached to OC3
+    __builtin_write_OSCCONL(OSCCON | 0x40);
     
     U2MODE              = 0x0000;       // U2BRGH = 0  (high speed off)
                                         // UEN    = 00 (RX and TX enabled, no CTS or RTS)
