@@ -77,6 +77,11 @@ extern "C" {
     void gyro1_accumulate(void);
     
     /**
+     * Run the accumulation procedure for Gyro 2.
+     */
+    void gyro2_accumulate(void);  
+    
+    /**
      * Get the last X value retrieved from Gyro 1.
      * @return the Gyro 1 X value with respect to the calibration setpoint.
      */

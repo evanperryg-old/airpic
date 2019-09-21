@@ -28,6 +28,7 @@ void __attribute__((__interrupt__,no_auto_psv)) _U1RXInterrupt(void)
     while(U1STAbits.URXDA)
     {
         
+       
         currentRead[ lineIndex ] = U1RXREG;
         
         // once we get to index 5, poll the 6 characters we have and see if this is

@@ -30,7 +30,6 @@
 // main part of the code.
 #include "airpic.h"
 
-int xValue;
 
 // This is an interrupt service routine, or ISR for short. This particular one 
 // is the Timer 5 ISR, meaning it triggers each time the fifth timer peripheral 
@@ -53,7 +52,19 @@ void airpic_timer_isr(void)
         //currentColor = STATUSLED_RED;
     }
     
+//    gyro2_refresh();
+    
     gyro1_accumulate();
+    gyro2_accumulate();
+    
+    //if (airpic_debugger_isenabled)    airpic_debugger_print("Gyro 1 X position: ", 19);
+    if (airpic_debugger_isenabled)    airpic_debugger_printnum(gyro1_getX(), DEC);
+    if (airpic_debugger_isenabled)    airpic_debugger_println(" ", 1); 
+//    if (airpic_debugger_isenabled)    airpic_debugger_print("Gyro 2 Z position: ", 19);
+//    if (airpic_debugger_isenabled)    airpic_debugger_printnum(gyro1_getZ(), DEC);
+//    if (airpic_debugger_isenabled)    airpic_debugger_println(" ", 1); 
+//    if (airpic_debugger_isenabled)    airpic_debugger_println(" ", 1); 
+        
     
     airpic_timer_isr_exit;              // THIS MUST BE SOMEWHERE IN THE ISR IN ORDER FOR IT TO WORK!
                                         // its location in the ISR doesn't actually matter, but it's 
@@ -117,21 +128,21 @@ int main(void)
     // Configure UART1 to receive TTL-formatted serial data from the GPS. 
     // Unlike the initialization routines for the I2C devices, it is fine to 
     // run this if the GPS isn't actually connected to the microcontroller.
+    
     serialGPS_config();
     airpic_debugger_println("**********************************************",46);
+
     
     while(1)
     {
         motor_write(15, 300); //500 is max, 250 is min
-        
-        gyro1_refresh();
-        xValue = gyro1_getX();
-
        
-
+        gyro1_refresh();
+        gyro2_refresh();
+        
         // we will compare lastCount to serialGPS_readoutCount() whenever we want to 
         // decide whether we need to run serialGPS_parse().
-        unsigned int lastCount = 0;
+    //    unsigned int lastCount = 0;
     
     
         // the value returned by serialGPS_readoutCount() increments by 1 each 
@@ -147,17 +158,17 @@ int main(void)
         // because the parsing process is very complicated, and takes up a lot 
         // of instruction cycles. In essence, if you don't need the new data, 
         // don't parse it.
-        if(lastCount < (serialGPS_readoutCount()))
-        {
+    //    if(lastCount < (serialGPS_readoutCount()))
+    //    {
             // set lastCount to be equal to the number of readouts.
-            lastCount = serialGPS_readoutCount();
+    //        lastCount = serialGPS_readoutCount();
             
             // the GPS gave us new data! before we can use the new data, we have 
             // to tell the MCU to parse the data. Running serialGPS_parse() will 
             // update the values returned by these functions: gpsTime_seconds(),
             // gpsTime_min(), gpsTime_hours(), gpsLatitude(), gpsLongitude(), 
             // gpsAltitude(), gpsLatitudeDirection(), gpsLongitudeDirection()
-            serialGPS_parse();
+      //      serialGPS_parse();
             
             // if the serial debugger port is enabled, print "parsed some data!"
             // followed by a newline character. The '17' is the length of the 
@@ -170,11 +181,13 @@ int main(void)
             //     function, realize it doesn't need to do anything, and return. 
             //     however, by doing the check before entering the function, 
             //     it will only take 2-3 instruction cycles."
-            if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
+            //if( airpic_debugger_isenabled ) airpic_debugger_println("parsed some data!", 17);
 
-        }
-
-        if(xValue > 0)
+       // }
+        
+        //if (airpic_debugger_isenabled)    airpic_debugger_println("main", 4);
+        
+        if(gyro1_getX() > 90)
         {
             statusLED_setStatus(STATUSLED_SOLID | STATUSLED_GREEN);
         }
